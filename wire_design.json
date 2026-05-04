@@ -1,0 +1,4997 @@
+{
+  "POWERACT 22DP (WS31)": {
+    "d1": {
+      "coeff": 0.0199965464249014,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.01817702611117298,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.043812686671507936,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04063125908514136,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04775054122526328,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.023850309535148495,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.04160179580524768,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d16": {
+      "coeff": 0.04553678557407422,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.04223016375227138,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.03826103218503478,
+      "st_count": 9.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.03646602200603264,
+      "st_count": 9.0,
+      "wire_count": 6.0
+    },
+    "d23": {
+      "coeff": 0.03845858085962604,
+      "st_count": 9.0,
+      "wire_count": 6.0
+    },
+    "d24": {
+      "coeff": 0.02982497211822988,
+      "st_count": 9.0,
+      "wire_count": 6.0
+    },
+    "d25": {
+      "coeff": 0.04877745051636254,
+      "st_count": 9.0,
+      "wire_count": 12.0
+    }
+  },
+  "POWERACT 22DP (WS26)": {
+    "d1": {
+      "coeff": 0.019996546424901403,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.018177026111172983,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.04381268667150793,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.040631259085141355,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04775054122526328,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.023850309535148495,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.04160179580524768,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d16": {
+      "coeff": 0.04553678557407422,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.04223016375227137,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.025218092127232354,
+      "st_count": 9.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.0341058357221182,
+      "st_count": 9.0,
+      "wire_count": 5.0
+    },
+    "d23": {
+      "coeff": 0.040403597871318454,
+      "st_count": 9.0,
+      "wire_count": 5.0
+    },
+    "d24": {
+      "coeff": 0.03183305235211696,
+      "st_count": 9.0,
+      "wire_count": 5.0
+    },
+    "d25": {
+      "coeff": 0.05634068839864244,
+      "st_count": 9.0,
+      "wire_count": 10.0
+    }
+  },
+  "POWERACT 22DP (S19)": {
+    "d1": {
+      "coeff": 0.0199965464249014,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.01817702611117298,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.04381268667150792,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.040631259085141355,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0595077186232651,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05518660727373189,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.04553530629052245,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.042228791885859644,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.07194599735234684,
+      "st_count": 9.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.03588872353827696,
+      "st_count": 9.0,
+      "wire_count": 9.0
+    },
+    "d23": {
+      "coeff": 0.06242602807145062,
+      "st_count": 9.0,
+      "wire_count": 9.0
+    }
+  },
+  "POW 35x7 (태인)": {
+    "d1": {
+      "coeff": 0.06399852701985619,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.057640752066879394,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.058859683888505564,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.054555272859862426,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05995689506825462,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05557224494230663,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.044434054935083504,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.04118459072674345,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.05742193576527261,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.052130672505921564,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 35x7": {
+    "d1": {
+      "coeff": 0.06371708142872483,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.05750120154203126,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.05858409768972152,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05443101151140158,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05967009338940875,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05544001987309186,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.04422747322022976,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.041092142729935686,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.05767858007087569,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.05262164042594262,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 35x7 SC": {
+    "d1": {
+      "coeff": 0.06556568647656143,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.05916946708470484,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.06028378098160795,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05601020252867042,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.06140128435690361,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.057048484954848655,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.04551063196533695,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.04228433704853382,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.0576785800708757,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.05262164042594262,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "POWERACT 25D(30mm이하)": {
+    "d1": {
+      "coeff": 0.05126030833075269,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04663419607965128,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.030387386972571494,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04100985410334201,
+      "st_count": 4.0,
+      "wire_count": 5.0
+    },
+    "d8": {
+      "coeff": 0.048309016127968986,
+      "st_count": 4.0,
+      "wire_count": 5.0
+    },
+    "d9": {
+      "coeff": 0.037982551881146485,
+      "st_count": 4.0,
+      "wire_count": 5.0
+    },
+    "d10": {
+      "coeff": 0.06727338271545605,
+      "st_count": 4.0,
+      "wire_count": 10.0
+    },
+    "d11": {
+      "coeff": 0.044555848537449684,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.040534796704375625,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.045770487474614756,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.05923448618430795,
+      "st_count": 16.0,
+      "wire_count": 5.0
+    }
+  },
+  "POWERACT 25D(32mm이상)": {
+    "d1": {
+      "coeff": 0.05126030833075268,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04663419607965128,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.06160424673402446,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.044852439346295306,
+      "st_count": 4.0,
+      "wire_count": 7.0
+    },
+    "d8": {
+      "coeff": 0.04321361991368346,
+      "st_count": 4.0,
+      "wire_count": 7.0
+    },
+    "d9": {
+      "coeff": 0.03304781812076314,
+      "st_count": 4.0,
+      "wire_count": 7.0
+    },
+    "d10": {
+      "coeff": 0.051213107269120005,
+      "st_count": 4.0,
+      "wire_count": 14.0
+    },
+    "d11": {
+      "coeff": 0.044555848537449684,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04053479670437562,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.05826167060315114,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.05300370324158583,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 37x7": {
+    "d1": {
+      "coeff": 0.06635427538014062,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.059881125692753924,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.06100884195942428,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05668386319745822,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.062139786065822246,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.057734633527661665,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.04605800943198745,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.042792910370702826,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.052155568982816015,
+      "st_count": 18.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.04745297878520245,
+      "st_count": 18.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 37x7 SC": {
+    "d1": {
+      "coeff": 0.0682479683559732,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.061590080638907335,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.06274998094135671,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05830157106880676,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.06391320120325597,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.059382329465071056,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.04737246473185332,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.04401418259951066,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.052155568982816015,
+      "st_count": 18.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.04745297878520245,
+      "st_count": 18.0,
+      "wire_count": 6.0
+    }
+  },
+  "POWERACT 28": {
+    "d1": {
+      "coeff": 0.024473453165225388,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03337599152916103,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.03944745447468036,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.03106792602739994,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.056848903984263385,
+      "st_count": 1.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.02171557512442359,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.029614899316025758,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d8": {
+      "coeff": 0.03500217788347858,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d9": {
+      "coeff": 0.02756692637746223,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d10": {
+      "coeff": 0.05044268321585038,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    },
+    "d11": {
+      "coeff": 0.027495444589882206,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.024993586573840744,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.06043133972450686,
+      "st_count": 15.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.055299542207638046,
+      "st_count": 15.0,
+      "wire_count": 6.0
+    }
+  },
+  "POWERACT 28 D(P)": {
+    "d1": {
+      "coeff": 0.0260869351166701,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03523519864457161,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.041602735277482684,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.03274560516751313,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.057536248603154164,
+      "st_count": 1.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.023147236128367433,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.0312645950706048,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d8": {
+      "coeff": 0.03691458320983378,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d9": {
+      "coeff": 0.029055550281733032,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d10": {
+      "coeff": 0.05105257196375702,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    },
+    "d11": {
+      "coeff": 0.02880537813515558,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.026184327002232142,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.06043133972450685,
+      "st_count": 15.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.05529954220763804,
+      "st_count": 15.0,
+      "wire_count": 6.0
+    }
+  },
+  "POWERACT 29": {
+    "d1": {
+      "coeff": 0.038244901608546766,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03667699172187948,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.03856251679459191,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.029891118064470572,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.050415108896054266,
+      "st_count": 1.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.03393513896055614,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.032543914571321636,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d8": {
+      "coeff": 0.03421696255065831,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d9": {
+      "coeff": 0.026522731201837242,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d10": {
+      "coeff": 0.044733903190820115,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d11": {
+      "coeff": 0.02816215751087037,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.025599634134051787,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.057176054112518256,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.0523206937340028,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "POWERACT 29 D(P)": {
+    "d1": {
+      "coeff": 0.03718745754318965,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03566289923895396,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.03749678110909728,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.029064650115155743,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.04902116733876833,
+      "st_count": 1.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.035988995945720526,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.034237078784589224,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d8": {
+      "coeff": 0.035973604425441855,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d9": {
+      "coeff": 0.027867705539856045,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d10": {
+      "coeff": 0.0452691772902145,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d11": {
+      "coeff": 0.029524364613717352,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.026837891658683166,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.057176054112518256,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.0523206937340028,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 19x7": {
+    "d1": {
+      "coeff": 0.08988436813002045,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.0809550284878145,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.07636995897321708,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.07078502082974981,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.07221482016531516,
+      "st_count": 12.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.06693374748847453,
+      "st_count": 12.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 24x7": {
+    "d1": {
+      "coeff": 0.024370637284901724,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.021949596762047847,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.05349366755159917,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.049577078361074285,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.07003622355537989,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.06490845556569035,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.05314558752052894,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.049254483336912805,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.07320161419857792,
+      "st_count": 12.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.06645629977174572,
+      "st_count": 12.0,
+      "wire_count": 6.0
+    }
+  },
+  "POWERACT 17DS(16mm이상)": {
+    "d1": {
+      "coeff": 0.023322226338195216,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.0318551515028197,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.037813867331604634,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.029815628046158817,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.05512225558542949,
+      "st_count": 1.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.0430982584492775,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.02148016306415855,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.03727900566497492,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.027463310214527664,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.037130519467907984,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d13": {
+      "coeff": 0.0439654876272277,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d14": {
+      "coeff": 0.03461853375642808,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d15": {
+      "coeff": 0.062028933290858644,
+      "st_count": 8.0,
+      "wire_count": 10.0
+    }
+  },
+  "POWERACT 17DS(15mm이하)": {
+    "d1": {
+      "coeff": 0.0685000643038772,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.0342142244863328,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.0596794426763175,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.05479917125192211,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05029292515778461,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.07887290337061695,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.03931023866633465,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.06822325349936594,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    }
+  },
+  "POWERACT 17DF(WS26)": {
+    "d1": {
+      "coeff": 0.032874557758158375,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.030082867641067327,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.0631443083597269,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.03147111017807685,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.05461837934411115,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.03893867598113281,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.03563202414086092,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.026806782543940234,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.03658899493567827,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d18": {
+      "coeff": 0.04334727149166696,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d19": {
+      "coeff": 0.034168588913300935,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d20": {
+      "coeff": 0.062867688892918,
+      "st_count": 8.0,
+      "wire_count": 10.0
+    }
+  },
+  "POWERACT 17DF(S19)": {
+    "d1": {
+      "coeff": 0.03287455775815838,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.030082867641067334,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.06314430835972691,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.03147111017807686,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.05461837934411117,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.03893867598113281,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.035632024140860925,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.07870411113015942,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.039226112648730965,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    },
+    "d18": {
+      "coeff": 0.06807725208040778,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    }
+  },
+  "POW 19xS19": {
+    "d1": {
+      "coeff": 0.07033154977690344,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03451482711721201,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.058380966030466865,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.06061966710663469,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.02994985928308792,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.0514248957470603,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.058388412207493766,
+      "st_count": 12.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.028847481565697625,
+      "st_count": 12.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.04953207686417862,
+      "st_count": 12.0,
+      "wire_count": 9.0
+    }
+  },
+  "POW 8xS(19)+IWRC": {
+    "d1": {
+      "coeff": 0.07951388494055894,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03940582816857184,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.06752198109762139,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.06354299716965964,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.057750610896718735,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05612515783017212,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.051363739205794935,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 8xWS(26)+IWRC": {
+    "d1": {
+      "coeff": 0.027711002626702994,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03739789063811855,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.044054175307140626,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.034637219577233806,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.061348245797438555,
+      "st_count": 8.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.06354299716965964,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05775061089671874,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05612515783017213,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05136373920579494,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 8xWS(31)+IWRC": {
+    "d1": {
+      "coeff": 0.04208358571221282,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03997754971980787,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.0418873052796713,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.032412795752126605,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.05304876555176204,
+      "st_count": 8.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.06354299716965964,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05775061089671874,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05612515783017214,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05136373920579495,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 8xWS(36)+IWRC": {
+    "d1": {
+      "coeff": 0.0561780938287268,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04089839948063086,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.03940638776173824,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.03013396688839494,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.0466983323597064,
+      "st_count": 8.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.06354299716965964,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05775061089671874,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05612515783017214,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05136373920579495,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 8xWS(26)+7xS(19)": {
+    "d1": {
+      "coeff": 0.027711002626702994,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03739789063811855,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.044054175307140626,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.034637219577233806,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.061348245797438555,
+      "st_count": 8.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.050329860017451385,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.025088692447026963,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.043564320970701446,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.0447314363074811,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.022342335280605436,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.03897145522519699,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    }
+  },
+  "POW 8xWS(31)+7xS(19)": {
+    "d1": {
+      "coeff": 0.04208358571221282,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03997754971980787,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.0418873052796713,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.032412795752126605,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.05304876555176204,
+      "st_count": 8.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.050329860017451385,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.025088692447026963,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.043564320970701446,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.0447314363074811,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.022342335280605436,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.03897145522519699,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    }
+  },
+  "POW 8xWS(36)+7xS(19)": {
+    "d1": {
+      "coeff": 0.0561780938287268,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04089839948063086,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.03940638776173824,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.03013396688839494,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.0466983323597064,
+      "st_count": 8.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.050329860017451385,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.025088692447026963,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.043564320970701446,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.0447314363074811,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.022342335280605436,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.03897145522519699,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    }
+  },
+  "POW 6xWS(26)+IWRC": {
+    "d1": {
+      "coeff": 0.03406786986684402,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04597154940783425,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.0541323730581721,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.0425744281197153,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.0743515274265474,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.04748016186305454,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04345214776521876,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0435597815257381,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.03986435574790711,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 6xWS(31)+IWRC": {
+    "d1": {
+      "coeff": 0.05167633783173038,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04908271853760721,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.05140958392663469,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.039789398152369856,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.06427804942064853,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.04748016186305454,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04345214776521876,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0435597815257381,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.03986435574790711,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 6xWS(36)+IWRC": {
+    "d1": {
+      "coeff": 0.06891463974134988,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.0501670518163102,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.04832001275248236,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.03696227820899949,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.05657087484924469,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.04748016186305454,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04345214776521876,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0435597815257381,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.03986435574790711,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 6xWS(31)+6x7+PP": {
+    "d1": {
+      "coeff": 0.05264305778756576,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04998076574296559,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.051990042757758176,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.040198098277194186,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.06278990671226832,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d11": {
+      "coeff": 0.043559781525738105,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.03986435574790711,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 8xWS(26)+8x7+W(19)": {
+    "d1": {
+      "coeff": 0.027711002626702994,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03739789063811854,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.04405417530714062,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.034637219577233806,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.061348245797438555,
+      "st_count": 8.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.054230206784797626,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.050865174532371354,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d8": {
+      "coeff": 0.052660911618564406,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d9": {
+      "coeff": 0.039108626013526854,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.049157906891786514,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.044798967366979414,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 8xWS(26)+POW7xS(19)": {
+    "d1": {
+      "coeff": 0.027711002626702994,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03739789063811855,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.044054175307140626,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.034637219577233806,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.061348245797438555,
+      "st_count": 8.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.053275150940039415,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.026321309941863952,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.04454444058531724,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.047324094329405895,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.023434834110729216,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.03986193929363704,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    }
+  },
+  "POW 8xWS(31)+POW7xS(19)": {
+    "d1": {
+      "coeff": 0.04208358571221282,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03997754971980787,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.0418873052796713,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.032412795752126605,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.05304876555176204,
+      "st_count": 8.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.05360557357695745,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.026484559721257652,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.044820713693108236,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.04761760737933943,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.023580181417043166,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.04010917063623604,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    }
+  },
+  "POW 8xWS(36)+POW7xS(19)": {
+    "d1": {
+      "coeff": 0.0561780938287268,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04089839948063086,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.03940638776173824,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.03013396688839494,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.0466983323597064,
+      "st_count": 8.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.05360557357695745,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.026484559721257652,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.044820713693108236,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.04761760737933943,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.023580181417043166,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.04010917063623604,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    }
+  },
+  "POW 8xWS(26)+POW7x7": {
+    "d1": {
+      "coeff": 0.027711002626702994,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03739789063811855,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.044054175307140626,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.034637219577233806,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.061348245797438555,
+      "st_count": 8.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.060548115528128735,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.055038737867583606,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.059899735868259585,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05444935539338204,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 8xWS(31)+POW7x7": {
+    "d1": {
+      "coeff": 0.04208358571221282,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03997754971980787,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.0418873052796713,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.032412795752126605,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.05304876555176204,
+      "st_count": 8.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.060548115528128735,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.055038737867583606,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.059899735868259585,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05444935539338204,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 8xWS(36)+POW7x7": {
+    "d1": {
+      "coeff": 0.0561780938287268,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04089839948063086,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.03940638776173824,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.03013396688839494,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.0466983323597064,
+      "st_count": 8.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.060544564641814694,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05504051331074063,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.059896223006621306,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05444935539338204,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "37x7": {
+    "d1": {
+      "coeff": 0.06321330867206491,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.05745097579938647,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.05828328620260893,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.054297825789648736,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05936975267659055,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05530999876708641,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.04400011110367479,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.040991346286263074,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.04790398927013769,
+      "st_count": 18.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.04384001946567009,
+      "st_count": 18.0,
+      "wire_count": 6.0
+    }
+  },
+  "35x7": {
+    "d1": {
+      "coeff": 0.05967149802621747,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.054232025834969985,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.05545196358240134,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05166011140525559,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05657786305724043,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05270902092159533,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.04204866782414108,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.03917334434892965,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.05362118251822266,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.04906769996177037,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "24x7": {
+    "d1": {
+      "coeff": 0.02300466474738636,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.020909529855831995,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.05061881165676928,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04716184818482183,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.06627233785908519,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.061746331742369494,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.05028943813760962,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.04685496891606224,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.06753766121983833,
+      "st_count": 12.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.06180239862723128,
+      "st_count": 12.0,
+      "wire_count": 6.0
+    }
+  },
+  "19x7(15mm이하)": {
+    "d1": {
+      "coeff": 0.08326661990126064,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.07568316660721744,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.07148013184685578,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.06659225996539575,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.06741502430864625,
+      "st_count": 12.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.06280512791936486,
+      "st_count": 12.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xS(19)+IWRC": {
+    "d1": {
+      "coeff": 0.09061473105811613,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.045043182639675806,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.07770084981831259,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.04999,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04543,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04416,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04042,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xFI(25)+IWRC": {
+    "d1": {
+      "coeff": 0.07087187003632964,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.0671310323664658,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.02778607656336225,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.06183202760105534,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.04999,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04543,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04416,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04042,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xFI(29)+IWRC": {
+    "d1": {
+      "coeff": 0.08945683956442096,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.06478228303758153,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.025534435687198726,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.0544571982494801,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.04999,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04543,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04416,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04042,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xWS(26)+IWRC": {
+    "d1": {
+      "coeff": 0.030886307607163464,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.0421216055660062,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.0497854275836536,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.03920516327975488,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.0717451976937595,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.04999,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04543,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04416,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04042,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xWS(31)+IWRC": {
+    "d1": {
+      "coeff": 0.04711179109088183,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.045180369125516116,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.04750366480797049,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.03682122454229348,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.06210360017253075,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.04999,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04543,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04416,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04042,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xWS(36)+IWRC": {
+    "d1": {
+      "coeff": 0.06302887080205564,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.046313956602543,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.044771798642699194,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.034302077316029154,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.05468645247673042,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.04999,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04543,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04416,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04042,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xWS(41)+IWRC": {
+    "d1": {
+      "coeff": 0.07816526228710455,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04639748366335138,
+      "st_count": 6.0,
+      "wire_count": 8.0
+    },
+    "d3": {
+      "coeff": 0.04210245261161908,
+      "st_count": 6.0,
+      "wire_count": 8.0
+    },
+    "d4": {
+      "coeff": 0.03197314213032508,
+      "st_count": 6.0,
+      "wire_count": 8.0
+    },
+    "d5": {
+      "coeff": 0.048896072993309496,
+      "st_count": 6.0,
+      "wire_count": 16.0
+    },
+    "d6": {
+      "coeff": 0.04999,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04543,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04416,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04042,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "8xS(19)+IWRC": {
+    "d1": {
+      "coeff": 0.07419724955783939,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.036882306267089264,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.06362309171483399,
+      "st_count": 8.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.06482230033317807,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05891329667652282,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05725511856799194,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05239783890179549,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "8xWS(26)+IWRC": {
+    "d1": {
+      "coeff": 0.025288467397984467,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.0344874778382269,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.040762307309661745,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.03209961210134405,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.058742084548163695,
+      "st_count": 8.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.06482405192725207,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05891329667652282,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05725511856799194,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05239783890179549,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "8xWS(31)+IWRC": {
+    "d1": {
+      "coeff": 0.038573241198507725,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03699187051399205,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.03889409164928887,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.030147738869753794,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.05084793197799594,
+      "st_count": 8.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.06482405192725207,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05891329667652282,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05725511856799194,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05239783890179549,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "8xWS(36)+IWRC": {
+    "d1": {
+      "coeff": 0.051605506384320446,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03792000638313391,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.03665734942244862,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.02808516236134224,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.044775069527847336,
+      "st_count": 8.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.06482405192725207,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05891329667652282,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05725511856799194,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05239783890179549,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "FISHING 6xS(19)+IWRC": {
+    "d1": {
+      "coeff": 0.09042723988531312,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04506891758664253,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.07821748973731782,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.04912880292484242,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04465442912637922,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04429163572225086,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.040534122560859205,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "FISHING 6xWS(26)+IWRC": {
+    "d1": {
+      "coeff": 0.030914110016383507,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04216082770384002,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.0498374666157955,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.03924788473191642,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.0718181206095563,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.04861451896189785,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04449027085375478,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0446004761118329,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04081676225115118,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "FISHING 6xWS(31)+IWRC": {
+    "d1": {
+      "coeff": 0.04716745035557456,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04523374655112113,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.04755916527416159,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.03686472622702367,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.062176971204290214,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.04861451896189785,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04449027085375478,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0446004761118329,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04081676225115118,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "FISHING 6xWS(36)+IWRC": {
+    "d1": {
+      "coeff": 0.06315623662357676,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04641246468624262,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.04486300830408357,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.03437185172502355,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.05478982963787348,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.04861451896189785,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04449027085375478,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0446004761118329,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04081676225115118,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "FISHING POW 6xS(19)+IWRC": {
+    "d1": {
+      "coeff": 0.09652256443069769,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.047705435585378035,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.0811454934263957,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.04880231830651408,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.044357678882488705,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04399729641571332,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04026475374367468,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "FISHING POW 6xWS(26)+IWRC": {
+    "d1": {
+      "coeff": 0.03295455200494558,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04494359334302079,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.0531269179191821,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.041838385701435034,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.07655837380635515,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.04861451896189785,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04449027085375478,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0446004761118329,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04081676225115118,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "FISHING POW 6xWS(31)+IWRC": {
+    "d1": {
+      "coeff": 0.05028067102238092,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.048219335840735726,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.050698240528630596,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.039297930199274515,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.06628087400788416,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.04861451896189785,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04449027085375478,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0446004761118329,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04081676225115118,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "FISHING POW 6xWS(36)+IWRC": {
+    "d1": {
+      "coeff": 0.06732477445235502,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04947585359468199,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.04782412754149157,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.03664051705121922,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.058406154638982404,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.04861451896189785,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04449027085375478,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0446004761118329,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04081676225115118,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "남미향 POW 6xS(19)+IWRC": {
+    "d1": {
+      "coeff": 0.0972212122392898,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.048023068157480316,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.08160249474508124,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.0,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.0,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.0,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "4xSES(39)+FC": {
+    "d2": {
+      "coeff": 0.051995070380339445,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.05200914973868776,
+      "st_count": 4.0,
+      "wire_count": 15.0
+    },
+    "d4": {
+      "coeff": 0.07039679174159144,
+      "st_count": 4.0,
+      "wire_count": 15.0
+    }
+  },
+  "4xSES(48)+FC": {
+    "d2": {
+      "coeff": 0.04760129495735047,
+      "st_count": 4.0,
+      "wire_count": 12.0
+    },
+    "d3": {
+      "coeff": 0.04750417423313246,
+      "st_count": 4.0,
+      "wire_count": 18.0
+    },
+    "d4": {
+      "coeff": 0.06070045263625411,
+      "st_count": 4.0,
+      "wire_count": 18.0
+    }
+  },
+  "POWERACT 4": {
+    "d1": {
+      "coeff": 0.09229767055991701,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.06706532411071967,
+      "st_count": 4.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.06441565954888169,
+      "st_count": 4.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.04920125192016354,
+      "st_count": 4.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.07662419207165914,
+      "st_count": 4.0,
+      "wire_count": 14.0
+    }
+  },
+  "Swaged 6xWS(26)+IWRC": {
+    "d1": {
+      "coeff": 0.03381080823083692,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04610993150365704,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.054499410098820804,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.04291734299126791,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.07853846278940052,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.051973081166446077,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04756390698860261,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04768172584077622,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04363661191614918,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "Super Swaged 6xWS(26)+IWRC": {
+    "d1": {
+      "coeff": 0.03598404769766618,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.049073715222531504,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.05800243990328575,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.045675918384180454,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.08358663808981691,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.055313727460154775,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.050621147121950004,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05074653895427044,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04644141937793579,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW Swaged 6xFI(25)+IWRC": {
+    "d1": {
+      "coeff": 0.08232942392800942,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.07794828909453773,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.03245774514659863,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.071821882515929,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.051721108359560376,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04733331047822859,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04745055812803705,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.043425055484613395,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 4xWS(36)+FC": {
+    "d1": {
+      "coeff": 0.08821229359537504,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.0639754630912386,
+      "st_count": 4.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.061267316944214466,
+      "st_count": 4.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.04677837588705881,
+      "st_count": 4.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.07183411530568,
+      "st_count": 4.0,
+      "wire_count": 14.0
+    }
+  },
+  "POWERACT 9S": {
+    "d2": {
+      "coeff": 0.0572069226847523,
+      "st_count": 3.0,
+      "wire_count": 8.0
+    },
+    "d3": {
+      "coeff": 0.051717254929258376,
+      "st_count": 3.0,
+      "wire_count": 8.0
+    },
+    "d4": {
+      "coeff": 0.03923536464004325,
+      "st_count": 3.0,
+      "wire_count": 8.0
+    },
+    "d5": {
+      "coeff": 0.05969625658431837,
+      "st_count": 3.0,
+      "wire_count": 16.0
+    },
+    "d7": {
+      "coeff": 0.0647017720280839,
+      "st_count": 3.0,
+      "wire_count": 5.0
+    },
+    "d8": {
+      "coeff": 0.02685075929325874,
+      "st_count": 3.0,
+      "wire_count": 5.0
+    },
+    "d9": {
+      "coeff": 0.05951229951074678,
+      "st_count": 3.0,
+      "wire_count": 14.0
+    },
+    "d11": {
+      "coeff": 0.07905356397735673,
+      "st_count": 3.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.07186034358454388,
+      "st_count": 3.0,
+      "wire_count": 6.0
+    }
+  },
+  "3xF(40)": {
+    "d2": {
+      "coeff": 0.0758035539916386,
+      "st_count": 3.0,
+      "wire_count": 8.0
+    },
+    "d3": {
+      "coeff": 0.06840900705468939,
+      "st_count": 3.0,
+      "wire_count": 8.0
+    },
+    "d4": {
+      "coeff": 0.05187284124157779,
+      "st_count": 3.0,
+      "wire_count": 8.0
+    },
+    "d5": {
+      "coeff": 0.07873239924349668,
+      "st_count": 3.0,
+      "wire_count": 16.0
+    }
+  },
+  "5x26WS+FC": {
+    "d1": {
+      "coeff": 0.034604032220506474,
+      "st_count": 5.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04719170108399385,
+      "st_count": 5.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.05577800241220408,
+      "st_count": 5.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.043924212327284,
+      "st_count": 5.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.08038102722533445,
+      "st_count": 5.0,
+      "wire_count": 10.0
+    }
+  },
+  "6xWS(31)+SFC": {
+    "d1": {
+      "coeff": 0.04703971761263428,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.045172082932499594,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.047622179132595796,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.036941212722462716,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.0626302709636043,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    }
+  },
+  "POW 8xWS(31)+SIWRC(8PLUS)": {
+    "d1": {
+      "coeff": 0.03492420888417663,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.031772387995066084,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.02046603239245321,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.02765320793363274,
+      "st_count": 4.0,
+      "wire_count": 5.0
+    },
+    "d8": {
+      "coeff": 0.03267231330199473,
+      "st_count": 4.0,
+      "wire_count": 5.0
+    },
+    "d9": {
+      "coeff": 0.02570973699647705,
+      "st_count": 4.0,
+      "wire_count": 5.0
+    },
+    "d10": {
+      "coeff": 0.045836578706502144,
+      "st_count": 4.0,
+      "wire_count": 10.0
+    },
+    "d11": {
+      "coeff": 0.03035939519065915,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.027619537109406067,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.042082484624151276,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.03997650373472886,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d18": {
+      "coeff": 0.0418862093271522,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d19": {
+      "coeff": 0.032411947693629685,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d20": {
+      "coeff": 0.053047377567315354,
+      "st_count": 8.0,
+      "wire_count": 12.0
+    }
+  },
+  "POW 37x7(S19)": {
+    "d1": {
+      "coeff": 0.05163956317171939,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.025591753623484575,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.043851531225984536,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.04744607015236177,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.02376687770018861,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.04175488000735877,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.04832854946560369,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.024208932813360576,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.042531505294027716,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d16": {
+      "coeff": 0.045613702800596824,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.04238010108761204,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.052155568982816015,
+      "st_count": 18.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.04745297878520246,
+      "st_count": 18.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 6xWS(36)+POW7x7": {
+    "d1": {
+      "coeff": 0.06860965578194254,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04994874192337929,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.048126565279794024,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.03680226498714024,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.05703213281956986,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.05170710722454132,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04665864214450579,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04564403656379862,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04152100114963943,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 35x7(S19)": {
+    "d1": {
+      "coeff": 0.04957694322610452,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.024569551687121775,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.04209998575586321,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.045545038945899716,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.022814605445750345,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.04008187885760777,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.04638932465461368,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.023237528463791346,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.04082489189000588,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d16": {
+      "coeff": 0.034383767433999665,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.017223656097362147,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d18": {
+      "coeff": 0.030259409868872357,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d21": {
+      "coeff": 0.045317033006460984,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.02255127802051148,
+      "st_count": 16.0,
+      "wire_count": 9.0
+    },
+    "d23": {
+      "coeff": 0.03899581189782376,
+      "st_count": 16.0,
+      "wire_count": 9.0
+    }
+  },
+  "POWERACT P27": {
+    "d1": {
+      "coeff": 0.04601257044442707,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.0415238430145538,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.04061795485956039,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.03695228789989119,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.053423657364446916,
+      "st_count": 10.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04860230837376903,
+      "st_count": 10.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.02325575384175007,
+      "st_count": 10.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.031415302291932234,
+      "st_count": 10.0,
+      "wire_count": 5.0
+    },
+    "d18": {
+      "coeff": 0.03710825254990372,
+      "st_count": 10.0,
+      "wire_count": 5.0
+    },
+    "d19": {
+      "coeff": 0.029198486195135296,
+      "st_count": 10.0,
+      "wire_count": 5.0
+    },
+    "d20": {
+      "coeff": 0.05203793654452913,
+      "st_count": 10.0,
+      "wire_count": 10.0
+    }
+  },
+  "NS 6xFI(29)+IWRC": {
+    "d1": {
+      "coeff": 0.09338308214053938,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.06590747770901188,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.025564096480253727,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.05308269789707786,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.04786984833597454,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.0438087749025117,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04391729205135278,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.0401915366078089,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "로타레스 6xWS(31)+SES(48)": {
+    "d1": {
+      "coeff": 0.049269552925906554,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04673162538622631,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.04810608495640944,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.03706700440851758,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.06028331448171608,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d8": {
+      "coeff": 0.03919428809808503,
+      "st_count": 1.0,
+      "wire_count": 18.0
+    },
+    "d9": {
+      "coeff": 0.05046908073407807,
+      "st_count": 1.0,
+      "wire_count": 18.0
+    },
+    "d12": {
+      "coeff": 0.03919428809808503,
+      "st_count": 1.0,
+      "wire_count": 12.0
+    }
+  },
+  "6xW(19)+IWRC": {
+    "d1": {
+      "coeff": 0.0738156023743476,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.06976834690757851,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.07201522182863182,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.053528914385222025,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.04999,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04543,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04416,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04042,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POWERACT 29SI(30mm이상": {
+    "d1": {
+      "coeff": 0.04215323326905446,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04010124568727783,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.04213520547117838,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.032640918742679145,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.05302293492962824,
+      "st_count": 1.0,
+      "wire_count": 12.0
+    },
+    "d6": {
+      "coeff": 0.037403046378930306,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.03558229430991822,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d8": {
+      "coeff": 0.03738705010752296,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d9": {
+      "coeff": 0.02896266081870377,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d10": {
+      "coeff": 0.04704785708041547,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    },
+    "d11": {
+      "coeff": 0.030864380765939482,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.028055977425633562,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.05751140041392049,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.05262756260424642,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "6X7+SPC": {
+    "d6": {
+      "coeff": 0.113217289827647,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.10419408230043,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "6XK7+SPC": {
+    "d6": {
+      "coeff": 0.12189047134786635,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.11144781141799977,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 8xWS(26)+SIWRC(8PLUS)": {
+    "d1": {
+      "coeff": 0.03492420888417665,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.031772387995066084,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.05996545943706706,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.02962197494919288,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.050104829075089445,
+      "st_count": 4.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.030359395190659156,
+      "st_count": 4.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.027619537109406074,
+      "st_count": 4.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.0277102775873878,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.03739691214804429,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d18": {
+      "coeff": 0.044053022659958335,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d19": {
+      "coeff": 0.034636313318218176,
+      "st_count": 8.0,
+      "wire_count": 5.0
+    },
+    "d20": {
+      "coeff": 0.0613466406628023,
+      "st_count": 8.0,
+      "wire_count": 10.0
+    }
+  },
+  "19xS(19)": {
+    "d1": {
+      "coeff": 0.06624850954024927,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.03272577593436068,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.05612377968506377,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.05716940983733309,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.0284094295020308,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.04937335679880222,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.05419999359317598,
+      "st_count": 12.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.02693382529882845,
+      "st_count": 12.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.04680887260832195,
+      "st_count": 12.0,
+      "wire_count": 9.0
+    }
+  },
+  "8xWS36+8x7+36WS": {
+    "d1": {
+      "coeff": 0.05163555017153415,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.037942082721159405,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.036678690664556854,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.028101513032054833,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.04480113675895549,
+      "st_count": 8.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.04766066130241398,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.035021312790780794,
+      "st_count": 1.0,
+      "wire_count": 7.0
+    },
+    "d8": {
+      "coeff": 0.03385517626852312,
+      "st_count": 1.0,
+      "wire_count": 7.0
+    },
+    "d9": {
+      "coeff": 0.025938267148444032,
+      "st_count": 1.0,
+      "wire_count": 7.0
+    },
+    "d10": {
+      "coeff": 0.04135235894530735,
+      "st_count": 1.0,
+      "wire_count": 14.0
+    },
+    "d11": {
+      "coeff": 0.04685177830613514,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04287707358482213,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xWS(41)+7xS(19)": {
+    "d1": {
+      "coeff": 0.07814852172702226,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04638754677015603,
+      "st_count": 6.0,
+      "wire_count": 8.0
+    },
+    "d3": {
+      "coeff": 0.04209343558005117,
+      "st_count": 6.0,
+      "wire_count": 8.0
+    },
+    "d4": {
+      "coeff": 0.03196629448098328,
+      "st_count": 6.0,
+      "wire_count": 8.0
+    },
+    "d5": {
+      "coeff": 0.048885600980246635,
+      "st_count": 6.0,
+      "wire_count": 16.0
+    },
+    "d6": {
+      "coeff": 0.0397369120396658,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.01975260496432367,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.034073839855655805,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.03537897137402831,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.017632871988335883,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.030601999285553422,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    }
+  },
+  "19x7(16mm이상)": {
+    "d1": {
+      "coeff": 0.08197353322369695,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.07450784695845933,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.07037008311050418,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.0655581173006374,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.06741502430864624,
+      "st_count": 12.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.06280512791936486,
+      "st_count": 12.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xFI(25)+SPC": {
+    "d1": {
+      "coeff": 0.07000413180811481,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.06648437099094703,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.027723548164852424,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.06207691035569284,
+      "st_count": 6.0,
+      "wire_count": 12.0
+    }
+  },
+  "POWERTEC 8M(36)": {
+    "d1": {
+      "coeff": 0.05581008665809015,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04078994528913154,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.0395490891798247,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.03029622708437471,
+      "st_count": 8.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.04739710119583027,
+      "st_count": 8.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.0533875909940893,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.02637686247358476,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.04463845400843588,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.047423974360346594,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.023484294580902763,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.03994607004746175,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    }
+  },
+  "POWERACT 29SI(28mm이하)": {
+    "d1": {
+      "coeff": 0.027881,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.037661,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d3": {
+      "coeff": 0.044459,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d4": {
+      "coeff": 0.034993,
+      "st_count": 1.0,
+      "wire_count": 5.0
+    },
+    "d5": {
+      "coeff": 0.061466,
+      "st_count": 1.0,
+      "wire_count": 10.0
+    },
+    "d6": {
+      "coeff": 0.024739,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.033417,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d8": {
+      "coeff": 0.039449,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d9": {
+      "coeff": 0.03105,
+      "st_count": 6.0,
+      "wire_count": 5.0
+    },
+    "d10": {
+      "coeff": 0.05454,
+      "st_count": 6.0,
+      "wire_count": 10.0
+    },
+    "d11": {
+      "coeff": 0.030864380765939482,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.028055977425633562,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.05751140041392049,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.05262756260424642,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "6xSF(19)+IWRC": {
+    "d1": {
+      "coeff": 0.03222332592746973,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.029266736702631958,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.044982115696677656,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d4": {
+      "coeff": 0.07770273915473772,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.05000532912310395,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04544699547678265,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.04416784090134139,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.04042082996370586,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "8xW(19)+IWRC": {
+    "d1": {
+      "coeff": 0.06027852508185428,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.05697349765785408,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.058808317153028575,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.04371222213984614,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.06482230033317804,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.0589132966765228,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05725511856799193,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05239783890179549,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POW 37xS(19)": {
+    "d1": {
+      "coeff": 0.0516395631717194,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.025591753623484582,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.04385153122598455,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.04744607015236177,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.02376687770018861,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.04175488000735877,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.04832854946560368,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.024208932813360572,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.0425315052940277,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d16": {
+      "coeff": 0.03581628800895889,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.01794124010798152,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d18": {
+      "coeff": 0.03152009857340393,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d21": {
+      "coeff": 0.040982371041934786,
+      "st_count": 18.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.020373450384194837,
+      "st_count": 18.0,
+      "wire_count": 9.0
+    },
+    "d23": {
+      "coeff": 0.03514481694703267,
+      "st_count": 18.0,
+      "wire_count": 9.0
+    }
+  },
+  "난자전6xWS(36)+IWRC": {
+    "d1": {
+      "coeff": 0.0649195321592699,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.047290915098055795,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.045092175085939115,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.034418799896346094,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.053745783723213765,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    },
+    "d6": {
+      "coeff": 0.04818131828445889,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.04409382107116216,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.0442030442976687,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.040453046854277204,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    }
+  },
+  "POWERACT 27DP(S17)": {
+    "d1": {
+      "coeff": 0.05285960785697998,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.04770292198987454,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.05690934469800156,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.05177813183331959,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.031043045853373783,
+      "st_count": 8.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.02824405955179127,
+      "st_count": 8.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.05703378477257864,
+      "st_count": 10.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.03378645404381714,
+      "st_count": 10.0,
+      "wire_count": 8.0
+    },
+    "d18": {
+      "coeff": 0.06250962820317695,
+      "st_count": 10.0,
+      "wire_count": 8.0
+    }
+  },
+  "POW 40x7": {
+    "d1": {
+      "coeff": 0.08425639898209614,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.07603681886300527,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.058568488566672024,
+      "st_count": 7.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.054411453517904156,
+      "st_count": 7.0,
+      "wire_count": 6.0
+    },
+    "d11": {
+      "coeff": 0.05426525393002134,
+      "st_count": 7.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.05041365099407407,
+      "st_count": 7.0,
+      "wire_count": 6.0
+    },
+    "d16": {
+      "coeff": 0.039714026088686114,
+      "st_count": 7.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.03689523048001312,
+      "st_count": 7.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.052155568982816,
+      "st_count": 18.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.04745297878520245,
+      "st_count": 18.0,
+      "wire_count": 6.0
+    }
+  },
+  "4xF(40)": {
+    "d2": {
+      "coeff": 0.06457331878895878,
+      "st_count": 4.0,
+      "wire_count": 8.0
+    },
+    "d3": {
+      "coeff": 0.05810533564098431,
+      "st_count": 4.0,
+      "wire_count": 8.0
+    },
+    "d4": {
+      "coeff": 0.04402702073635647,
+      "st_count": 4.0,
+      "wire_count": 8.0
+    },
+    "d5": {
+      "coeff": 0.06657043174119462,
+      "st_count": 4.0,
+      "wire_count": 16.0
+    }
+  },
+  "POW 35x7(중층S19)": {
+    "d1": {
+      "coeff": 0.049931273338318975,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.02474515210618457,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.04240087749517576,
+      "st_count": 1.0,
+      "wire_count": 9.0
+    },
+    "d6": {
+      "coeff": 0.04587055273739979,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.022977663133088053,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d8": {
+      "coeff": 0.04036834703634584,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d11": {
+      "coeff": 0.046720872619066794,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.023403608813493636,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.04111667043832332,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d16": {
+      "coeff": 0.04410228700119493,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d17": {
+      "coeff": 0.04097583108909684,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d21": {
+      "coeff": 0.0576785800708757,
+      "st_count": 16.0,
+      "wire_count": 1.0
+    },
+    "d22": {
+      "coeff": 0.05262164042594262,
+      "st_count": 16.0,
+      "wire_count": 6.0
+    }
+  },
+  "6x34NW+FC": {
+    "d1": {
+      "coeff": 0.04959605777208278,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.047011790028102005,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d3": {
+      "coeff": 0.048887468229378374,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d4": {
+      "coeff": 0.03642462862534202,
+      "st_count": 6.0,
+      "wire_count": 6.0
+    },
+    "d5": {
+      "coeff": 0.05210217225767705,
+      "st_count": 6.0,
+      "wire_count": 15.0
+    }
+  },
+  "POWERTEC 8M(26)": {
+    "d1": {
+      "coeff": 0.02751786963243874,
+      "st_count": 1.0,
+      "wire_count": 8.0
+    },
+    "d2": {
+      "coeff": 0.037206122864584176,
+      "st_count": 1.0,
+      "wire_count": 1.0
+    },
+    "d3": {
+      "coeff": 0.04404909236455737,
+      "st_count": 1.0,
+      "wire_count": 6.0
+    },
+    "d6": {
+      "coeff": 0.0533875909940893,
+      "st_count": 5.0,
+      "wire_count": 1.0
+    },
+    "d7": {
+      "coeff": 0.02637686247358476,
+      "st_count": 5.0,
+      "wire_count": 7.0
+    },
+    "d8": {
+      "coeff": 0.04463845400843588,
+      "st_count": 5.0,
+      "wire_count": 7.0
+    },
+    "d11": {
+      "coeff": 0.047423974360346594,
+      "st_count": 5.0,
+      "wire_count": 1.0
+    },
+    "d12": {
+      "coeff": 0.023484294580902763,
+      "st_count": 5.0,
+      "wire_count": 9.0
+    },
+    "d13": {
+      "coeff": 0.03994607004746175,
+      "st_count": 5.0,
+      "wire_count": 9.0
+    }
+  },
+  "6xS(19)+FC": {
+    "d1": {
+      "coeff": 0.09061473105811613,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.045043182639675806,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    },
+    "d3": {
+      "coeff": 0.07770084981831259,
+      "st_count": 6.0,
+      "wire_count": 9.0
+    }
+  },
+  "6xWS(36)+FC": {
+    "d1": {
+      "coeff": 0.06302887080205564,
+      "st_count": 6.0,
+      "wire_count": 1.0
+    },
+    "d2": {
+      "coeff": 0.046313956602543,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d3": {
+      "coeff": 0.044771798642699194,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d4": {
+      "coeff": 0.034302077316029154,
+      "st_count": 6.0,
+      "wire_count": 7.0
+    },
+    "d5": {
+      "coeff": 0.05468645247673042,
+      "st_count": 6.0,
+      "wire_count": 14.0
+    }
+  }
+}

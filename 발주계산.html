@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소선 발주 계산 시스템 | DSR 제강</title>
+    <meta name="description" content="와이어로프 소선 발주량 자동 계산 시스템 - 설계명 입력으로 소선별 필요량 자동 산출">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+/* ===== VARIABLES ===== */
+:root {
+    --bg: #0b0c0f;
+    --bg2: #111318;
+    --bg3: #161820;
+    --card: rgba(255,255,255,0.04);
+    --card-h: rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.08);
+    --border-h: rgba(255,255,255,0.18);
+    --t1: #f0f0f3;
+    --t2: #9ca3af;
+    --t3: #6b7280;
+    --red: #e63946;
+    --red-glow: rgba(230,57,70,0.25);
+    --red-bg: rgba(230,57,70,0.1);
+    --amber: #f59e0b;
+    --amber-bg: rgba(245,158,11,0.1);
+    --amber-bd: rgba(245,158,11,0.3);
+    --indigo: #818cf8;
+    --indigo-bg: rgba(129,140,248,0.1);
+    --indigo-bd: rgba(129,140,248,0.3);
+    --green: #34d399;
+    --green-bg: rgba(52,211,153,0.1);
+    --green-bd: rgba(52,211,153,0.3);
+    --blue: #60a5fa;
+    --blue-bg: rgba(96,165,250,0.1);
+    --nav: 64px;
+    --r: 12px;
+    --rs: 8px;
+    --tr: all 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+/* ===== RESET ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR','Outfit',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;overflow-x:hidden;min-height:100vh;}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.12);border-radius:3px;}
+button{cursor:pointer;}
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);background:rgba(11,12,15,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.75rem;z-index:1000;gap:1rem;}
+.nav-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.35rem;color:var(--t1);text-decoration:none;flex-shrink:0;letter-spacing:-.5px;}
+.nav-logo span{color:var(--red);}
+.nav-div{width:1px;height:18px;background:var(--border);flex-shrink:0;}
+.nav-title{font-size:0.82rem;color:var(--t2);font-weight:500;letter-spacing:.2px;}
+.nav-sp{flex:1;}
+.nav-link{font-size:0.8rem;color:var(--t2);text-decoration:none;transition:color .2s;}
+.nav-link:hover{color:var(--t1);}
+.nav-badge{background:var(--red);color:#fff;font-size:0.65rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;}
+/* ===== LAYOUT ===== */
+.wrap{max-width:1440px;margin:0 auto;padding:calc(var(--nav) + 2rem) 1.5rem 5rem;}
+.pg-header{margin-bottom:2rem;}
+.pg-title{font-family:'Outfit',sans-serif;font-size:1.9rem;font-weight:700;margin-bottom:.35rem;line-height:1.2;}
+.pg-title span{color:var(--red);}
+.pg-sub{color:var(--t2);font-size:0.88rem;}
+/* ===== GRID ===== */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem;}
+.col-full{grid-column:1/-1;}
+/* ===== CARDS ===== */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:var(--tr);}
+.card-head{display:flex;align-items:center;gap:.7rem;padding:.875rem 1.125rem;border-bottom:1px solid var(--border);cursor:pointer;user-select:none;}
+.card-head:hover{background:rgba(255,255,255,.02);}
+.step-circle{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;border:1px solid var(--border);background:var(--bg2);transition:var(--tr);}
+.step-circle.active{background:var(--red);border-color:var(--red);}
+.step-circle.done{background:var(--green);border-color:var(--green);color:#000;}
+.card-title{font-size:.875rem;font-weight:600;flex:1;}
+.card-st{font-size:.72rem;}
+.card-st.ok{color:var(--green);}
+.card-st.partial{color:var(--amber);}
+.card-st.need{color:var(--t3);}
+.card-body{padding:1.125rem;}
+.card-toggle-arrow{font-size:.65rem;color:var(--t3);transition:transform .2s;}
+.card-head.collapsed .card-toggle-arrow{transform:rotate(-90deg);}
+/* ===== UPLOAD ZONES ===== */
+.upload-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.875rem;}
+.zone{border:2px dashed var(--border);border-radius:var(--rs);padding:1.125rem .875rem;text-align:center;cursor:pointer;transition:var(--tr);position:relative;overflow:hidden;}
+.zone:hover,.zone.drag-over{border-color:var(--red);background:var(--red-bg);}
+.zone.loaded{border-style:solid;border-color:var(--green);background:var(--green-bg);}
+.zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.zone-icon{font-size:1.4rem;display:block;margin-bottom:.4rem;}
+.zone-name{font-size:.78rem;font-weight:700;color:var(--t1);margin-bottom:.2rem;}
+.zone-hint{font-size:.67rem;color:var(--t3);line-height:1.4;}
+.zone-count{font-size:.7rem;color:var(--green);margin-top:.3rem;display:none;}
+.zone.loaded .zone-count{display:block;}
+.demo-row{margin-top:.875rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;}
+/* ===== SETTINGS ===== */
+.settings-list{display:grid;gap:.7rem;}
+.sg{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--t2);flex-wrap:wrap;}
+.sg label{cursor:pointer;}
+.sg-input{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;padding:.28rem .6rem;font-size:.8rem;color:var(--t1);outline:none;transition:border-color .2s;}
+.sg-input:focus{border-color:var(--red);}
+.sg-input.w-sm{width:72px;}
+.sg-input.w-md{width:100px;}
+input[type="checkbox"]{accent-color:var(--red);width:14px;height:14px;cursor:pointer;}
+/* ===== INPUT ===== */
+.fmt-hint{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--rs);padding:.65rem 1rem;margin-bottom:.875rem;font-size:.78rem;color:var(--t2);line-height:1.6;}
+.fmt-hint code{background:rgba(255,255,255,.09);padding:.08rem .4rem;border-radius:4px;color:var(--amber);font-family:'Courier New',monospace;font-size:.77rem;}
+.main-ta{width:100%;min-height:140px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--rs);padding:.825rem 1rem;font-family:'Courier New',monospace;font-size:.82rem;color:var(--t1);resize:vertical;transition:var(--tr);outline:none;line-height:1.9;}
+.main-ta:focus{border-color:var(--red);box-shadow:0 0 0 3px var(--red-glow);}
+.main-ta::placeholder{color:var(--t3);}
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1.25rem;border-radius:8px;font-size:.825rem;font-weight:600;transition:var(--tr);border:none;text-decoration:none;white-space:nowrap;font-family:inherit;}
+.btn-red{background:var(--red);color:#fff;}
+.btn-red:hover{background:#f04855;transform:translateY(-1px);box-shadow:0 6px 20px var(--red-glow);}
+.btn-ghost{background:rgba(255,255,255,.07);color:var(--t1);border:1px solid var(--border);}
+.btn-ghost:hover{background:rgba(255,255,255,.12);border-color:var(--border-h);transform:translateY(-1px);}
+.btn-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd);}
+.btn-green:hover{background:rgba(52,211,153,.18);transform:translateY(-1px);box-shadow:0 4px 16px rgba(52,211,153,.2);}
+.btn-sm{padding:.35rem .75rem;font-size:.75rem;}
+.btn-lg{padding:.825rem 1.875rem;font-size:.95rem;}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;}
+.action-row{display:flex;gap:.65rem;align-items:center;margin-top:1rem;flex-wrap:wrap;}
+/* ===== MESSAGES ===== */
+.msg-area{max-height:180px;overflow-y:auto;margin-top:.75rem;}
+.msg{font-size:.75rem;padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:flex-start;gap:.35rem;}
+.msg:last-child{border-bottom:none;}
+.msg.error{color:#f87171;}
+.msg.success{color:var(--green);}
+.msg.info{color:var(--blue);}
+.msg.warn{color:var(--amber);}
+/* ===== RESULTS ===== */
+.results{display:none;margin-top:1.25rem;}
+.results.show{display:block;}
+/* Summary cards */
+.sum-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1rem;margin-bottom:1.5rem;}
+.sc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.125rem 1rem;text-align:center;}
+.sc.g-sc{border-color:var(--amber-bd);background:var(--amber-bg);}
+.sc.u-sc{border-color:var(--indigo-bd);background:var(--indigo-bg);}
+.sc-val{font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:700;line-height:1.1;}
+.sc-val small{font-size:.85rem;font-weight:400;}
+.g-sc .sc-val{color:var(--amber);}
+.u-sc .sc-val{color:var(--indigo);}
+.sc-label{font-size:.7rem;color:var(--t2);margin-top:.3rem;text-transform:uppercase;letter-spacing:.5px;}
+/* Tabs */
+.tabs{display:flex;gap:.15rem;border-bottom:1px solid var(--border);margin-bottom:1.5rem;}
+.tab{padding:.55rem .95rem;font-size:.82rem;font-weight:600;cursor:pointer;border:none;background:none;color:var(--t2);border-bottom:2px solid transparent;transition:var(--tr);margin-bottom:-1px;font-family:inherit;}
+.tab:hover{color:var(--t1);}
+.tab.on{color:var(--red);border-bottom-color:var(--red);}
+.panel{display:none;}
+.panel.on{display:block;}
+/* Section titles */
+.sec-title{font-size:.78rem;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.75rem;display:flex;align-items:center;gap:.45rem;}
+.sec-title-bar{width:3px;height:13px;border-radius:2px;}
+.g-bar{background:var(--amber);}
+.u-bar{background:var(--indigo);}
+/* Tables */
+.tbl-wrap{overflow-x:auto;border-radius:var(--rs);border:1px solid var(--border);max-height:480px;overflow-y:auto;}
+table.dt{width:100%;border-collapse:collapse;font-size:.8rem;}
+table.dt thead{position:sticky;top:0;z-index:2;}
+table.dt thead th{background:rgba(20,22,28,.95);padding:.6rem .8rem;text-align:left;font-weight:600;color:var(--t2);font-size:.7rem;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border);white-space:nowrap;backdrop-filter:blur(8px);}
+table.dt tbody td{padding:.55rem .8rem;border-bottom:1px solid rgba(255,255,255,.04);white-space:nowrap;color:var(--t1);}
+table.dt tbody tr:last-child td{border-bottom:none;}
+table.dt tbody tr:hover td{background:rgba(255,255,255,.025);}
+table.dt .tr-total td{background:rgba(255,255,255,.05)!important;border-top:1px solid var(--border);font-weight:700;}
+table.g-tbl thead th:first-child{border-left:3px solid var(--amber);}
+table.u-tbl thead th:first-child{border-left:3px solid var(--indigo);}
+.tag{display:inline-flex;align-items:center;font-size:.68rem;padding:.1rem .45rem;border-radius:4px;font-weight:700;}
+.tag-g{background:var(--amber-bg);color:var(--amber);}
+.tag-u{background:var(--indigo-bg);color:var(--indigo);}
+.tag-grade{background:rgba(255,255,255,.07);color:var(--t2);}
+.tag-fail{background:rgba(239,68,68,.15);color:#f87171;}
+/* Accordion */
+.acc{border:1px solid var(--border);border-radius:var(--rs);overflow:hidden;margin-bottom:.5rem;}
+.acc-h{display:flex;align-items:center;gap:.65rem;padding:.8rem 1rem;cursor:pointer;user-select:none;transition:background .15s;min-width:0;}
+.acc-h:hover{background:rgba(255,255,255,.035);}
+.acc-h.open{background:rgba(255,255,255,.04);border-bottom:1px solid var(--border);}
+.acc-arrow{font-size:.6rem;color:var(--t3);transition:transform .18s;flex-shrink:0;}
+.acc-h.open .acc-arrow{transform:rotate(90deg);}
+.acc-name{font-size:.82rem;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.acc-meta{display:flex;align-items:center;gap:.5rem;flex-shrink:0;flex-wrap:wrap;}
+.acc-body{display:none;padding:.875rem;}
+.acc-body.open{display:block;}
+/* Empty state */
+.empty{text-align:center;padding:2.5rem 1rem;color:var(--t3);font-size:.85rem;}
+/* Spinner */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;}
+/* Toast */
+#toast{position:fixed;bottom:1.5rem;right:1.5rem;background:rgba(17,19,24,.97);border:1px solid var(--border);border-radius:var(--rs);padding:.7rem 1.1rem;font-size:.82rem;backdrop-filter:blur(16px);z-index:9999;transform:translateY(80px);opacity:0;transition:all .28s cubic-bezier(.34,1.56,.64,1);max-width:340px;display:flex;align-items:center;gap:.5rem;}
+#toast.show{transform:translateY(0);opacity:1;}
+#toast.ts{border-color:var(--green-bd);}
+#toast.te{border-color:rgba(248,113,113,.4);}
+/* ===== RESPONSIVE ===== */
+@media(max-width:800px){
+    .grid-2{grid-template-columns:1fr;}
+    .col-full{grid-column:1;}
+    .sum-cards{grid-template-columns:repeat(2,1fr);}
+    .wrap{padding-left:1rem;padding-right:1rem;}
+    .acc-meta{display:none;}
+}
+@media(max-width:480px){
+    .pg-title{font-size:1.5rem;}
+    .sum-cards{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="index.html" class="nav-logo">DSR<span>.</span></a>
+    <div class="nav-div"></div>
+    <span class="nav-title">소선 발주 계산 시스템</span>
+    <div class="nav-sp"></div>
+    <a href="index.html" class="nav-link">홈</a>
+    <span class="nav-badge">TOOL</span>
+</nav>
+
+<div class="wrap">
+    <!-- PAGE HEADER -->
+    <div class="pg-header">
+        <h1 class="pg-title">와이어로프 <span>발주량</span> 자동 계산</h1>
+        <p class="pg-sub">설계명과 생산량을 입력하면 소선별 필요량과 중간선 발주 테이블을 자동으로 산출합니다.</p>
+    </div>
+
+    <!-- ROW 1: 데이터 파일 + 계산 설정 -->
+    <div class="grid-2">
+
+        <!-- STEP 1: DATA FILES -->
+        <div class="card">
+            <div class="card-head" onclick="toggleCard('cb1','cba1')">
+                <div class="step-circle active" id="sc1">1</div>
+                <span class="card-title">데이터 파일 로드</span>
+                <span class="card-st need" id="cst1">필요</span>
+                <span class="card-toggle-arrow" id="cba1">▼</span>
+            </div>
+            <div class="card-body" id="cb1">
+                <div class="upload-grid">
+                    <div class="zone" id="z-xl" ondragover="doDragOver(event,'z-xl')" ondragleave="doDragLeave('z-xl')" ondrop="doDrop(event,'xl')">
+                        <input type="file" id="f-xl" accept=".xlsx,.xls" onchange="loadXlsx(this)">
+                        <span class="zone-icon">📊</span>
+                        <div class="zone-name">설계통합.xlsx</div>
+                        <div class="zone-hint">Q열(설계명)→S열(구조)</div>
+                        <div class="zone-count" id="cnt-xl"></div>
+                    </div>
+                    <div class="zone" id="z-d2s" ondragover="doDragOver(event,'z-d2s')" ondragleave="doDragLeave('z-d2s')" ondrop="doDrop(event,'d2s')">
+                        <input type="file" id="f-d2s" accept=".json" onchange="loadD2s(this)">
+                        <span class="zone-icon">🗂️</span>
+                        <div class="zone-name">design_to_struct.json</div>
+                        <div class="zone-hint">설계명→구조 JSON (xlsx 대체)</div>
+                        <div class="zone-count" id="cnt-d2s"></div>
+                    </div>
+                    <div class="zone" id="z-wd" ondragover="doDragOver(event,'z-wd')" ondragleave="doDragLeave('z-wd')" ondrop="doDrop(event,'wd')">
+                        <input type="file" id="f-wd" accept=".json" onchange="loadWireDesign(this)">
+                        <span class="zone-icon">🔩</span>
+                        <div class="zone-name">wire_design.json</div>
+                        <div class="zone-hint">구조→소선 d1~d25 설계</div>
+                        <div class="zone-count" id="cnt-wd"></div>
+                    </div>
+                    <div class="zone" id="z-ts" ondragover="doDragOver(event,'z-ts')" ondragleave="doDragLeave('z-ts')" ondrop="doDrop(event,'ts')">
+                        <input type="file" id="f-ts" accept=".json" onchange="loadTsGrade(this)">
+                        <span class="zone-icon">🔬</span>
+                        <div class="zone-name">wire_ts_grade_middle.json</div>
+                        <div class="zone-hint">소선경|TS → 강종, 중간선</div>
+                        <div class="zone-count" id="cnt-ts"></div>
+                    </div>
+                    <div class="zone" id="z-inv" ondragover="doDragOver(event,'z-inv')" ondragleave="doDragLeave('z-inv')" ondrop="doDrop(event,'inv')">
+                        <input type="file" id="f-inv" accept=".xlsx,.xls" onchange="loadInventoryXlsx(this)">
+                        <span class="zone-icon">📦</span>
+                        <div class="zone-name">현재고 엑셀 (계산기...)</div>
+                        <div class="zone-hint">중간선 재고 자동 매칭 차감</div>
+                        <div class="zone-count" id="cnt-inv"></div>
+                    </div>
+                </div>
+                <div class="demo-row">
+                    <button class="btn btn-ghost btn-sm" onclick="loadDemo()">🧪 데모 데이터 로드</button>
+                    <span style="font-size:.72rem;color:var(--t3)">실제 파일 없이 테스트 가능</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2: SETTINGS -->
+        <div class="card">
+            <div class="card-head" onclick="toggleCard('cb2','cba2')">
+                <div class="step-circle" id="sc2">2</div>
+                <span class="card-title">계산 설정</span>
+                <span class="card-st" style="color:var(--t3)">선택사항</span>
+                <span class="card-toggle-arrow" id="cba2">▼</span>
+            </div>
+            <div class="card-body" id="cb2">
+                <div class="settings-list">
+                    <div class="sg">
+                        <label>기본 DR 비율</label>
+                        <input type="number" class="sg-input w-sm" id="defDr" value="1.03" step="0.01" min="0.5" max="2.0">
+                        <span style="font-size:.7rem;color:var(--t3)">(구조별 미설정 시 적용)</span>
+                    </div>
+                    <div class="sg">
+                        <label>강재 밀도 (g/cm³)</label>
+                        <input type="number" class="sg-input w-sm" id="density" value="7.85" step="0.01" min="7.0" max="8.5">
+                    </div>
+                    <div class="sg">
+                        <input type="checkbox" id="chkEpp" checked>
+                        <label for="chkEpp">EPP 코아 내측 소선 자동 제외 (d6,d7,d11,d12)</label>
+                    </div>
+                    <div class="sg">
+                        <input type="checkbox" id="chkFcExclude">
+                        <label for="chkFcExclude">FC/EPP 코아 소선 발주에서 제외</label>
+                    </div>
+                    <div class="sg">
+                        <input type="checkbox" id="chkTsSub" onchange="document.getElementById('tsSub').style.display=this.checked?'flex':'none'">
+                        <label for="chkTsSub">TS 대체 로직 사용</label>
+                    </div>
+                    <div class="sg" id="tsSub" style="display:none;padding-left:1.5rem;background:rgba(245,158,11,.06);border-radius:6px;padding:.45rem .75rem;border:1px solid var(--amber-bd);">
+                        <span>TS ≥</span>
+                        <input type="number" class="sg-input w-sm" id="tsThresh" value="1950" step="10">
+                        <span>이면</span>
+                        <input type="number" class="sg-input w-sm" id="tsAlt" value="1770" step="10">
+                        <span>으로 대체</span>
+                    </div>
+                    <div class="sg">
+                        <label>XLSX 설계명 열 (0-indexed)</label>
+                        <input type="number" class="sg-input w-sm" id="xlQcol" value="16" min="0" max="50">
+                        <label>→ 구조 열</label>
+                        <input type="number" class="sg-input w-sm" id="xlScol" value="18" min="0" max="50">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 3: INPUT -->
+    <div class="grid-2">
+        <div class="card col-full">
+            <div class="card-head">
+                <div class="step-circle" id="sc3">3</div>
+                <span class="card-title">생산 계획 입력</span>
+                <span style="margin-left:auto;font-size:.72rem;color:var(--t3)" id="lineCount"></span>
+            </div>
+            <div class="card-body">
+                <div class="fmt-hint">
+                    📋 입력 형식: <code>작업번호</code> [TAB] <code>DIA</code> [TAB] <code>설계명</code> [TAB] <code>TS값</code> [TAB] <code>생산량(kg)</code>
+                    &emsp;|&emsp; 여러 제품 동시 입력 (줄바꿈으로 구분) &emsp;|&emsp; 현재고 차감: 6번째 필드에 현재고(kg) 추가
+                </div>
+                <textarea class="main-ta" id="mainInput"
+                    placeholder="예시 (탭으로 구분):&#10;JOB-001	24	6x19W(S)+IWRC-G	1960	5000&#10;JOB-002	32	6x36WS+IWRC-G	1720	3200&#10;JOB-003	19	8x19S+IWRC-U	1570	8000"
+                    oninput="updateLineCount()"
+                ></textarea>
+
+                <div class="action-row">
+                    <button class="btn btn-red btn-lg" id="calcBtn" onclick="runCalc()">⚡ 발주량 계산</button>
+                    <button class="btn btn-ghost" onclick="clearAll()">🗑 초기화</button>
+                    <button class="btn btn-green" id="exBtn" onclick="doExport()" style="display:none;">📥 Excel 다운로드 (G/U 시트)</button>
+                </div>
+                <div class="msg-area" id="msgs"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results" id="results">
+        <!-- Summary -->
+        <div class="sum-cards" id="sumCards"></div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab on" onclick="switchTab(this,'tp-order')">📋 발주 테이블</button>
+            <button class="tab" onclick="switchTab(this,'tp-detail')">🔍 제품별 소선 상세</button>
+        </div>
+
+        <!-- Tab: 발주 테이블 -->
+        <div class="panel on" id="tp-order">
+            <div id="orderG" style="margin-bottom:2rem;"></div>
+            <div id="orderU"></div>
+        </div>
+
+        <!-- Tab: 제품별 상세 -->
+        <div class="panel" id="tp-detail">
+            <div style="margin-bottom: 1rem; padding: 0.5rem 0;">
+                <input type="text" id="jobSearch" class="sg-input" style="width:100%; max-width:400px; padding:0.6rem 1rem; border-radius:20px; border:1px solid var(--border-h);" placeholder="🔍 작업번호, 설계명 또는 구조 검색..." onkeyup="filterDetails()">
+            </div>
+            <div id="detailList"></div>
+        </div>
+
+        <!-- 소선 설계 미등록 항목 -->
+        <div id="failedSection" style="display:none;margin-top:1rem;"></div>
+    </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ================================================================
+   APP STATE
+================================================================ */
+const AS = {
+    designToStruct: {},   // 설계명 → 구조 (from xlsx or json)
+    wireDesign: {},       // 구조 → { d1:{coeff,st_count,wire_count}, ... }
+    drRatioMap: {},       // 구조 → dr_ratio
+    diaGradeToMiddle: {}, // "Φdia|grade" → middle_dia_string
+    tsGradeData: [],      // [{wireDia, ts, grade, middle}]
+    inventoryData: {},    // 중간선 재고 (엑셀에서 로드): "G|72|5.5" -> kg
+    loaded: { design:false, wire:false, ts:false, inv:false },
+    lastResult: null
+};
+
+/* ================================================================
+   UTILITY
+================================================================ */
+const PI4 = Math.PI / 4;
+
+function extractCoating(s) {
+    if (!s) return null;
+    // 엑셀에서 넘어오는 사용자 입력의 G. / U. 형식이나 문자열 끝의 -G/-U 처리 
+    if (/-G$/i.test(s) || /\bG\b/i.test(s.split('+')[0]) || /G\./i.test(s)) return 'G';
+    if (/-U$/i.test(s) || /\bU\b/i.test(s.split('+')[0]) || /U\./i.test(s)) return 'U';
+    return null;
+}
+
+function extractCoreType(s) {
+    if (!s) return 'FC';
+    if (/IWRC/i.test(s)) return 'IWRC';
+    if (/EPP/i.test(s)) return 'EPP';
+    if (/WSC/i.test(s)) return 'WSC';
+    if (/FC/i.test(s)) return 'FC';
+    if (/마닐라|manila|사이잘|sisal/i.test(s)) return 'FC';  // 마닐라/사이잘 = 천연섬유 코아 → FC
+    return 'WIRE';
+}
+
+function isEppCore(s) { return s && /EPP/i.test(s); }
+function isFcCore(s)  { return s && /\+FC/i.test(s) && !/IWRC/i.test(s); }
+
+function removeCoating(s) {
+    return s ? s.replace(/-[GU]$/i,'').trim() : s;
+}
+
+function roundTo(n, step) { return Math.round(n / step) * step; }
+
+function fmt(n, dec=2) { return (n == null || isNaN(n)) ? '-' : (+n).toFixed(dec); }
+
+function numFmt(n) {
+    if (n >= 1000000) return (n/1000000).toFixed(2) + '톤';
+    if (n >= 1000) return (n/1000).toFixed(2) + '톤';
+    return n.toFixed(1) + 'kg';
+}
+
+/* ================================================================
+   TS → GRADE DEFAULT TABLE
+================================================================ */
+const TS_GRADE_TBL = [
+    {min:0,    max:1419, g:'B종'},
+    {min:1420, max:1519, g:'A종'},
+    {min:1520, max:1619, g:'IPS'},
+    {min:1620, max:1819, g:'EIPS'},
+    {min:1820, max:1999, g:'EEIPS'},
+    {min:2000, max:9999, g:'EEIPS-H'},
+];
+
+function getTsGrade(ts) {
+    // 1. Custom ts grade data (Mode / 최빈값 방식 적용)
+    if (AS.tsGradeData.length > 0) {
+        let bestD = Infinity;
+        let candidates = [];
+        
+        let targetTs = ts;
+        if (targetTs > 500) targetTs /= 10;
+
+        for (const e of AS.tsGradeData) {
+            let eTs = parseFloat(e.ts) || 0;
+            if (eTs > 500) eTs /= 10;
+            
+            const d = Math.abs(eTs - targetTs);
+            if (d < bestD - 0.0001) {
+                bestD = d;
+                candidates = [e.grade];
+            } else if (Math.abs(d - bestD) <= 0.0001) {
+                candidates.push(e.grade);
+            }
+        }
+        
+        if (candidates.length > 0 && bestD < 15) {
+            const counts = {};
+            let maxCount = 0;
+            let mode = candidates[0];
+            for (const gr of candidates) {
+                if (!gr) continue;
+                counts[gr] = (counts[gr] || 0) + 1;
+                if (counts[gr] > maxCount) {
+                    maxCount = counts[gr];
+                    mode = gr;
+                }
+            }
+            return mode;
+        }
+    }
+    // 2. Default table
+    for (const row of TS_GRADE_TBL) {
+        if (ts >= row.min && ts <= row.max) return row.g;
+    }
+    return 'EEIPS';
+}
+
+/* ================================================================
+   MIDDLE WIRE LOOKUP
+================================================================ */
+function findMiddleWire(wireDia, grade, tsEff) {
+    // 1. TS와 선경을 기준으로 2차신선 데이터(JSON)에서 가장 유사한 항목 찾기
+    if (AS.tsGradeData && AS.tsGradeData.length > 0 && tsEff) {
+        let bestD = Infinity;
+        let candidates = [];
+
+        let targetTs = tsEff;
+        if (targetTs > 0 && targetTs < 500) targetTs *= 10;
+
+        for (const e of AS.tsGradeData) {
+            let eTs = parseFloat(e.ts) || 0;
+            if (eTs > 0 && eTs < 500) eTs *= 10;
+            
+            // TS 오차가 너무 크면 무시
+            const tsDiff = Math.abs(eTs - targetTs);
+            if (tsDiff > 150) continue;
+
+            const wdDiff = Math.abs(parseFloat(e.wireDia) - wireDia);
+            
+            // 가중치: 선경 오차가 훨씬 중요하므로 tsDiff에 0.001 페널티만 부여
+            const score = wdDiff + (tsDiff * 0.001);
+            
+            if (score < bestD - 0.0001) {
+                bestD = score;
+                candidates = [e.middle];
+            } else if (Math.abs(score - bestD) <= 0.0001) {
+                candidates.push(e.middle);
+            }
+        }
+        
+        // 검색된 항목 중 최다 빈도수(Mode)를 가지는 중간선 추출 (특이값 무시 효과)
+        if (candidates.length > 0 && bestD < 0.15) {
+            const counts = {};
+            let maxCount = 0;
+            let mode = candidates[0];
+            for (const m of candidates) {
+                if (!m) continue;
+                counts[m] = (counts[m] || 0) + 1;
+                if (counts[m] > maxCount) {
+                    maxCount = counts[m];
+                    mode = m;
+                }
+            }
+            return mode;
+        }
+    }
+
+    // 2. Exact match in diaGradeToMiddle (기존 로직: Fallback)
+    const roundDia = roundTo(wireDia, 0.05);
+    const key = fmt(roundDia, 2) + '|' + grade;
+    if (AS.diaGradeToMiddle[key]) return AS.diaGradeToMiddle[key];
+
+    // 3. Tolerance search (±0.12mm)
+    let bestFall = null, bestFallD = Infinity;
+    for (const [k, v] of Object.entries(AS.diaGradeToMiddle)) {
+        const parts = k.split('|');
+        if (parts.length === 2 && parts[1] === grade) {
+            const d = Math.abs(parseFloat(parts[0]) - wireDia);
+            if (d < 0.12 && d < bestFallD) { bestFallD = d; bestFall = v; }
+        }
+    }
+    if (bestFall) return bestFall;
+
+    // 4. Any grade tolerance
+    for (const [k, v] of Object.entries(AS.diaGradeToMiddle)) {
+        const parts = k.split('|');
+        if (parts.length === 2) {
+            const d = Math.abs(parseFloat(parts[0]) - wireDia);
+            if (d < 0.08 && d < bestFallD) { bestFallD = d; bestFall = v; }
+        }
+    }
+    if (bestFall) return bestFall;
+
+    // 5. Estimate: ~2.6x wire diameter, snap to standard sizes
+    return estimateMid(wireDia);
+}
+
+function estimateMid(wireDia) {
+    const stds = [4.5,5.0,5.5,6.0,6.5,7.0,7.5,8.0,8.5,9.0,9.5,10.0,10.5,11.0,11.5,12.0];
+    const target = wireDia * 2.6;
+    let closest = stds[0], minD = Infinity;
+    for (const s of stds) {
+        const d = Math.abs(s - target);
+        if (d < minD) { minD = d; closest = s; }
+    }
+    return closest.toFixed(1);
+}
+
+/* ================================================================
+   DRAG & DROP
+================================================================ */
+function doDragOver(e, id) { e.preventDefault(); document.getElementById(id).classList.add('drag-over'); }
+function doDragLeave(id) { document.getElementById(id).classList.remove('drag-over'); }
+function doDrop(e, type) {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+    const handlers = { xl:loadXlsx, d2s:loadD2s, wd:loadWireDesign, ts:loadTsGrade, inv:loadInventoryXlsx };
+    if (handlers[type]) handlers[type]({ files:[file] });
+    const zoneMap = { xl:'z-xl', d2s:'z-d2s', wd:'z-wd', ts:'z-ts', inv:'z-inv' };
+    document.getElementById(zoneMap[type]).classList.remove('drag-over');
+}
+
+/* ================================================================
+   FILE LOADERS
+================================================================ */
+function loadXlsx(inp) {
+    const file = (inp.files||inp)[0];
+    if (!file) return;
+    const qc = parseInt(document.getElementById('xlQcol').value) || 16;
+    const sc = parseInt(document.getElementById('xlScol').value) || 18;
+    const rd = new FileReader();
+    rd.onload = e => {
+        try {
+            const wb = XLSX.read(e.target.result, {type:'array'});
+            const ws = wb.Sheets[wb.SheetNames[0]];
+            const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
+            let cnt = 0;
+            for (let i = 1; i < data.length; i++) {
+                const row = data[i];
+                const dn = String(row[qc] || '').trim();
+                const st = String(row[sc] || '').trim();
+                if (dn && st) { AS.designToStruct[dn] = st; cnt++; }
+            }
+            AS.loaded.design = cnt > 0;
+            markZone('z-xl', 'cnt-xl', cnt, '개 설계');
+            updateStatus();
+            toast(`✅ 설계통합.xlsx: ${cnt}개 로드`, 'ts');
+        } catch(err) { toast(`❌ xlsx 오류: ${err.message}`, 'te'); }
+    };
+    rd.readAsArrayBuffer(file);
+}
+
+function loadD2s(inp) {
+    const file = (inp.files||inp)[0];
+    if (!file) return;
+    const rd = new FileReader();
+    rd.onload = e => {
+        try {
+            const rawText = e.target.result;
+            const data = JSON.parse(rawText);
+            let cnt = 0;
+            if (Array.isArray(data)) {
+                for (const it of data) {
+                    if (it.design && it.struct) { AS.designToStruct[it.design] = it.struct; cnt++; }
+                    else if (it.설계명 && it.구조) { AS.designToStruct[it.설계명] = it.구조; cnt++; }
+                }
+            } else {
+                for (const [k,v] of Object.entries(data)) { AS.designToStruct[k] = v; cnt++; }
+            }
+            AS.loaded.design = cnt > 0;
+            markZone('z-d2s', 'cnt-d2s', cnt, '개');
+            updateStatus();
+            toast(`✅ design_to_struct.json: ${cnt}개 로드`, 'ts');
+            // 로컬 스토리지에 저장하여 다음 방문 시 자동 로드 (최소화된 크기로 저장)
+            try { localStorage.setItem('dsr_d2s', rawText); } catch(err) { console.warn('Local storage save failed', err); }
+        } catch(err) { toast(`❌ JSON 오류: ${err.message}`, 'te'); }
+    };
+    rd.readAsText(file);
+}
+
+function loadWireDesign(inp) {
+    const file = (inp.files||inp)[0];
+    if (!file) return;
+    const rd = new FileReader();
+    rd.onload = e => {
+        try {
+            const rawText = e.target.result;
+            const raw = JSON.parse(rawText);
+            AS.wireDesign = {};
+            AS.drRatioMap = {};
+            let cnt = 0;
+            const src = raw.designs || raw;
+            for (const [struct, design] of Object.entries(src)) {
+                if (struct === 'dr_ratio_map') { Object.assign(AS.drRatioMap, design); continue; }
+                if (typeof design !== 'object') continue;
+                const parsed = {};
+                if (design.dr_ratio) AS.drRatioMap[struct] = design.dr_ratio;
+                for (const [k, v] of Object.entries(design)) {
+                    if (!k.startsWith('d') || k === 'dr_ratio') continue;
+                    if (Array.isArray(v)) {
+                        parsed[k] = {coeff:v[0], st_count:v[1]||1, wire_count:v[2]||1};
+                    } else if (typeof v === 'object') {
+                        parsed[k] = {
+                            coeff:  v.coeff || v.coefficient || v.c || 0,
+                            st_count: v.st_count || v.stCount || v.strand || 1,
+                            wire_count: v.wire_count || v.wireCount || v.wire || 1
+                        };
+                    }
+                }
+                if (Object.keys(parsed).length > 0) { AS.wireDesign[struct] = parsed; cnt++; }
+            }
+            AS.loaded.wire = cnt > 0;
+            markZone('z-wd', 'cnt-wd', cnt, '개 구조');
+            updateStatus();
+            toast(`✅ wire_design.json: ${cnt}개 구조 로드`, 'ts');
+            try { localStorage.setItem('dsr_wd', rawText); } catch(err) { console.warn('Local storage save failed', err); }
+        } catch(err) { toast(`❌ wire_design 오류: ${err.message}`, 'te'); }
+    };
+    rd.readAsText(file);
+}
+
+function loadTsGrade(inp) {
+    const file = (inp.files||inp)[0];
+    if (!file) return;
+    const rd = new FileReader();
+    rd.onload = e => {
+        try {
+            const rawText = e.target.result;
+            const raw = JSON.parse(rawText);
+            AS.tsGradeData = [];
+            AS.diaGradeToMiddle = {};
+            let cnt = 0;
+            if (Array.isArray(raw)) {
+                for (const it of raw) {
+                    const wd = parseFloat(it.wire_dia||it.wireDia||it.dia||0);
+                    const ts = parseFloat(it.ts||it.TS||0);
+                    const gr = String(it.grade||it.Grade||'');
+                    const md = String(it.middle_wire||it.middle||it.middleWire||'');
+                    AS.tsGradeData.push({wireDia:wd, ts, grade:gr, middle:md});
+                    if (gr && md) {
+                        const k = fmt(wd,2) + '|' + gr;
+                        if (!AS.diaGradeToMiddle[k]) AS.diaGradeToMiddle[k] = md;
+                    }
+                    cnt++;
+                }
+            } else {
+                for (const [key, val] of Object.entries(raw)) {
+                    const parts = key.split('|');
+                    if (parts.length >= 2) {
+                        const wd = parseFloat(parts[0]);
+                        if (typeof val === 'object' && val !== null) {
+                            const gr = val.grade||'';
+                            const md = String(val.middle||val.middle_wire||'');
+                            AS.tsGradeData.push({wireDia:wd, ts:parseFloat(parts[1])||0, grade:gr, middle:md});
+                            if (gr && md) {
+                                const k = fmt(wd,2)+'|'+gr;
+                                if (!AS.diaGradeToMiddle[k]) AS.diaGradeToMiddle[k] = md;
+                            }
+                        } else {
+                            // "dia|grade" → middle format
+                            AS.diaGradeToMiddle[key] = String(val);
+                        }
+                        cnt++;
+                    }
+                }
+            }
+            AS.loaded.ts = cnt > 0;
+            markZone('z-ts', 'cnt-ts', cnt, '개');
+            updateStatus();
+            toast(`✅ wire_ts_grade_middle.json: ${cnt}개 로드`, 'ts');
+            
+            // 데이터가 매우 클 수 있으므로 예외 처리 (localStorage 5MB 제한)
+            try { localStorage.setItem('dsr_ts', rawText); } catch(err) { console.warn('LocalStorage limit exceeded, ts_grade data not saved locally.'); }
+        } catch(err) { toast(`❌ ts_grade 오류: ${err.message}`, 'te'); }
+    };
+    rd.readAsText(file);
+}
+
+function loadInventoryXlsx(inp) {
+    const file = (inp.files||inp)[0];
+    if (!file) return;
+    const rd = new FileReader();
+    rd.onload = e => {
+        try {
+            const wb = XLSX.read(e.target.result, {type:'array'});
+            if (!wb.SheetNames.includes('재고')) {
+                throw new Error('"재고" 시트를 찾을 수 없습니다.');
+            }
+            const ws = wb.Sheets['재고'];
+            const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
+            AS.inventoryData = {};
+            let cnt = 0;
+            
+            // 0, 1행은 헤더, 2행부터 데이터 파싱
+            for (let i = 2; i < data.length; i++) {
+                const row = data[i];
+                
+                // 도금(G) 파트 (1열:아이템, 2열:선경, 4열:현재고)
+                const gItem = String(row[1] || '').trim();
+                const gDia = parseFloat(row[2]);
+                const gStock = parseFloat(row[4]);
+                if (gItem && gItem.toUpperCase().startsWith('G') && !isNaN(gDia) && !isNaN(gStock) && gStock > 0) {
+                    const m = gItem.match(/([6789][0-9])/);
+                    if (m) {
+                        const key = `G|${m[1]}|${gDia.toFixed(1)}`;
+                        AS.inventoryData[key] = (AS.inventoryData[key] || 0) + gStock * 1000;
+                        cnt++;
+                    }
+                }
+                
+                // 비도금(U) 파트 (20열:아이템, 21열:선경, 23열:현재고)
+                const uItem = String(row[20] || '').trim();
+                const uDia = parseFloat(row[21]);
+                const uStock = parseFloat(row[23]);
+                if (uItem && uItem.toUpperCase().startsWith('U') && !isNaN(uDia) && !isNaN(uStock) && uStock > 0) {
+                    const m = uItem.match(/([6789][0-9])/);
+                    if (m) {
+                        const key = `U|${m[1]}|${uDia.toFixed(1)}`;
+                        AS.inventoryData[key] = (AS.inventoryData[key] || 0) + uStock * 1000;
+                        cnt++;
+                    }
+                }
+            }
+            
+            AS.loaded.inv = true;
+            markZone('z-inv', 'cnt-inv', cnt, '건 매핑');
+            toast(`✅ 현재고 엑셀 로드 완료 (${cnt}건 재고 적용)`, 'ts');
+            
+            if (AS.lastResult) runCalc(); // 이미 계산되어 있으면 재계산
+        } catch(err) { toast(`❌ 현재고 엑셀 오류: ${err.message}`, 'te'); }
+    };
+    rd.readAsArrayBuffer(file);
+}
+
+function markZone(zid, cid, cnt, unit) {
+    document.getElementById(zid).classList.toggle('loaded', cnt > 0);
+    document.getElementById(cid).textContent = cnt + unit + ' 로드됨';
+}
+
+function updateStatus() {
+    const ok = AS.loaded.design && AS.loaded.wire;
+    const partial = AS.loaded.design || AS.loaded.wire || AS.loaded.ts;
+    const el = document.getElementById('cst1');
+    const sc = document.getElementById('sc1');
+    if (ok) { el.textContent='완료'; el.className='card-st ok'; sc.className='step-circle done'; }
+    else if (partial) { el.textContent='일부 로드'; el.className='card-st partial'; sc.className='step-circle active'; }
+    else { el.textContent='필요'; el.className='card-st need'; sc.className='step-circle active'; }
+}
+
+/* ================================================================
+   DEMO DATA
+================================================================ */
+function loadDemo() {
+    // Design → Struct mapping (sample 15)
+    AS.designToStruct = {
+        '6x19W(S)+IWRC-G':'6×19W(S)+IWRC-G','6x19W(S)+IWRC-U':'6×19W(S)+IWRC-U',
+        '6x19W(S)+FC-G':'6×19W(S)+FC-G','6x19W(S)+FC-U':'6×19W(S)+FC-U',
+        '6x36WS+IWRC-G':'6×36WS+IWRC-G','6x36WS+IWRC-U':'6×36WS+IWRC-U',
+        '6x36WS+FC-G':'6×36WS+FC-G','6x36WS+FC-U':'6×36WS+FC-U',
+        '6x37+FC-G':'6×37+FC-G','6x37+FC-U':'6×37+FC-U',
+        '8x19S+IWRC-G':'8×19S+IWRC-G','8x19S+IWRC-U':'8×19S+IWRC-U',
+        '6x7+FC-G':'6×7+FC-G','6x7+FC-U':'6×7+FC-U',
+        '6x19W(S)+EPP-G':'6×19W(S)+EPP-G',
+    };
+
+    // Wire designs: coeff × DIA × DR = actual wire diameter (mm)
+    AS.wireDesign = {
+        '6×19W(S)+IWRC-G': {
+            d1:{coeff:0.0823,st_count:6,wire_count:1}, d2:{coeff:0.0823,st_count:6,wire_count:9},
+            d3:{coeff:0.0659,st_count:6,wire_count:9}, d4:{coeff:0.0576,st_count:6,wire_count:1},
+            d5:{coeff:0.0494,st_count:6,wire_count:1}, d6:{coeff:0.0494,st_count:6,wire_count:9},
+            d7:{coeff:0.0494,st_count:6,wire_count:9}, d8:{coeff:0.0329,st_count:1,wire_count:1},
+        },
+        '6×36WS+IWRC-G': {
+            d1:{coeff:0.0576,st_count:6,wire_count:14}, d2:{coeff:0.0494,st_count:6,wire_count:7},
+            d3:{coeff:0.0412,st_count:6,wire_count:8},  d4:{coeff:0.0329,st_count:6,wire_count:6},
+            d5:{coeff:0.0288,st_count:6,wire_count:1},
+            d6:{coeff:0.0371,st_count:6,wire_count:9},  d7:{coeff:0.0329,st_count:6,wire_count:9},
+            d8:{coeff:0.0247,st_count:1,wire_count:1},
+        },
+        '6×37+FC-G': {
+            d1:{coeff:0.0617,st_count:6,wire_count:18}, d2:{coeff:0.0412,st_count:6,wire_count:12},
+            d3:{coeff:0.0329,st_count:6,wire_count:6},  d4:{coeff:0.0247,st_count:6,wire_count:1},
+        },
+        '8×19S+IWRC-G': {
+            d1:{coeff:0.0659,st_count:8,wire_count:9}, d2:{coeff:0.0535,st_count:8,wire_count:9},
+            d3:{coeff:0.0412,st_count:8,wire_count:1},
+            d4:{coeff:0.0453,st_count:6,wire_count:9}, d5:{coeff:0.0329,st_count:6,wire_count:9},
+            d6:{coeff:0.0247,st_count:1,wire_count:1},
+        },
+        '6×7+FC-G': {
+            d1:{coeff:0.1235,st_count:6,wire_count:6}, d2:{coeff:0.1235,st_count:6,wire_count:1},
+        },
+        '6×19W(S)+EPP-G': {
+            d1:{coeff:0.0823,st_count:6,wire_count:1}, d2:{coeff:0.0823,st_count:6,wire_count:9},
+            d3:{coeff:0.0659,st_count:6,wire_count:9}, d4:{coeff:0.0576,st_count:6,wire_count:1},
+            d5:{coeff:0.0494,st_count:6,wire_count:1}, d6:{coeff:0.0494,st_count:6,wire_count:9},
+            d7:{coeff:0.0494,st_count:6,wire_count:9}, d8:{coeff:0.0329,st_count:1,wire_count:1},
+        },
+    };
+    // Copy G versions to U
+    for (const [k,v] of Object.entries({...AS.wireDesign})) {
+        const uk = k.replace(/-G$/,'-U');
+        if (uk !== k) AS.wireDesign[uk] = v;
+        const fck = k.replace('+IWRC-G','+FC-G');
+        if (fck !== k && !AS.wireDesign[fck]) {
+            const d = {...v};
+            delete d.d5; delete d.d6; delete d.d7; delete d.d8;
+            AS.wireDesign[fck] = d;
+            AS.wireDesign[fck.replace('-G','-U')] = d;
+        }
+    }
+
+    // DR Ratio map
+    AS.drRatioMap = {};
+    for (const k of Object.keys(AS.wireDesign)) {
+        AS.drRatioMap[k] = /6×7/.test(k) ? 0.92 : /8×/.test(k) ? 0.88 : 1.03;
+    }
+
+    // dia|grade → middle wire
+    AS.diaGradeToMiddle = {};
+    const grades = ['IPS','EIPS','EEIPS','EEIPS-H','A종','B종'];
+    const diaMiddle = [
+        [0.25,'5.0'],[0.30,'5.0'],[0.35,'5.0'],[0.40,'5.5'],[0.45,'5.5'],
+        [0.50,'5.5'],[0.55,'6.0'],[0.60,'6.0'],[0.65,'6.5'],[0.70,'7.0'],
+        [0.75,'7.0'],[0.80,'7.5'],[0.85,'8.0'],[0.90,'8.0'],[0.95,'8.5'],
+        [1.00,'8.5'],[1.05,'9.0'],[1.10,'9.0'],[1.20,'9.5'],[1.30,'10.0'],
+        [1.40,'10.0'],[1.50,'10.5'],[1.60,'11.0'],[1.80,'11.0'],[2.00,'12.0'],
+    ];
+    for (const g of grades) {
+        for (const [d, m] of diaMiddle) {
+            AS.diaGradeToMiddle[fmt(d,2)+'|'+g] = m;
+        }
+    }
+
+    AS.loaded.design = true; AS.loaded.wire = true; AS.loaded.ts = true;
+
+    ['xl','d2s','wd','ts'].forEach(id => document.getElementById('z-'+id).classList.add('loaded'));
+    document.getElementById('cnt-xl').textContent = Object.keys(AS.designToStruct).length + '개 설계 (데모)';
+    document.getElementById('cnt-d2s').textContent = '(데모 - xlsx로 로드됨)';
+    document.getElementById('cnt-wd').textContent = Object.keys(AS.wireDesign).length + '개 구조 (데모)';
+    document.getElementById('cnt-ts').textContent = Object.keys(AS.diaGradeToMiddle).length + '개 (데모)';
+
+    document.getElementById('mainInput').value =
+        'JOB-01\t24\t6x19W(S)+IWRC-G\t1960\t5000\n' +
+        'JOB-02\t32\t6x36WS+IWRC-G\t1720\t3200\n' +
+        'JOB-03\t19\t8x19S+IWRC-U\t1570\t8000\n' +
+        'JOB-04\t44\t6x37+FC-U\t1960\t2000\n' +
+        'JOB-05\t12\t6x7+FC-G\t1370\t1500';
+
+    updateLineCount();
+    updateStatus();
+    toast('✅ 데모 데이터 로드 완료! "발주량 계산" 버튼을 클릭하세요.', 'ts');
+}
+
+/* ================================================================
+   CALCULATION ENGINE
+================================================================ */
+function runCalc() {
+    const btn = document.getElementById('calcBtn');
+    btn.innerHTML = '<span class="spin"></span> 계산중...';
+    btn.disabled = true;
+    setTimeout(() => {
+        try { doCalc(); } catch(e) { addMsg('❌ 계산 오류: '+e.message,'error'); console.error(e); }
+        finally { btn.innerHTML = '⚡ 발주량 계산'; btn.disabled = false; }
+    }, 30);
+}
+
+function doCalc() {
+    clearMsgs();
+
+    const txt = document.getElementById('mainInput').value.trim();
+    if (!txt) { addMsg('❌ 입력 데이터가 없습니다','error'); return; }
+
+    const defDr      = parseFloat(document.getElementById('defDr').value) || 1.03;
+    const dens       = parseFloat(document.getElementById('density').value) || 7.85;
+    const useEpp     = document.getElementById('chkEpp').checked;
+    const fcExclude  = document.getElementById('chkFcExclude').checked;
+    const useTsSub   = document.getElementById('chkTsSub').checked;
+    const tsThresh   = useTsSub ? parseFloat(document.getElementById('tsThresh').value) || 1950 : Infinity;
+    const tsAlt      = useTsSub ? parseFloat(document.getElementById('tsAlt').value) || 1770 : null;
+    const EPP_EXCL   = new Set(['d6','d7','d11','d12']);
+    const DENS_KG    = dens * 1e-6; // kg / (mm² × mm)
+
+    const lines = txt.split('\n').map(l=>l.replace(/\r/g,'')).filter(l=>l.trim().length > 0);
+    const products = [];
+    const failedItems = []; // 소선 설계 없는 항목 모음
+
+    for (const line of lines) {
+        const parts = line.split('\t');
+        
+        let jobNo = '', dia, designIn, ts, prodKg, stock = 0;
+
+        // 예전 양식(작업번호 컬럼 없이 복사) 대응 지원
+        let isOldFormat = false;
+        if (parts.length === 4) {
+            isOldFormat = true;
+        } else if (parts.length === 5) {
+            // parts[2]가 TS(숫자)이면 구버전, 설계명(문자열)이면 신버전
+            if (!isNaN(parts[2]) && parts[2].trim() !== '') {
+                isOldFormat = true;
+            }
+        }
+
+        const parseDia = (str) => {
+            const match = str.match(/\(([\d.]+)\)/);
+            return match ? parseFloat(match[1]) : parseFloat(str);
+        };
+
+        if (isOldFormat) {
+            // 작업번호가 생략된 경우 처리 (DIA, 설계명, TS, 생산량, [재고])
+            dia       = parseDia(parts[0]);
+            designIn  = parts[1] ? parts[1].trim() : '';
+            ts        = parseFloat(parts[2]);
+            prodKg    = parseFloat(parts[3]);
+            stock     = parts.length >= 5 ? parseFloat(parts[4]) || 0 : 0;
+        } else if (parts.length >= 5) {
+            // 신규 포맷 (작업번호 포함: JOBNO, DIA, DESIGN, TS, PROD, [STOCK])
+            jobNo     = parts[0].trim();
+            dia       = parseDia(parts[1]);
+            designIn  = parts[2] ? parts[2].trim() : '';
+            ts        = parseFloat(parts[3]);
+            prodKg    = parseFloat(parts[4]);
+            stock     = parts.length >= 6 ? parseFloat(parts[5]) || 0 : 0;
+        } else {
+            addMsg(`❌ 형식 오류 (데이터 부족): ${line}`,'error');
+            continue;
+        }
+
+        if (isNaN(dia) || isNaN(ts) || isNaN(prodKg)) {
+            addMsg(`❌ 숫자 파싱 오류: ${line}`,'error'); continue;
+        }
+
+        // TS substitute
+        let tsEff = ts;
+        if (useTsSub && ts >= tsThresh) {
+            tsEff = tsAlt;
+            addMsg(`⚡ TS 대체: TS${ts} → TS${tsEff} [${designIn}]`, 'warn');
+        }
+
+        // 설계명 → 구조 mapping
+        let struct = designIn;
+        const mapped = AS.designToStruct[designIn] || fuzzyFind(designIn);
+        if (mapped) {
+            if (mapped !== designIn) addMsg(`✓ 매핑: ${designIn} → ${mapped}`, 'info');
+            struct = mapped;
+        }
+
+        // Wire design lookup
+        let wireDesign = AS.wireDesign[struct];
+        if (!wireDesign) {
+            // Try normalized (× ↔ x, space removal)
+            const norm = struct.replace(/×/g,'x').replace(/\s/g,'').toLowerCase();
+            for (const [k,v] of Object.entries(AS.wireDesign)) {
+                if (k.replace(/×/g,'x').replace(/\s/g,'').toLowerCase() === norm) { wireDesign = v; struct = k; break; }
+            }
+        }
+        if (!wireDesign || Object.keys(wireDesign).length === 0) {
+            addMsg(`❌ 소선 설계 없음: "${struct}"`, 'error');
+            // 미계산 항목으로 누적 (같은 설계명은 prodKg 합산)
+            const existing = failedItems.find(f => f.designIn === designIn);
+            if (existing) { existing.prodKg += prodKg; existing.count++; }
+            else failedItems.push({ designIn, struct, dia, ts, prodKg, count: 1 });
+            continue;
+        }
+
+        const coating  = extractCoating(designIn) || extractCoating(struct);
+        const coreType = extractCoreType(struct);
+        const eppCore  = useEpp && isEppCore(struct);
+        const fcCore   = fcExclude && isFcCore(struct);
+        const drRatio  = AS.drRatioMap[struct] || defDr;
+        const grade    = getTsGrade(tsEff);
+
+        // Calculate wires
+        const wires = [];
+        let totalArea = 0;
+
+        for (const [dk, wd] of Object.entries(wireDesign)) {
+            if (eppCore && EPP_EXCL.has(dk)) continue;
+            const wireDia = dia * drRatio * wd.coeff;
+            const wArea   = PI4 * wireDia * wireDia;
+            const cnt     = (wd.st_count||1) * (wd.wire_count||1);
+            const totA    = wArea * cnt;
+            wires.push({ key:dk, wireDia, stCnt:wd.st_count||1, wireCnt:wd.wire_count||1, cnt, wArea, totA });
+            totalArea += totA;
+        }
+
+        if (totalArea === 0) { addMsg(`❌ 단면적 계산 오류: ${struct}`,'error'); continue; }
+
+        // Weight: 사용자 입력 단위가 생산Kg이므로 그대로 사용
+        const totalWkg = prodKg;
+        const orderWkg = Math.max(0, totalWkg - stock);
+
+        for (const w of wires) {
+            w.wkg       = (w.totA / totalArea) * totalWkg;
+            w.orderWkg  = (w.totA / totalArea) * orderWkg;
+            w.midWire   = findMiddleWire(w.wireDia, grade, tsEff);
+        }
+
+        products.push({
+            jobNo, designIn, struct, dia, ts, tsEff, prodKg, stock,
+            coating, coreType, grade, drRatio,
+            totalArea, totalWkg, orderWkg,
+            wires
+        });
+
+        const cstr = coating ? ` [${coating}]` : '';
+        const stockStr = stock > 0 ? ` | 현재고 ${fmt(stock)}kg | 발주 ${fmt(orderWkg)}kg` : '';
+        addMsg(`✅ [${jobNo}] ${designIn}${cstr} DIA${dia} TS${ts}→${grade} ${fmt(prodKg)}kg${stockStr}`, 'success');
+    }
+
+    if (products.length === 0 && failedItems.length === 0) { addMsg('❌ 계산 가능한 데이터가 없습니다','error'); return; }
+    if (products.length > 0) addMsg(`✅ 총 ${products.length}개 제품 계산 완료`, 'success');
+    if (failedItems.length > 0) addMsg(`⚠️ 소선 설계 없음 ${failedItems.length}개 설계명 — 결과 화면 하단 확인`, 'warn');
+
+    const agg = aggregate(products);
+    AS.lastResult = { products, agg, failedItems };
+    renderResults(products, agg, failedItems);
+}
+
+function fuzzyFind(name) {
+    const norm = n => n.replace(/[×x]/gi,'x').replace(/\s/g,'').toLowerCase();
+    const nName = norm(name);
+    
+    // 1차: 정규화된 이름으로 완전 일치 검색
+    for (const [k,v] of Object.entries(AS.designToStruct)) {
+        if (norm(k) === nName) return v;
+    }
+    for (const k of Object.keys(AS.wireDesign)) {
+        if (norm(k) === nName) return k;
+    }
+
+    // 2차: 엑셀과 불일치하는 접두어 및 코아 표기 보정
+    // 예) POW FT U.8XWS(26)+IW -> POW 8xWS(26)+IWRC
+    // 예) P.TEC 6 U.6XWS(36)+I -> POW 6xWS(36)+IWRC
+    // 예) FW G.4XSES(48)+마닐라 -> 4xSES(48)+FC
+    // 예) SW G.6XWS(36)+EPP(S연) -> 6xWS(36)+IWRC (EPP=섬유코어, 연선 구조 동일)
+    let stripped = name.replace(/\bP\.TEC\b\s*/gi, 'POW ')   // P.TEC 를 POW 로
+                       .replace(/\bFT\b\s*/gi, '')            // FT 제거
+                       .replace(/\bFW\b\s*/gi, '')            // FW 제거 (어선용 접두어)
+                       .replace(/\bSW\b\s*/gi, '')            // SW 제거
+                       .replace(/\bWR\b\s*/gi, '')            // WR 제거
+                       .replace(/\bSAS\b\s*/gi, '')           // SAS 제거
+                       .replace(/\bNS\b\s*/gi, '')            // NS 제거
+                       .replace(/\bU\./gi, '')                // U. 제거
+                       .replace(/\bG\./gi, '')                // G. 제거
+                       .replace(/\([SZ]연?\)/gi, '')         // (S연),(Z연),(S),(Z) 연향 표기 제거
+                       .replace(/\+\uB9C8\uB2D0\uB77C/gi, '+FC') // +마닐라 -> +FC
+                       .replace(/\+manila/gi, '+FC')          // +Manila -> +FC
+                       .replace(/\+\uC0AC\uC774\uC798/gi, '+FC') // +사이잘 -> +FC
+                       .replace(/\+sisal/gi, '+FC')           // +Sisal -> +FC
+                       .replace(/\+IW(\s|$)/i, '+IWRC$1')     // +IW  를 +IWRC 로
+                       .replace(/\+I(\s|$)/i,  '+IWRC$1')     // +I   를 +IWRC 로
+                       .trim();
+
+    const nStripped = norm(stripped);
+    
+    for (const [k,v] of Object.entries(AS.designToStruct)) {
+        if (norm(k) === nStripped) return v;
+    }
+    for (const k of Object.keys(AS.wireDesign)) {
+        if (norm(k) === nStripped) return k;
+    }
+
+    // 2.5차: EPP 코어를 IWRC로 대체 조회 (EPP=섬유코어, 외부 연선 구조 동일하므로)
+    if (/\+epp/i.test(nStripped)) {
+        const nEppAsIwrc = norm(stripped.replace(/\+EPP/gi, '+IWRC'));
+        for (const [k,v] of Object.entries(AS.designToStruct)) {
+            if (norm(k) === nEppAsIwrc) return v;
+        }
+        for (const k of Object.keys(AS.wireDesign)) {
+            if (norm(k) === nEppAsIwrc) return k;
+        }
+    }
+
+    // 3차: 핵심 구조 문자열만 추출하여 부분 일치 검색
+    // 예: 6xWS(36)+IWRC 부분만 추출
+    const structMatch = nStripped.match(/(\d+x[a-z]+\(\d+\)\+[a-z]+)/i) || nStripped.match(/(\d+x[a-z]+\+[a-z]+)/i);
+    if (structMatch) {
+       let corePart = structMatch[1];
+       // 원본에 POW 문구가 있었으면 검색 시 붙여서 정확도 향상
+       if (nStripped.includes('pow')) {
+           corePart = 'pow' + corePart;
+       }
+       for (const [k,v] of Object.entries(AS.designToStruct)) {
+           if (norm(k).includes(corePart)) return v;
+       }
+       for (const k of Object.keys(AS.wireDesign)) {
+           if (norm(k).includes(corePart)) return k;
+       }
+    }
+    
+    return null;
+}
+
+function aggregate(products) {
+    const agg = {};
+    for (const prd of products) {
+        for (const w of prd.wires) {
+            if (!w.midWire) continue;
+            const midDia = parseFloat(w.midWire).toFixed(1);
+            const coat = prd.coating || 'U';
+            
+            // Normalize grade for inventory matching (e.g. "SWRH72A" -> "72")
+            let gradeNorm = String(prd.grade);
+            const gm = gradeNorm.match(/([6789][0-9])/);
+            if (gm) gradeNorm = gm[1];
+            const invKey = `${coat}|${gradeNorm}|${midDia}`;
+            
+            const key = `${coat}|${prd.grade}|${midDia}`;
+            if (!agg[key]) agg[key] = { coating:coat, grade:prd.grade, invKey:invKey, midDia:parseFloat(midDia), need:0, stock:0, order:0, refs:[] };
+            agg[key].need  += w.wkg;
+            agg[key].order += w.orderWkg;
+
+            let ref = agg[key].refs.find(r => r.id === prd.jobNo + '|' + prd.designIn + '|' + prd.struct + '|' + prd.dia);
+            if (!ref) {
+                ref = { id: prd.jobNo + '|' + prd.designIn + '|' + prd.struct + '|' + prd.dia, jobNo: prd.jobNo, designIn: prd.designIn, struct: prd.struct, dia: prd.dia, wkg: 0, keys: [] };
+                agg[key].refs.push(ref);
+            }
+            ref.wkg += w.wkg;
+            if (!ref.keys.includes(w.key)) ref.keys.push(w.key);
+        }
+    }
+    
+    // 차감할 중간선 재고 풀 복사
+    const invPool = AS.inventoryData ? {...AS.inventoryData} : {};
+
+    // 소요량 내림차순 정렬 및 중간선 재고 차감
+    for (const k in agg) {
+        agg[k].refs.sort((a,b) => b.wkg - a.wkg);
+        
+        const invK = agg[k].invKey;
+        const availableStock = invPool[invK] || 0;
+        
+        if (availableStock > 0) {
+            const usedStock = Math.min(agg[k].order, availableStock);
+            agg[k].stock += usedStock; // 중간선 재고 반영
+            agg[k].order -= usedStock;
+            invPool[invK] -= usedStock; // 남은 재고 갱신
+        }
+    }
+    return agg;
+}
+
+/* ================================================================
+   RENDER RESULTS
+================================================================ */
+function renderResults(products, agg, failedItems=[]) {
+    const gEntries = Object.values(agg).filter(v=>v.coating==='G').sort((a,b)=>a.midDia-b.midDia);
+    const uEntries = Object.values(agg).filter(v=>v.coating!=='G').sort((a,b)=>a.midDia-b.midDia);
+    const totalNeedG = gEntries.reduce((s,v)=>s+v.need,0);
+    const totalNeedU = uEntries.reduce((s,v)=>s+v.need,0);
+    const totalOrderG = gEntries.reduce((s,v)=>s+v.order,0);
+    const totalOrderU = uEntries.reduce((s,v)=>s+v.order,0);
+
+    // Summary
+    document.getElementById('sumCards').innerHTML = `
+        <div class="sc"><div class="sc-val">${products.length}<small>개</small></div><div class="sc-label">제품 수</div></div>
+        <div class="sc g-sc"><div class="sc-val">${fmt(totalOrderG/1000,2)}<small>톤</small></div><div class="sc-label">🟠 도금(G) 최종 발주량</div></div>
+        <div class="sc u-sc"><div class="sc-val">${fmt(totalOrderU/1000,2)}<small>톤</small></div><div class="sc-label">🟣 비도금(U) 최종 발주량</div></div>
+        <div class="sc"><div class="sc-val">${fmt((totalOrderG+totalOrderU)/1000,2)}<small>톤</small></div><div class="sc-label">🏷️ 총 발주량</div></div>
+    `;
+
+    // G Order table
+    const hasStock = products.some(p => p.stock > 0) || Object.values(agg).some(a => a.stock > 0);
+    const stockCol = hasStock ? '<th>현재고(kg)</th><th>최종 발주량(kg)</th>' : '';
+    const stockCols = hasStock ? 2 : 0;
+
+    function buildOrderTable(entries, totalNeed, totalOrder, cls, tagCls, tagTxt) {
+        if (!entries.length) return `<div class="empty">해당 없음</div>`;
+        return `<div class="tbl-wrap">
+        <table class="dt ${cls}">
+            <thead><tr>
+                <th>구분</th><th>강종</th><th>중간선 규격</th><th>선경(mm)</th>
+                <th>소요량(kg)</th>${stockCol}
+            </tr></thead>
+            <tbody>
+                ${entries.map((e, idx) => {
+                    const trId = 'tr-' + cls + '-' + idx;
+                    const details = e.refs.map(r => `
+                        <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 0; border-bottom:1px dashed rgba(255,255,255,0.06);">
+                            <div>
+                                <span style="color:var(--blue); font-weight:700; margin-right:6px;">[${r.jobNo||'-'}]</span>
+                                <span style="color:var(--t1);">${r.designIn}</span>
+                                <span style="color:var(--t3); font-size:0.7rem; margin-left:4px;">(DIA <b>${r.dia}</b>mm &middot; <strong style="color:#d1d5db; background:rgba(255,255,255,0.08); padding:1px 4px; border-radius:3px; font-weight:600;">${r.keys.join(', ')}</strong>)</span>
+                            </div>
+                            <strong style="color:var(--t1);">${fmt(r.wkg)} kg</strong>
+                        </div>
+                    `).join('');
+
+                    return `<tr style="cursor:pointer;" onclick="toggleTR('${trId}')" title="클릭하여 사용 제품 목록 확인 (펼치기/접기)">
+                        <td><span class="tag ${tagCls}">${tagTxt}</span></td>
+                        <td>${e.grade}</td>
+                        <td><strong>Φ${e.midDia.toFixed(1)}mm</strong></td>
+                        <td>${e.midDia.toFixed(1)}</td>
+                        <td><strong>${fmt(e.need)}</strong></td>
+                        ${hasStock ? `<td>${fmt(e.stock)}</td><td><strong style="color:var(--green)">${fmt(e.order)}</strong></td>` : ''}
+                    </tr>
+                    <tr id="${trId}" style="display:none; background:rgba(0,0,0,0.2);">
+                        <td colspan="${5+stockCols}" style="padding:0;">
+                            <div style="padding: 0.8rem 1.2rem; border-left: 3px solid ${tagTxt==='G'?'var(--amber)':'var(--indigo)'};">
+                                <div style="font-size:0.75rem; font-weight:700; color:var(--t3); margin-bottom:6px;">사용 제품 상세 내역 (소요량 큰 순서)</div>
+                                ${details}
+                            </div>
+                        </td>
+                    </tr>`;
+                }).join('')}
+                <tr class="tr-total">
+                    <td colspan="4">소계</td><td><strong>${fmt(totalNeed)}</strong></td>
+                    ${hasStock ? `<td></td><td><strong style="color:var(--green)">${fmt(totalOrder)}</strong></td>` : ''}
+                </tr>
+            </tbody>
+        </table></div>`;
+    }
+
+    document.getElementById('orderG').innerHTML = `
+        <div class="sec-title"><div class="sec-title-bar g-bar"></div>🟠 도금(G) 중간선 발주</div>
+        ${buildOrderTable(gEntries, totalNeedG, totalOrderG, 'g-tbl', 'tag-g', 'G')}
+    `;
+    document.getElementById('orderU').innerHTML = `
+        <div class="sec-title" style="margin-top:1.5rem"><div class="sec-title-bar u-bar"></div>🟣 비도금(U) 중간선 발주</div>
+        ${buildOrderTable(uEntries, totalNeedU, totalOrderU, 'u-tbl', 'tag-u', 'U')}
+    `;
+
+    // Detail accordion
+    const dl = document.getElementById('detailList');
+    dl.innerHTML = '';
+    for (const prd of products) {
+        const coat = prd.coating;
+        const coatTag = coat === 'G'
+            ? `<span class="tag tag-g">G 도금</span>`
+            : coat === 'U' ? `<span class="tag tag-u">U 비도금</span>` : '';
+        const grTag = `<span class="tag tag-grade">${prd.grade}</span>`;
+
+        const stockNote = prd.stock > 0
+            ? `<span style="color:var(--amber);font-size:.72rem;">현재고 ${fmt(prd.stock)}kg → 발주 ${fmt(prd.orderWkg)}kg</span>`
+            : '';
+
+        const wireRows = prd.wires.map(w => {
+            const midStr = w.midWire ? `${prd.grade} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
+            return `<tr>
+                <td>${w.key}</td>
+                <td>${fmt(w.wireDia,3)}</td>
+                <td>${w.stCnt}</td>
+                <td>${w.wireCnt}</td>
+                <td>${w.cnt}</td>
+                <td>${fmt(w.totA,3)}</td>
+                <td><strong>${fmt(w.wkg)}</strong></td>
+                <td>${midStr}</td>
+            </tr>`;
+        }).join('');
+
+        const div = document.createElement('div');
+        div.className = 'acc';
+        const searchStr = `${prd.jobNo} ${prd.designIn} ${prd.struct}`.toLowerCase();
+        div.dataset.search = searchStr;
+        div.innerHTML = `
+            <div class="acc-h" onclick="toggleAcc(this)">
+                <span class="acc-arrow">▶</span>
+                <span class="acc-name"><span style="color:var(--blue);margin-right:8px;font-weight:700;">[${prd.jobNo}]</span>${prd.struct}</span>
+                <div class="acc-meta">
+                    ${coatTag} ${grTag}
+                    <span style="font-size:.75rem;color:var(--t2)">DIA ${prd.dia}mm</span>
+                    <span style="font-size:.75rem;color:var(--t2)">TS ${prd.ts}</span>
+                    <span style="font-size:.75rem;color:var(--t2)">${fmt(prd.prodM)}m</span>
+                    <span style="font-size:.78rem;font-weight:700;">${fmt(prd.totalWkg)}kg</span>
+                    ${stockNote}
+                </div>
+            </div>
+            <div class="acc-body">
+                <div style="font-size:.75rem;color:var(--t2);margin-bottom:.6rem;">
+                    DR비율: ${prd.drRatio} &nbsp;|&nbsp; 코아: ${prd.coreType}
+                    &nbsp;|&nbsp; 총 단면적: ${fmt(prd.totalArea,3)} mm²
+                    &nbsp;|&nbsp; 무게/m: ${fmt(prd.totalArea * 1000 * (parseFloat(document.getElementById('density').value)||7.85) * 1e-6, 4)} kg/m
+                </div>
+                <div class="tbl-wrap">
+                <table class="dt">
+                    <thead><tr>
+                        <th>소선</th><th>소선경(mm)</th><th>ST수</th><th>소선수/ST</th>
+                        <th>총 본수</th><th>총 단면적(mm²)</th><th>무게(kg)</th><th>중간선 규격</th>
+                    </tr></thead>
+                    <tbody>
+                        ${wireRows}
+                        <tr class="tr-total">
+                            <td colspan="5">소계</td>
+                            <td>${fmt(prd.totalArea,3)}</td>
+                            <td colspan="2"><strong>${fmt(prd.totalWkg)}</strong> kg</td>
+                        </tr>
+                    </tbody>
+                </table></div>
+            </div>
+        `;
+        dl.appendChild(div);
+    }
+
+    // 소선 설계 없는 항목 섹션 렌더링
+    const failedEl = document.getElementById('failedSection');
+    if (failedItems.length > 0) {
+        // 같은 설계명 그룹으로 중복 정리
+        const grouped = {};
+        for (const f of failedItems) {
+            if (!grouped[f.designIn]) grouped[f.designIn] = { designIn: f.designIn, struct: f.struct, count: 0 };
+            grouped[f.designIn].count += f.count;
+        }
+        const rows = Object.values(grouped).sort((a,b) => a.designIn.localeCompare(b.designIn))
+            .map(f => `<tr>
+                <td><span class="tag tag-fail">미계산</span></td>
+                <td style="font-weight:600;color:var(--rose)">${f.designIn}</td>
+                <td style="color:var(--t2);font-size:.8rem">${f.struct !== f.designIn ? f.struct : '—'}</td>
+                <td style="color:var(--t3);text-align:center">${f.count}행</td>
+            </tr>`).join('');
+        failedEl.innerHTML = `
+            <div class="sec-title" style="margin-top:1.5rem">
+                <div class="sec-title-bar" style="background:var(--rose)"></div>
+                ⚠️ 소선 설계 미등록 항목 <span style="font-size:.8rem;color:var(--t3);font-weight:400">(wire_design.json에 구조 없음 — 계산 제외됨)</span>
+            </div>
+            <div class="tbl-wrap">
+            <table class="dt" style="border-color:rgba(239,68,68,.3)">
+                <thead><tr>
+                    <th>상태</th><th>설계명 (입력값)</th><th>매핑된 구조명</th><th>행 수</th>
+                </tr></thead>
+                <tbody>${rows}</tbody>
+            </table></div>
+            <div style="margin-top:.6rem;font-size:.78rem;color:var(--t3);">💡 위 설계명을 <strong>design_to_struct.json</strong>에 추가하거나 담당자에게 문의하세요.</div>
+        `;
+        failedEl.style.display = 'block';
+    } else {
+        failedEl.style.display = 'none';
+        failedEl.innerHTML = '';
+    }
+
+    document.getElementById('results').classList.add('show');
+    document.getElementById('exBtn').style.display = products.length > 0 ? 'inline-flex' : 'none';
+    document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function toggleAcc(h) {
+    h.classList.toggle('open');
+    h.nextElementSibling.classList.toggle('open');
+}
+
+function switchTab(btn, pid) {
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById(pid).classList.add('on');
+}
+
+function toggleTR(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = el.style.display === 'none' ? 'table-row' : 'none';
+}
+
+function filterDetails() {
+    const term = document.getElementById('jobSearch').value.toLowerCase();
+    const items = document.querySelectorAll('#detailList .acc');
+    for (const el of items) {
+        if (!term || el.dataset.search.includes(term)) {
+            el.style.display = 'block';
+        } else {
+            el.style.display = 'none';
+        }
+    }
+}
+
+/* ================================================================
+   EXCEL EXPORT
+================================================================ */
+function doExport() {
+    if (!AS.lastResult) return;
+    const { products, agg } = AS.lastResult;
+    const wb = XLSX.utils.book_new();
+
+    const hdr = ['구분','강종','중간선 규격','선경(mm)','소요량(kg)'];
+    const hasStock = products.some(p=>p.stock>0) || Object.values(agg).some(a=>a.stock>0);
+    if (hasStock) hdr.push('현재고(kg)','최종 발주량(kg)');
+    hdr.push('사용 제품 상세 내역'); // 추가된 컬럼
+
+    function makeSheet(entries, label) {
+        const rows = [hdr];
+        let totalNeed = 0;
+        let totalOrder = 0;
+        for (const e of entries) {
+            const row = [label, e.grade, `Φ${e.midDia.toFixed(1)}mm`, e.midDia.toFixed(1), parseFloat(e.need.toFixed(2))];
+            if (hasStock) row.push(parseFloat(e.stock.toFixed(2)), parseFloat(e.order.toFixed(2)));
+            
+            // 상세 내역 문자열 생성 (줄바꿈 포함)
+            const detailStr = e.refs.map(r => `[${r.jobNo||'-'}] ${r.designIn} (DIA ${r.dia}mm · ${r.keys.join(', ')}) ${parseFloat(r.wkg.toFixed(2))}kg`).join('\n');
+            row.push(detailStr);
+            
+            rows.push(row);
+            totalNeed += e.need;
+            totalOrder += e.order;
+        }
+        const foot = ['','',`${label} 소계`,'',parseFloat(totalNeed.toFixed(2))];
+        if (hasStock) foot.push('', parseFloat(totalOrder.toFixed(2)));
+        foot.push(''); // 상세 내역 빈칸
+        rows.push(foot);
+        return XLSX.utils.aoa_to_sheet(rows);
+    }
+
+    const gE = Object.values(agg).filter(v=>v.coating==='G').sort((a,b)=>a.midDia-b.midDia);
+    const uE = Object.values(agg).filter(v=>v.coating!=='G').sort((a,b)=>a.midDia-b.midDia);
+
+    const wsG = makeSheet(gE, 'G');
+    wsG['!cols'] = [{wch:8},{wch:12},{wch:14},{wch:10},{wch:14},{wch:12},{wch:12},{wch:70}];
+    XLSX.utils.book_append_sheet(wb, wsG, '도금G');
+
+    const wsU = makeSheet(uE, 'U');
+    wsU['!cols'] = [{wch:8},{wch:12},{wch:14},{wch:10},{wch:14},{wch:12},{wch:12},{wch:70}];
+    XLSX.utils.book_append_sheet(wb, wsU, '비도금U');
+
+    // Product summary sheet
+    const sumHdr = ['작업번호','설계명','구조','강종','DIA(mm)','TS','DR비율','생산량(m)','필요량(kg)','현재고(kg)','발주량(kg)','도금','코아'];
+    const sumRows = [sumHdr];
+    for (const p of products) {
+        sumRows.push([
+            p.jobNo, p.designIn, p.struct, p.grade, p.dia, p.ts, p.drRatio,
+            p.prodM, parseFloat(p.totalWkg.toFixed(2)),
+            p.stock||0, parseFloat(p.orderWkg.toFixed(2)),
+            p.coating||'U', p.coreType
+        ]);
+    }
+    const wsSum = XLSX.utils.aoa_to_sheet(sumRows);
+    wsSum['!cols'] = [{wch:12},{wch:20},{wch:22},{wch:10},{wch:8},{wch:8},{wch:8},{wch:10},{wch:12},{wch:10},{wch:10},{wch:8},{wch:8}];
+    XLSX.utils.book_append_sheet(wb, wsSum, '제품요약');
+
+    // Wire detail sheet
+    const detHdr = ['작업번호','설계명','구조','소선(d)','소선경(mm)','ST수','소선수/ST','총 본수','총단면적(mm²)','무게(kg)','중간선'];
+    const detRows = [detHdr];
+    for (const p of products) {
+        for (const w of p.wires) {
+            const mid = w.midWire ? `${p.grade} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
+            detRows.push([p.jobNo, p.designIn, p.struct, w.key, parseFloat(w.wireDia.toFixed(3)), w.stCnt, w.wireCnt,
+                w.cnt, parseFloat(w.totA.toFixed(4)), parseFloat(w.wkg.toFixed(3)), mid]);
+        }
+    }
+    const wsDet = XLSX.utils.aoa_to_sheet(detRows);
+    wsDet['!cols'] = [{wch:12},{wch:18},{wch:20},{wch:8},{wch:12},{wch:8},{wch:10},{wch:8},{wch:14},{wch:12},{wch:20}];
+    XLSX.utils.book_append_sheet(wb, wsDet, '소선상세');
+
+    const today = new Date().toISOString().slice(0,10);
+    XLSX.writeFile(wb, `소선발주_${today}.xlsx`);
+    toast('📥 Excel 다운로드 완료! (도금G / 비도금U / 제품요약 / 소선상세)', 'ts');
+}
+
+/* ================================================================
+   MISC UI
+================================================================ */
+function clearMsgs() { document.getElementById('msgs').innerHTML = ''; }
+function addMsg(txt, type='info') {
+    const el = document.createElement('div');
+    el.className = 'msg ' + type;
+    el.textContent = txt;
+    document.getElementById('msgs').appendChild(el);
+}
+function clearAll() {
+    document.getElementById('mainInput').value = '';
+    clearMsgs();
+    document.getElementById('results').classList.remove('show');
+    document.getElementById('exBtn').style.display = 'none';
+    document.getElementById('lineCount').textContent = '';
+    AS.lastResult = null;
+}
+function updateLineCount() {
+    const lines = document.getElementById('mainInput').value.split('\n').filter(l=>l.trim()).length;
+    document.getElementById('lineCount').textContent = lines > 0 ? `${lines}개 제품` : '';
+}
+function toggleCard(bodyId, arrId) {
+    const body = document.getElementById(bodyId);
+    const arr  = document.getElementById(arrId);
+    const cardHead = body.previousElementSibling;
+    const hidden = body.style.display === 'none';
+    body.style.display = hidden ? 'block' : 'none';
+    arr.style.transform = hidden ? '' : 'rotate(-90deg)';
+    if (cardHead) cardHead.classList.toggle('collapsed', !hidden);
+}
+let _tid;
+function toast(msg, cls='') {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.className = cls;
+    el.classList.add('show');
+    clearTimeout(_tid);
+    _tid = setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+/* ================================================================
+   AUTO-LOAD: 같은 폴더의 JSON 파일을 새로고침 없이 자동으로 불러오기
+================================================================ */
+async function autoLoadFiles() {
+    let loadedCount = 0;
+    
+    // 1. 보안 정책(CORS) 우회를 위해 먼저 localStorage (이전에 수동 업로드한 캐시)에서 로드 시도
+    try {
+        const savedD2s = localStorage.getItem('dsr_d2s');
+        if (savedD2s) { loadD2sByObj(JSON.parse(savedD2s)); loadedCount++; }
+
+        const savedWd = localStorage.getItem('dsr_wd');
+        if (savedWd) { loadWdByObj(JSON.parse(savedWd)); loadedCount++; }
+
+        const savedTs = localStorage.getItem('dsr_ts');
+        if (savedTs) { loadTsByObj(JSON.parse(savedTs)); loadedCount++; }
+    } catch(err) {
+        console.warn('LocalStorage load failed:', err);
+    }
+
+    if (loadedCount > 0) {
+        toast(`✅ 이전 업로드된 데이터 파일 자동 로드 완료 (${loadedCount}종류)`, 'ts');
+    }
+
+    // 2. 만약 localStorage 기반 로드에 실패한 종류가 있거나 로컬 서버 환경일 경우, fetch API 호출(서버 환경 대응)
+    const files = [
+        { name: 'design_to_struct.json', handler: 'loadD2sByObj',    loadedCheck: AS.loaded.design },
+        { name: 'wire_design.json',      handler: 'loadWdByObj',     loadedCheck: AS.loaded.wire },
+        { name: 'wire_ts_grade_middle.json', handler: 'loadTsByObj', loadedCheck: AS.loaded.ts },
+    ];
+
+    let fetchLoaded = 0;
+    for (const f of files) {
+        // 이미 localStorage로 업로드한 상태면 건너뜀 (업데이트된 스토리지 값 유지 목적)
+        if (f.loadedCheck && loadedCount > 0) continue; 
+        
+        try {
+            const res = await fetch(f.name);
+            if (!res.ok) continue;
+            const json = await res.json();
+            window[f.handler](json);
+            
+            // 로컬 서버에서 직접 읽어온 데이터도 로컬스토리지에 저장하여, 다음엔 서버 없이 파일로만 열어도 작동하게 지원
+            const rawText = JSON.stringify(json);
+            try {
+                if(f.name.includes('d2s')) localStorage.setItem('dsr_d2s', rawText);
+                if(f.name.includes('wd')) localStorage.setItem('dsr_wd', rawText);
+                if(f.name.includes('ts')) localStorage.setItem('dsr_ts', rawText);
+            } catch(e) {}
+            
+            fetchLoaded++;
+        } catch(e) {
+            // 파일이 없거나 fetch 실패 시 조용히 넘어감 (더블클릭 시 cors 에러 등)
+        }
+    }
+    
+    if (fetchLoaded > 0 && loadedCount === 0) {
+        toast(`✅ 폴더 안의 데이터 파일 자동 로드 완료`, 'ts');
+    }
+}
+
+// design_to_struct 직접 객체 주입용
+function loadD2sByObj(raw) {
+    AS.designToStruct = {};
+    let cnt = 0;
+    for (const [k, v] of Object.entries(raw)) {
+        if (typeof v === 'string' && v && v !== 'nan') { AS.designToStruct[k] = v; cnt++; }
+    }
+    AS.loaded.design = cnt > 0;
+    markZone('z-d2s','cnt-d2s', cnt, '개');
+    updateStatus();
+}
+
+// wire_design 직접 객체 주입용
+function loadWdByObj(raw) {
+    AS.wireDesign = {}; AS.drRatioMap = {};
+    let cnt = 0;
+    for (const [struct, design] of Object.entries(raw)) {
+        const parsed = {};
+        if (design.dr_ratio) AS.drRatioMap[struct] = design.dr_ratio;
+        for (const [k, v] of Object.entries(design)) {
+            if (!k.startsWith('d') || k === 'dr_ratio') continue;
+            if (Array.isArray(v)) {
+                parsed[k] = {coeff:v[0], st_count:v[1]||1, wire_count:v[2]||1};
+            } else if (typeof v === 'object') {
+                parsed[k] = {
+                    coeff: v.coeff || v.coefficient || v.c || 0,
+                    st_count: v.st_count || v.stCount || v.strand || 1,
+                    wire_count: v.wire_count || v.wireCount || v.wire || 1
+                };
+            }
+        }
+        if (Object.keys(parsed).length > 0) { AS.wireDesign[struct] = parsed; cnt++; }
+    }
+    AS.loaded.wire = cnt > 0;
+    markZone('z-wd','cnt-wd', cnt, '개 구조');
+    updateStatus();
+}
+
+// wire_ts_grade_middle 직접 객체 주입용
+function loadTsByObj(raw) {
+    AS.tsGradeData = []; AS.diaGradeToMiddle = {};
+    let cnt = 0;
+    if (Array.isArray(raw)) {
+        for (const it of raw) {
+            const wd = parseFloat(it.wire_dia||it.wireDia||it.dia||0);
+            const ts = parseFloat(it.ts||it.TS||0);
+            const gr = String(it.grade||it.Grade||'');
+            const md = String(it.middle_wire||it.middle||it.middleWire||'');
+            AS.tsGradeData.push({wireDia:wd, ts, grade:gr, middle:md});
+            if (gr && md) {
+                const k = fmt(wd,2)+'|'+gr;
+                if (!AS.diaGradeToMiddle[k]) AS.diaGradeToMiddle[k] = md;
+            }
+            cnt++;
+        }
+    }
+    AS.loaded.ts = cnt > 0;
+    markZone('z-ts','cnt-ts', cnt, '개');
+    updateStatus();
+}
+
+// 페이지 로드 시 자동 실행
+window.addEventListener('DOMContentLoaded', () => { autoLoadFiles(); });
+
+</script>
+</body>
+</html>
