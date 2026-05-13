@@ -1063,6 +1063,7 @@ function doCalc() {
         }
 
         // Wire design lookup
+        struct = resolveStructVariant(struct, dia); // 직경 기준 이하/이상 variant 선택
         let wireDesign = AS.wireDesign[struct];
         if (!wireDesign) {
             // Try normalized (× ↔ x, space removal)
@@ -1142,6 +1143,31 @@ function doCalc() {
     const agg = aggregate(products);
     AS.lastResult = { products, agg, failedItems };
     renderResults(products, agg, failedItems);
+}
+
+function shortGrade(g) {
+    const m = String(g).match(/(\d+)/);
+    return m ? m[1] : g;
+}
+function shortTs(ts) {
+    const n = parseFloat(ts) || 0;
+    return n > 500 ? Math.round(n / 10) : n;
+}
+
+function resolveStructVariant(struct, dia) {
+    if (AS.wireDesign[struct]) return struct; // 정확히 일치하면 그대로
+    const esc = struct.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const ihaRe = new RegExp('^' + esc + '\\s*\\((\\d+)mm이하\\)?$');
+    const isaRe  = new RegExp('^' + esc + '\\s*\\((\\d+)mm이상\\)?');
+    const ihaKeys = Object.keys(AS.wireDesign).filter(k => ihaRe.test(k))
+        .sort((a,b) => parseInt(b.match(/(\d+)mm이하/)[1]) - parseInt(a.match(/(\d+)mm이하/)[1]));
+    const isaKeys = Object.keys(AS.wireDesign).filter(k => isaRe.test(k))
+        .sort((a,b) => parseInt(a.match(/(\d+)mm이상/)[1]) - parseInt(b.match(/(\d+)mm이상/)[1]));
+    if (!ihaKeys.length && !isaKeys.length) return struct;
+    for (const k of ihaKeys) {
+        if (dia <= parseInt(k.match(/(\d+)mm이하/)[1])) return k;
+    }
+    return isaKeys[0] || ihaKeys[ihaKeys.length - 1] || struct;
 }
 
 function fuzzyFind(name) {
@@ -1316,7 +1342,7 @@ function renderResults(products, agg, failedItems=[]) {
 
                     return `<tr style="cursor:pointer;" onclick="toggleTR('${trId}')" title="클릭하여 사용 제품 목록 확인 (펼치기/접기)">
                         <td><span class="tag ${tagCls}">${tagTxt}</span></td>
-                        <td>${e.grade}</td>
+                        <td>${shortGrade(e.grade)}</td>
                         <td><strong>Φ${e.midDia.toFixed(1)}mm</strong></td>
                         <td>${e.midDia.toFixed(1)}</td>
                         <td><strong>${fmt(e.need)}</strong></td>
@@ -1356,14 +1382,14 @@ function renderResults(products, agg, failedItems=[]) {
         const coatTag = coat === 'G'
             ? `<span class="tag tag-g">G 도금</span>`
             : coat === 'U' ? `<span class="tag tag-u">U 비도금</span>` : '';
-        const grTag = `<span class="tag tag-grade">${prd.grade}</span>`;
+        const grTag = `<span class="tag tag-grade">${shortGrade(prd.grade)}</span>`;
 
         const stockNote = prd.stock > 0
             ? `<span style="color:var(--amber);font-size:.72rem;">현재고 ${fmt(prd.stock)}kg → 발주 ${fmt(prd.orderWkg)}kg</span>`
             : '';
 
         const wireRows = prd.wires.map(w => {
-            const midStr = w.midWire ? `${w.grade} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
+            const midStr = w.midWire ? `${shortGrade(w.grade)} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
             return `<tr>
                 <td>${w.key}</td>
                 <td>${fmt(w.wireDia,3)}</td>
@@ -1387,7 +1413,7 @@ function renderResults(products, agg, failedItems=[]) {
                 <div class="acc-meta">
                     ${coatTag} ${grTag}
                     <span style="font-size:.75rem;color:var(--t2)">DIA ${prd.dia}mm</span>
-                    <span style="font-size:.75rem;color:var(--t2)">TS ${prd.ts}</span>
+                    <span style="font-size:.75rem;color:var(--t2)">TS ${shortTs(prd.ts)}</span>
                     <span style="font-size:.75rem;color:var(--t2)">${fmt(prd.prodM)}m</span>
                     <span style="font-size:.78rem;font-weight:700;">${fmt(prd.totalWkg)}kg</span>
                     ${stockNote}
@@ -1553,17 +1579,17 @@ function doExport() {
     XLSX.utils.book_append_sheet(wb, wsSum, '제품요약');
 
     // Wire detail sheet
-    const detHdr = ['작업번호','설계명','구조','소선(d)','소선경(mm)','ST수','소선수/ST','총 본수','총단면적(mm²)','무게(kg)','중간선'];
+    const detHdr = ['작업번호','설계명','구조','강도(TS)','소선(d)','소선경(mm)','ST수','소선수/ST','총 본수','총단면적(mm²)','무게(kg)','중간선'];
     const detRows = [detHdr];
     for (const p of products) {
         for (const w of p.wires) {
             const mid = w.midWire ? `${p.grade} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
-            detRows.push([p.jobNo, p.designIn, p.struct, w.key, parseFloat(w.wireDia.toFixed(3)), w.stCnt, w.wireCnt,
+            detRows.push([p.jobNo, p.designIn, p.struct, shortTs(p.ts), w.key, parseFloat(w.wireDia.toFixed(3)), w.stCnt, w.wireCnt,
                 w.cnt, parseFloat(w.totA.toFixed(4)), parseFloat(w.wkg.toFixed(3)), mid]);
         }
     }
     const wsDet = XLSX.utils.aoa_to_sheet(detRows);
-    wsDet['!cols'] = [{wch:12},{wch:18},{wch:20},{wch:8},{wch:12},{wch:8},{wch:10},{wch:8},{wch:14},{wch:12},{wch:20}];
+    wsDet['!cols'] = [{wch:12},{wch:18},{wch:20},{wch:10},{wch:8},{wch:12},{wch:8},{wch:10},{wch:8},{wch:14},{wch:12},{wch:20}];
     XLSX.utils.book_append_sheet(wb, wsDet, '소선상세');
 
     const today = new Date().toISOString().slice(0,10);
@@ -1745,7 +1771,7 @@ function showUnmappedModal(failedItems) {
             ${f.struct ? `<span style="color:#6b7280;font-size:0.78rem;margin-left:6px;">→ ${f.struct}</span>` : ''}
           </div>
           <div style="color:#9ca3af;font-size:0.8rem;text-align:right;">
-            DIA ${f.dia}mm&nbsp;/&nbsp;TS ${f.ts}&nbsp;/&nbsp;${fmt(f.prodKg)}kg${f.count > 1 ? ` (${f.count}건)` : ''}
+            DIA ${f.dia}mm&nbsp;/&nbsp;TS ${shortTs(f.ts)}&nbsp;/&nbsp;${fmt(f.prodKg)}kg${f.count > 1 ? ` (${f.count}건)` : ''}
           </div>
         </div>`).join('');
     document.getElementById('unmapped-modal').style.display = 'flex';
@@ -1754,7 +1780,7 @@ function closeUnmappedModal() {
     document.getElementById('unmapped-modal').style.display = 'none';
 }
 function copyUnmapped() {
-    const txt = _unmappedList.map(f => `${f.designIn}\tDIA${f.dia}\tTS${f.ts}\t${fmt(f.prodKg)}kg`).join('\n');
+    const txt = _unmappedList.map(f => `${f.designIn}\tDIA${f.dia}\tTS${shortTs(f.ts)}\t${fmt(f.prodKg)}kg`).join('\n');
     navigator.clipboard.writeText(txt).then(() => toast('📋 복사 완료', 'ts'));
 }
 
