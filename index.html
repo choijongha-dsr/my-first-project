@@ -214,6 +214,7 @@ table.u-tbl thead th:first-child{border-left:3px solid var(--indigo);}
     <span class="nav-title">소선 발주 계산 시스템</span>
     <div class="nav-sp"></div>
     <a href="index.html" class="nav-link">홈</a>
+    <a href="dsr_stranding/stranding.html" class="nav-link" style="background:rgba(192,57,43,0.18);color:#e74c3c;border-radius:6px;padding:4px 10px;font-weight:700;">📋 연선공정표</a>
     <span class="nav-badge">TOOL</span>
 </nav>
 
@@ -237,14 +238,7 @@ table.u-tbl thead th:first-child{border-left:3px solid var(--indigo);}
             </div>
             <div class="card-body" id="cb1">
                 <div class="upload-grid">
-                    <div class="zone" id="z-xl" ondragover="doDragOver(event,'z-xl')" ondragleave="doDragLeave('z-xl')" ondrop="doDrop(event,'xl')">
-                        <input type="file" id="f-xl" accept=".xlsx,.xls" onchange="loadXlsx(this)">
-                        <span class="zone-icon">📊</span>
-                        <div class="zone-name">설계통합.xlsx</div>
-                        <div class="zone-hint">Q열(설계명)→S열(구조)</div>
-                        <div class="zone-count" id="cnt-xl"></div>
-                    </div>
-                    <div class="zone" id="z-d2s" ondragover="doDragOver(event,'z-d2s')" ondragleave="doDragLeave('z-d2s')" ondrop="doDrop(event,'d2s')">
+<div class="zone" id="z-d2s" ondragover="doDragOver(event,'z-d2s')" ondragleave="doDragLeave('z-d2s')" ondrop="doDrop(event,'d2s')">
                         <input type="file" id="f-d2s" accept=".json" onchange="loadD2s(this)">
                         <span class="zone-icon">🗂️</span>
                         <div class="zone-name">design_to_struct.json</div>
@@ -318,12 +312,6 @@ table.u-tbl thead th:first-child{border-left:3px solid var(--indigo);}
                         <input type="number" class="sg-input w-sm" id="tsAlt" value="1770" step="10">
                         <span>으로 대체</span>
                     </div>
-                    <div class="sg">
-                        <label>XLSX 설계명 열 (0-indexed)</label>
-                        <input type="number" class="sg-input w-sm" id="xlQcol" value="16" min="0" max="50">
-                        <label>→ 구조 열</label>
-                        <input type="number" class="sg-input w-sm" id="xlScol" value="18" min="0" max="50">
-                    </div>
                 </div>
             </div>
         </div>
@@ -388,6 +376,25 @@ table.u-tbl thead th:first-child{border-left:3px solid var(--indigo);}
 </div>
 
 <div id="toast"></div>
+
+<!-- 매핑 실패 알림 모달 -->
+<div id="unmapped-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
+  <div style="background:#1a1c24;border:1px solid rgba(230,57,70,0.4);border-radius:14px;width:min(560px,92vw);max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.6);">
+    <div style="padding:1.1rem 1.3rem 0.8rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:0.7rem;">
+      <span style="font-size:1.3rem;">⚠️</span>
+      <div>
+        <div style="font-weight:700;color:#f0f0f3;font-size:0.95rem;" id="um-title">소선 설계 미매핑 항목</div>
+        <div style="font-size:0.72rem;color:#9ca3af;margin-top:2px;">구조 미등록 또는 설계명 인식 불가 — 아래 항목은 계산에서 제외됩니다</div>
+      </div>
+      <button onclick="closeUnmappedModal()" style="margin-left:auto;background:none;border:none;color:#6b7280;font-size:1.2rem;cursor:pointer;padding:4px;">✕</button>
+    </div>
+    <div style="overflow-y:auto;padding:0.8rem 1.3rem;flex:1;" id="um-list"></div>
+    <div style="padding:0.8rem 1.3rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;gap:0.6rem;justify-content:flex-end;">
+      <button onclick="copyUnmapped()" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#d1d5db;border-radius:7px;padding:0.4rem 0.9rem;font-size:0.78rem;cursor:pointer;">📋 목록 복사</button>
+      <button onclick="closeUnmappedModal()" style="background:#e63946;border:none;color:#fff;border-radius:7px;padding:0.4rem 0.9rem;font-size:0.78rem;cursor:pointer;font-weight:600;">확인</button>
+    </div>
+  </div>
+</div>
 
 <script>
 /* ================================================================
@@ -527,9 +534,9 @@ function findMiddleWire(wireDia, grade, tsEff) {
             
             if (score < bestD - 0.0001) {
                 bestD = score;
-                candidates = [e.middle];
+                candidates = [{ middle: e.middle, grade: e.grade }];
             } else if (Math.abs(score - bestD) <= 0.0001) {
-                candidates.push(e.middle);
+                candidates.push({ middle: e.middle, grade: e.grade });
             }
         }
         
@@ -538,22 +545,23 @@ function findMiddleWire(wireDia, grade, tsEff) {
             const counts = {};
             let maxCount = 0;
             let mode = candidates[0];
-            for (const m of candidates) {
-                if (!m) continue;
-                counts[m] = (counts[m] || 0) + 1;
-                if (counts[m] > maxCount) {
-                    maxCount = counts[m];
-                    mode = m;
+            for (const c of candidates) {
+                if (!c.middle) continue;
+                const key = c.grade + '|' + c.middle;
+                counts[key] = (counts[key] || 0) + 1;
+                if (counts[key] > maxCount) {
+                    maxCount = counts[key];
+                    mode = c;
                 }
             }
-            return mode;
+            return mode; // returns { middle, grade }
         }
     }
 
     // 2. Exact match in diaGradeToMiddle (기존 로직: Fallback)
     const roundDia = roundTo(wireDia, 0.05);
     const key = fmt(roundDia, 2) + '|' + grade;
-    if (AS.diaGradeToMiddle[key]) return AS.diaGradeToMiddle[key];
+    if (AS.diaGradeToMiddle[key]) return { middle: AS.diaGradeToMiddle[key], grade: grade };
 
     // 3. Tolerance search (±0.12mm)
     let bestFall = null, bestFallD = Infinity;
@@ -561,7 +569,7 @@ function findMiddleWire(wireDia, grade, tsEff) {
         const parts = k.split('|');
         if (parts.length === 2 && parts[1] === grade) {
             const d = Math.abs(parseFloat(parts[0]) - wireDia);
-            if (d < 0.12 && d < bestFallD) { bestFallD = d; bestFall = v; }
+            if (d < 0.12 && d < bestFallD) { bestFallD = d; bestFall = { middle: v, grade: grade }; }
         }
     }
     if (bestFall) return bestFall;
@@ -571,13 +579,13 @@ function findMiddleWire(wireDia, grade, tsEff) {
         const parts = k.split('|');
         if (parts.length === 2) {
             const d = Math.abs(parseFloat(parts[0]) - wireDia);
-            if (d < 0.08 && d < bestFallD) { bestFallD = d; bestFall = v; }
+            if (d < 0.08 && d < bestFallD) { bestFallD = d; bestFall = { middle: v, grade: parts[1] }; }
         }
     }
     if (bestFall) return bestFall;
 
     // 5. Estimate: ~2.6x wire diameter, snap to standard sizes
-    return estimateMid(wireDia);
+    return { middle: estimateMid(wireDia), grade: grade };
 }
 
 function estimateMid(wireDia) {
@@ -600,42 +608,15 @@ function doDrop(e, type) {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (!file) return;
-    const handlers = { xl:loadXlsx, d2s:loadD2s, wd:loadWireDesign, ts:loadTsGrade, inv:loadInventoryXlsx };
+    const handlers = { d2s:loadD2s, wd:loadWireDesign, ts:loadTsGrade, inv:loadInventoryXlsx };
     if (handlers[type]) handlers[type]({ files:[file] });
-    const zoneMap = { xl:'z-xl', d2s:'z-d2s', wd:'z-wd', ts:'z-ts', inv:'z-inv' };
-    document.getElementById(zoneMap[type]).classList.remove('drag-over');
+    const zoneMap = { d2s:'z-d2s', wd:'z-wd', ts:'z-ts', inv:'z-inv' };
+    if (zoneMap[type]) document.getElementById(zoneMap[type]).classList.remove('drag-over');
 }
 
 /* ================================================================
    FILE LOADERS
 ================================================================ */
-function loadXlsx(inp) {
-    const file = (inp.files||inp)[0];
-    if (!file) return;
-    const qc = parseInt(document.getElementById('xlQcol').value) || 16;
-    const sc = parseInt(document.getElementById('xlScol').value) || 18;
-    const rd = new FileReader();
-    rd.onload = e => {
-        try {
-            const wb = XLSX.read(e.target.result, {type:'array'});
-            const ws = wb.Sheets[wb.SheetNames[0]];
-            const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
-            let cnt = 0;
-            for (let i = 1; i < data.length; i++) {
-                const row = data[i];
-                const dn = String(row[qc] || '').trim();
-                const st = String(row[sc] || '').trim();
-                if (dn && st) { AS.designToStruct[dn] = st; cnt++; }
-            }
-            AS.loaded.design = cnt > 0;
-            markZone('z-xl', 'cnt-xl', cnt, '개 설계');
-            updateStatus();
-            toast(`✅ 설계통합.xlsx: ${cnt}개 로드`, 'ts');
-        } catch(err) { toast(`❌ xlsx 오류: ${err.message}`, 'te'); }
-    };
-    rd.readAsArrayBuffer(file);
-}
-
 function loadD2s(inp) {
     const file = (inp.files||inp)[0];
     if (!file) return;
@@ -920,12 +901,12 @@ function loadDemo() {
     }
 
     AS.loaded.design = true; AS.loaded.wire = true; AS.loaded.ts = true;
+    AS.tsGradeData = [];
 
-    ['xl','d2s','wd','ts'].forEach(id => document.getElementById('z-'+id).classList.add('loaded'));
-    document.getElementById('cnt-xl').textContent = Object.keys(AS.designToStruct).length + '개 설계 (데모)';
-    document.getElementById('cnt-d2s').textContent = '(데모 - xlsx로 로드됨)';
-    document.getElementById('cnt-wd').textContent = Object.keys(AS.wireDesign).length + '개 구조 (데모)';
-    document.getElementById('cnt-ts').textContent = Object.keys(AS.diaGradeToMiddle).length + '개 (데모)';
+    ['d2s','wd','ts'].forEach(id => document.getElementById('z-'+id).classList.add('loaded'));
+    document.getElementById('cnt-d2s').textContent = Object.keys(AS.designToStruct).length + '개 설계 (데모)';
+    document.getElementById('cnt-wd').textContent = '로딩중...';
+    document.getElementById('cnt-ts').textContent = '로딩중...';
 
     document.getElementById('mainInput').value =
         'JOB-01\t24\t6x19W(S)+IWRC-G\t1960\t5000\n' +
@@ -936,7 +917,56 @@ function loadDemo() {
 
     updateLineCount();
     updateStatus();
-    toast('✅ 데모 데이터 로드 완료! "발주량 계산" 버튼을 클릭하세요.', 'ts');
+
+    // design_to_struct.json 비동기 로드
+    fetch('design_to_struct.json')
+        .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
+        .then(raw => {
+            let cnt = 0;
+            for (const [k, v] of Object.entries(raw)) { AS.designToStruct[k] = v; cnt++; }
+            AS.loaded.design = true;
+            document.getElementById('z-d2s').classList.add('loaded');
+            document.getElementById('cnt-d2s').textContent = cnt + '개 (실제데이터)';
+        })
+        .catch(() => {});
+
+    // wire_design.json 비동기 로드 (104개 구조)
+    fetch('wire_design.json')
+        .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
+        .then(raw => {
+            for (const [k, v] of Object.entries(raw)) AS.wireDesign[k] = v;
+            for (const k of Object.keys(AS.wireDesign)) {
+                if (!AS.drRatioMap[k])
+                    AS.drRatioMap[k] = /6×7/.test(k) ? 0.92 : /8x|8×/.test(k) ? 0.88 : 1.03;
+            }
+            document.getElementById('cnt-wd').textContent = Object.keys(AS.wireDesign).length + '개 구조 (실제데이터)';
+        })
+        .catch(() => {
+            document.getElementById('cnt-wd').textContent = Object.keys(AS.wireDesign).length + '개 구조 (데모)';
+        });
+
+    // 실제 생산 데이터(wire_ts_data.json) 비동기 로드
+    fetch('wire_ts_grade_middle.json')
+        .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
+        .then(raw => {
+            AS.tsGradeData = raw.map(it => ({
+                wireDia: it.wire_dia,
+                ts: it.ts,
+                grade: it.grade,
+                middle: it.middle_wire
+            }));
+            // diaGradeToMiddle도 함께 갱신 (grade별 중간선 fallback)
+            for (const it of AS.tsGradeData) {
+                const k = fmt(it.wireDia, 2) + '|' + it.grade;
+                if (!AS.diaGradeToMiddle[k]) AS.diaGradeToMiddle[k] = it.middle;
+            }
+            document.getElementById('cnt-ts').textContent = AS.tsGradeData.length + '개 (실제생산데이터)';
+            toast('📊 실제 생산데이터 로드 완료! (' + AS.tsGradeData.length + '개 중간선 매핑)', 'ts');
+        })
+        .catch(() => {
+            document.getElementById('cnt-ts').textContent = Object.keys(AS.diaGradeToMiddle).length + '개 (기본값)';
+            toast('✅ 데모 데이터 로드 완료! "발주량 계산" 버튼을 클릭하세요.', 'ts');
+        });
 }
 
 /* ================================================================
@@ -1053,16 +1083,21 @@ function doCalc() {
         const coating  = extractCoating(designIn) || extractCoating(struct);
         const coreType = extractCoreType(struct);
         const eppCore  = useEpp && isEppCore(struct);
-        const fcCore   = fcExclude && isFcCore(struct);
+        const fcCore   = isFcCore(struct); // FC/PP/사이잘 코어 여부 (항상 체크)
         const drRatio  = AS.drRatioMap[struct] || defDr;
         const grade    = getTsGrade(tsEff);
+
+        // FC/PP 코어: wireDesign의 __iwrc__ 소선 제외 목록
+        const iwrcExcl = fcCore && wireDesign.__iwrc__ ? new Set(wireDesign.__iwrc__) : null;
 
         // Calculate wires
         const wires = [];
         let totalArea = 0;
 
         for (const [dk, wd] of Object.entries(wireDesign)) {
+            if (dk === '__iwrc__') continue; // 메타데이터 키 스킵
             if (eppCore && EPP_EXCL.has(dk)) continue;
+            if (iwrcExcl && iwrcExcl.has(dk)) continue; // FC/PP 코어: IWRC 소선 제외
             const wireDia = dia * drRatio * wd.coeff;
             const wArea   = PI4 * wireDia * wireDia;
             const cnt     = (wd.st_count||1) * (wd.wire_count||1);
@@ -1080,7 +1115,9 @@ function doCalc() {
         for (const w of wires) {
             w.wkg       = (w.totA / totalArea) * totalWkg;
             w.orderWkg  = (w.totA / totalArea) * orderWkg;
-            w.midWire   = findMiddleWire(w.wireDia, grade, tsEff);
+            const midInfo = findMiddleWire(w.wireDia, grade, tsEff);
+            w.midWire   = midInfo.middle;
+            w.grade     = midInfo.grade || grade;
         }
 
         products.push({
@@ -1097,7 +1134,10 @@ function doCalc() {
 
     if (products.length === 0 && failedItems.length === 0) { addMsg('❌ 계산 가능한 데이터가 없습니다','error'); return; }
     if (products.length > 0) addMsg(`✅ 총 ${products.length}개 제품 계산 완료`, 'success');
-    if (failedItems.length > 0) addMsg(`⚠️ 소선 설계 없음 ${failedItems.length}개 설계명 — 결과 화면 하단 확인`, 'warn');
+    if (failedItems.length > 0) {
+        addMsg(`⚠️ 소선 설계 없음 ${failedItems.length}개 설계명 — 결과 화면 하단 확인`, 'warn');
+        showUnmappedModal(failedItems);
+    }
 
     const agg = aggregate(products);
     AS.lastResult = { products, agg, failedItems };
@@ -1188,13 +1228,13 @@ function aggregate(products) {
             const coat = prd.coating || 'U';
             
             // Normalize grade for inventory matching (e.g. "SWRH72A" -> "72")
-            let gradeNorm = String(prd.grade);
+            let gradeNorm = String(w.grade);
             const gm = gradeNorm.match(/([6789][0-9])/);
             if (gm) gradeNorm = gm[1];
             const invKey = `${coat}|${gradeNorm}|${midDia}`;
             
-            const key = `${coat}|${prd.grade}|${midDia}`;
-            if (!agg[key]) agg[key] = { coating:coat, grade:prd.grade, invKey:invKey, midDia:parseFloat(midDia), need:0, stock:0, order:0, refs:[] };
+            const key = `${coat}|${w.grade}|${midDia}`;
+            if (!agg[key]) agg[key] = { coating:coat, grade:w.grade, invKey:invKey, midDia:parseFloat(midDia), need:0, stock:0, order:0, refs:[] };
             agg[key].need  += w.wkg;
             agg[key].order += w.orderWkg;
 
@@ -1323,7 +1363,7 @@ function renderResults(products, agg, failedItems=[]) {
             : '';
 
         const wireRows = prd.wires.map(w => {
-            const midStr = w.midWire ? `${prd.grade} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
+            const midStr = w.midWire ? `${w.grade} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
             return `<tr>
                 <td>${w.key}</td>
                 <td>${fmt(w.wireDia,3)}</td>
@@ -1692,6 +1732,30 @@ function loadTsByObj(raw) {
     AS.loaded.ts = cnt > 0;
     markZone('z-ts','cnt-ts', cnt, '개');
     updateStatus();
+}
+
+let _unmappedList = [];
+function showUnmappedModal(failedItems) {
+    _unmappedList = failedItems;
+    document.getElementById('um-title').textContent = `소선 설계 미매핑 항목 (${failedItems.length}개)`;
+    document.getElementById('um-list').innerHTML = failedItems.map(f => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <div>
+            <span style="color:#f59e0b;font-weight:600;font-size:0.88rem;">${f.designIn}</span>
+            ${f.struct ? `<span style="color:#6b7280;font-size:0.78rem;margin-left:6px;">→ ${f.struct}</span>` : ''}
+          </div>
+          <div style="color:#9ca3af;font-size:0.8rem;text-align:right;">
+            DIA ${f.dia}mm&nbsp;/&nbsp;TS ${f.ts}&nbsp;/&nbsp;${fmt(f.prodKg)}kg${f.count > 1 ? ` (${f.count}건)` : ''}
+          </div>
+        </div>`).join('');
+    document.getElementById('unmapped-modal').style.display = 'flex';
+}
+function closeUnmappedModal() {
+    document.getElementById('unmapped-modal').style.display = 'none';
+}
+function copyUnmapped() {
+    const txt = _unmappedList.map(f => `${f.designIn}\tDIA${f.dia}\tTS${f.ts}\t${fmt(f.prodKg)}kg`).join('\n');
+    navigator.clipboard.writeText(txt).then(() => toast('📋 복사 완료', 'ts'));
 }
 
 // 페이지 로드 시 자동 실행
