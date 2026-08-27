@@ -165,11 +165,13 @@ table.dt tbody tr:hover td{background:rgba(255,255,255,.025);}
 table.dt .tr-total td{background:rgba(255,255,255,.05)!important;border-top:1px solid var(--border);font-weight:700;}
 table.g-tbl thead th:first-child{border-left:3px solid var(--amber);}
 table.u-tbl thead th:first-child{border-left:3px solid var(--indigo);}
+table.y-tbl thead th:first-child{border-left:3px solid #2dd4bf;}
 .tag{display:inline-flex;align-items:center;font-size:.68rem;padding:.1rem .45rem;border-radius:4px;font-weight:700;}
 .tag-g{background:var(--amber-bg);color:var(--amber);}
 .tag-u{background:var(--indigo-bg);color:var(--indigo);}
 .tag-grade{background:rgba(255,255,255,.07);color:var(--t2);}
 .tag-fail{background:rgba(239,68,68,.15);color:#f87171;}
+.tag-yulchon{background:rgba(20,184,166,.15);color:#2dd4bf;}
 /* Accordion */
 .acc{border:1px solid var(--border);border-radius:var(--rs);overflow:hidden;margin-bottom:.5rem;}
 .acc-h{display:flex;align-items:center;gap:.65rem;padding:.8rem 1rem;cursor:pointer;user-select:none;transition:background .15s;min-width:0;}
@@ -302,6 +304,10 @@ table.u-tbl thead th:first-child{border-left:3px solid var(--indigo);}
                         <label for="chkFcExclude">FC/EPP 코아 소선 발주에서 제외</label>
                     </div>
                     <div class="sg">
+                        <input type="checkbox" id="chkMinRr">
+                        <label for="chkMinRr">TS별 최소 감면율 하한 보정 사용 (86%, 83%, 83%) <span style="font-size:.72rem;color:var(--t3);">[데이터 기반 보정, 기본OFF]</span></label>
+                    </div>
+                    <div class="sg">
                         <input type="checkbox" id="chkTsSub" onchange="document.getElementById('tsSub').style.display=this.checked?'flex':'none'">
                         <label for="chkTsSub">TS 대체 로직 사용</label>
                     </div>
@@ -360,6 +366,7 @@ table.u-tbl thead th:first-child{border-left:3px solid var(--indigo);}
         <div class="panel on" id="tp-order">
             <div id="orderG" style="margin-bottom:2rem;"></div>
             <div id="orderU"></div>
+            <div id="orderYulchon"></div>
         </div>
 
         <!-- Tab: 제품별 상세 -->
@@ -415,6 +422,18 @@ const AS = {
    UTILITY
 ================================================================ */
 const PI4 = Math.PI / 4;
+
+// 중간선 문자열 파싱: 다양한 오타/표기 정규화 → 숫자(mm)
+function parseMidStr(raw) {
+    let s = String(raw || '').trim();
+    s = s.split('~')[0].split('가라')[0].split('[')[0].trim(); // 범위/잡음 제거
+    s = s.replace(/\.,/g, '.')      // "3.,5"  → "3.5"
+         .replace(/,\./g, '.')      // "3,.50" → "3.50"
+         .replace(/(\d),(\d)/g, '$1.$2')  // "2,5"  → "2.5"
+         .replace(/(\d)'(\d)/g, '$1.$2')  // "3'8"  → "3.8"
+         .replace(/(\d)[;:](\d)/g, '$1.$2'); // "3;0" → "3.0"
+    return parseFloat(s);
+}
 
 function extractCoating(s) {
     if (!s) return null;
@@ -500,9 +519,10 @@ function getTsGrade(ts) {
             return mode;
         }
     }
-    // 2. Default table
+    // 2. Default table — TS_GRADE_TBL은 MPa 기준이므로 kgf/mm² 입력 시 변환
+    const tsMpa = (ts > 0 && ts < 500) ? ts * 10 : ts;
     for (const row of TS_GRADE_TBL) {
-        if (ts >= row.min && ts <= row.max) return row.g;
+        if (tsMpa >= row.min && tsMpa <= row.max) return row.g;
     }
     return 'EEIPS';
 }
@@ -510,93 +530,126 @@ function getTsGrade(ts) {
 /* ================================================================
    MIDDLE WIRE LOOKUP
 ================================================================ */
-function findMiddleWire(wireDia, grade, tsEff) {
-    // 1. TS와 선경을 기준으로 2차신선 데이터(JSON)에서 가장 유사한 항목 찾기
-    if (AS.tsGradeData && AS.tsGradeData.length > 0 && tsEff) {
-        let bestD = Infinity;
-        let candidates = [];
+function findMiddleWire(wireDia, grade, tsEff, isGalvanized = false) {
+    if (!AS.tsGradeData || AS.tsGradeData.length === 0) return null;
 
-        let targetTs = tsEff;
-        if (targetTs > 0 && targetTs < 500) targetTs *= 10;
+    const coat = isGalvanized ? 'G' : 'U';
+    const gradeNum = (gr) => parseInt(String(gr).match(/(\d+)/)?.[1] || '0');
+    const targetTs = tsEff > 0 && tsEff < 500 ? tsEff * 10 : (tsEff || 0);
+    const tsKgf = targetTs > 500 ? targetTs / 10 : targetTs;
+    // TS별 감면율 최소 기준 (데이터 p25 기반) — 필터에서도 사용하기 위해 먼저 계산
+    const rrFloor = tsKgf >= 230 ? 88 : tsKgf >= 225 ? 87 : tsKgf >= 220 ? 86 : tsKgf >= 215 ? 85 : tsKgf >= 210 ? 84 : 82;
 
-        for (const e of AS.tsGradeData) {
-            let eTs = parseFloat(e.ts) || 0;
-            if (eTs > 0 && eTs < 500) eTs *= 10;
-            
-            // TS 오차가 너무 크면 무시
-            const tsDiff = Math.abs(eTs - targetTs);
-            if (tsDiff > 150) continue;
+    // G/U 구분하여 해당 도금 이력만 사용 (G면 72계 제외)
+    const coatFiltered = AS.tsGradeData.filter(e => {
+        const m = parseFloat(e.middle);
+        if (isNaN(m) || m < 1 || m > 20) return false;
+        if (e.coating !== coat) return false;
+        if (coat === 'G' && gradeNum(e.grade) <= 72) return false;
+        return true;
+    });
+    // 해당 도금 이력이 너무 적으면 전체 데이터로 폴백
+    const coatFilteredFull = coatFiltered.length >= 10 ? coatFiltered : AS.tsGradeData.filter(e => {
+        const m = parseFloat(e.middle);
+        if (isNaN(m) || m < 1 || m > 20) return false;
+        if (coat === 'G' && gradeNum(e.grade) <= 72) return false;
+        return true;
+    });
+    if (coatFilteredFull.length === 0) return null;
 
-            const wdDiff = Math.abs(parseFloat(e.wireDia) - wireDia);
-            
-            // 가중치: 선경 오차가 훨씬 중요하므로 tsDiff에 0.001 페널티만 부여
-            const score = wdDiff + (tsDiff * 0.001);
-            
-            if (score < bestD - 0.0001) {
-                bestD = score;
-                candidates = [{ middle: e.middle, grade: e.grade }];
-            } else if (Math.abs(score - bestD) <= 0.0001) {
-                candidates.push({ middle: e.middle, grade: e.grade });
+    // TS별 강종 필터: 195이하→72고정, 200~215→82이하 데이터기반(77포함), 220+→87고정
+    let gradeFiltered;
+    if (tsKgf <= 197) {
+        gradeFiltered = coatFilteredFull.filter(e => gradeNum(e.grade) === 72);
+    } else if (tsKgf > 215) {
+        gradeFiltered = coatFilteredFull.filter(e => gradeNum(e.grade) === 87);
+    } else {
+        // TS 200~215: 82 이하 (72, 77, 82) 데이터 기반
+        gradeFiltered = coatFilteredFull.filter(e => gradeNum(e.grade) <= 82);
+    }
+    const candidates = gradeFiltered.length >= 5 ? gradeFiltered : coatFilteredFull;
+
+    // 소선경 ±0.5mm 이내 우선 필터 → 부족하면 ±1.0mm, 그래도 부족하면 전체
+    const wdNarrow = candidates.filter(e => Math.abs(parseFloat(e.wireDia) - wireDia) <= 0.5);
+    const wdMid    = candidates.filter(e => Math.abs(parseFloat(e.wireDia) - wireDia) <= 1.0);
+    const wdPool   = wdNarrow.length >= 20 ? wdNarrow : wdMid.length >= 10 ? wdMid : candidates;
+
+    // TS 차이 정렬
+    wdPool.sort((a, b) => {
+        const aTs = parseFloat(a.ts) > 0 && parseFloat(a.ts) < 500 ? parseFloat(a.ts) * 10 : parseFloat(a.ts) || 0;
+        const bTs = parseFloat(b.ts) > 0 && parseFloat(b.ts) < 500 ? parseFloat(b.ts) * 10 : parseFloat(b.ts) || 0;
+        return Math.abs(aTs - targetTs) - Math.abs(bTs - targetTs);
+    });
+
+    // 상위 후보에서 감면율 기준 이상인 것만 투표, 없으면 기준 무시
+    const nearest = wdPool.slice(0, 50);
+    const weights = {}, gradeCnt = {};
+    for (const e of nearest) {
+        const eMid = parseFloat(e.middle);
+        const rr = (1 - (wireDia / eMid) ** 2) * 100;
+        if (rr < rrFloor || (rr > 90 && wireDia >= 1.0)) continue;
+        const diff = Math.abs(parseFloat(e.wireDia) - wireDia);
+        const w = 1 / (diff + 0.01);
+        const key = String(e.middle);
+        weights[key] = (weights[key] || 0) + w;
+        if (!gradeCnt[key]) gradeCnt[key] = {};
+        gradeCnt[key][e.grade] = (gradeCnt[key][e.grade] || 0) + 1;
+    }
+    // 각 중간선 경별 다수결 강종
+    const gradeOf = {};
+    for (const [key, cnt] of Object.entries(gradeCnt)) {
+        gradeOf[key] = Object.entries(cnt).sort((a, b) => b[1] - a[1])[0][0];
+    }
+
+    // 기준 충족 후보 없으면 감면율 내림차순으로 최대 감면율 후보 선택
+    let pool;
+    if (Object.keys(weights).length > 0) {
+        pool = weights;
+    } else {
+        // rrFloor 단계적 완화: 85% → 82% → 제한 없음
+        const fallbackFloors = [rrFloor - 3, 82, 0];
+        let fallbackWeights = {};
+        for (const fbFloor of fallbackFloors) {
+            fallbackWeights = {};
+            for (const e of nearest) {
+                const eMid = parseFloat(e.middle);
+                const rr = (1 - (wireDia / eMid) ** 2) * 100;
+                if (rr < fbFloor || (rr > 90 && wireDia >= 1.0)) continue;
+                const diff = Math.abs(parseFloat(e.wireDia) - wireDia);
+                const w = 1 / (diff + 0.01);
+                const key = String(e.middle);
+                fallbackWeights[key] = (fallbackWeights[key] || 0) + w;
+                if (!gradeOf[key]) gradeOf[key] = e.grade;
             }
+            if (Object.keys(fallbackWeights).length > 0) break;
         }
-        
-        // 검색된 항목 중 최다 빈도수(Mode)를 가지는 중간선 추출 (특이값 무시 효과)
-        if (candidates.length > 0 && bestD < 0.15) {
-            const counts = {};
-            let maxCount = 0;
-            let mode = candidates[0];
-            for (const c of candidates) {
-                if (!c.middle) continue;
-                const key = c.grade + '|' + c.middle;
-                counts[key] = (counts[key] || 0) + 1;
-                if (counts[key] > maxCount) {
-                    maxCount = counts[key];
-                    mode = c;
-                }
-            }
-            return mode; // returns { middle, grade }
+        // 그래도 없으면 감면율 최대인 후보 선택
+        if (Object.keys(fallbackWeights).length === 0) {
+            const best = nearest.slice(0, 20).reduce((a, b) => {
+                const rA = (1 - (wireDia / parseFloat(a.middle)) ** 2) * 100;
+                const rB = (1 - (wireDia / parseFloat(b.middle)) ** 2) * 100;
+                return rA > rB ? a : b;
+            });
+            fallbackWeights[String(best.middle)] = 1;
+            if (!gradeOf[String(best.middle)]) gradeOf[String(best.middle)] = best.grade;
         }
+        pool = fallbackWeights;
     }
 
-    // 2. Exact match in diaGradeToMiddle (기존 로직: Fallback)
-    const roundDia = roundTo(wireDia, 0.05);
-    const key = fmt(roundDia, 2) + '|' + grade;
-    if (AS.diaGradeToMiddle[key]) return { middle: AS.diaGradeToMiddle[key], grade: grade };
-
-    // 3. Tolerance search (±0.12mm)
-    let bestFall = null, bestFallD = Infinity;
-    for (const [k, v] of Object.entries(AS.diaGradeToMiddle)) {
-        const parts = k.split('|');
-        if (parts.length === 2 && parts[1] === grade) {
-            const d = Math.abs(parseFloat(parts[0]) - wireDia);
-            if (d < 0.12 && d < bestFallD) { bestFallD = d; bestFall = { middle: v, grade: grade }; }
-        }
-    }
-    if (bestFall) return bestFall;
-
-    // 4. Any grade tolerance
-    for (const [k, v] of Object.entries(AS.diaGradeToMiddle)) {
-        const parts = k.split('|');
-        if (parts.length === 2) {
-            const d = Math.abs(parseFloat(parts[0]) - wireDia);
-            if (d < 0.08 && d < bestFallD) { bestFallD = d; bestFall = { middle: v, grade: parts[1] }; }
-        }
-    }
-    if (bestFall) return bestFall;
-
-    // 5. Estimate: ~2.6x wire diameter, snap to standard sizes
-    return { middle: estimateMid(wireDia), grade: grade };
+    const [bestMid] = Object.entries(pool).sort((a, b) => b[1] - a[1])[0];
+    return { middle: bestMid, grade: gradeOf[bestMid] || grade };
 }
 
-function estimateMid(wireDia) {
-    const stds = [4.5,5.0,5.5,6.0,6.5,7.0,7.5,8.0,8.5,9.0,9.5,10.0,10.5,11.0,11.5,12.0];
-    const target = wireDia * 2.6;
-    let closest = stds[0], minD = Infinity;
-    for (const s of stds) {
-        const d = Math.abs(s - target);
-        if (d < minD) { minD = d; closest = s; }
-    }
-    return closest.toFixed(1);
+/* ================================================================
+   PRODUCTION HISTORY CHECK
+================================================================ */
+function hasProductionHistory(wireDia, isGalvanized) {
+    if (!AS.tsGradeData || AS.tsGradeData.length === 0) return true;
+    const coat = isGalvanized ? 'G' : 'U';
+    return AS.tsGradeData.some(e => {
+        if (e.coating && e.coating !== coat) return false;
+        return Math.abs(parseFloat(e.wireDia) - wireDia) < 0.015;
+    });
 }
 
 /* ================================================================
@@ -699,11 +752,13 @@ function loadTsGrade(inp) {
             let cnt = 0;
             if (Array.isArray(raw)) {
                 for (const it of raw) {
-                    const wd = parseFloat(it.wire_dia||it.wireDia||it.dia||0);
-                    const ts = parseFloat(it.ts||it.TS||0);
-                    const gr = String(it.grade||it.Grade||'');
-                    const md = String(it.middle_wire||it.middle||it.middleWire||'');
-                    AS.tsGradeData.push({wireDia:wd, ts, grade:gr, middle:md});
+                    const wd  = parseFloat(it.wire_dia||it.wireDia||it.dia||0);
+                    const ts  = parseFloat(it.ts||it.TS||0);
+                    const gr  = String(it.grade||it.Grade||'');
+                    const _md = parseMidStr(it.middle_wire||it.middle||it.middleWire||'');
+                    const md  = isNaN(_md) ? '' : _md.toFixed(1);
+                    const rr  = parseFloat(it.reduction_rate||it.reduction||0);
+                    AS.tsGradeData.push({wireDia:wd, ts, grade:gr, middle:md, reduction:rr});
                     if (gr && md) {
                         const k = fmt(wd,2) + '|' + gr;
                         if (!AS.diaGradeToMiddle[k]) AS.diaGradeToMiddle[k] = md;
@@ -735,9 +790,8 @@ function loadTsGrade(inp) {
             markZone('z-ts', 'cnt-ts', cnt, '개');
             updateStatus();
             toast(`✅ wire_ts_grade_middle.json: ${cnt}개 로드`, 'ts');
-            
-            // 데이터가 매우 클 수 있으므로 예외 처리 (localStorage 5MB 제한)
-            try { localStorage.setItem('dsr_ts', rawText); } catch(err) { console.warn('LocalStorage limit exceeded, ts_grade data not saved locally.'); }
+            // 수동 업로드 시에도 IndexedDB에 저장 → 다음엔 자동 로드
+            idbSet('wire_ts_grade_middle', raw);
         } catch(err) { toast(`❌ ts_grade 오류: ${err.message}`, 'te'); }
     };
     rd.readAsText(file);
@@ -949,12 +1003,16 @@ function loadDemo() {
     fetch('wire_ts_grade_middle.json')
         .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
         .then(raw => {
-            AS.tsGradeData = raw.map(it => ({
-                wireDia: it.wire_dia,
-                ts: it.ts,
-                grade: it.grade,
-                middle: it.middle_wire
-            }));
+            AS.tsGradeData = raw.map(it => {
+                const mid = parseMidStr(it.middle_wire);
+                return {
+                    wireDia:   it.wire_dia,
+                    ts:        it.ts,
+                    grade:     it.grade,
+                    middle:    isNaN(mid) ? '' : mid.toFixed(1),
+                    reduction: parseFloat(it.reduction_rate) || 0
+                };
+            });
             // diaGradeToMiddle도 함께 갱신 (grade별 중간선 fallback)
             for (const it of AS.tsGradeData) {
                 const k = fmt(it.wireDia, 2) + '|' + it.grade;
@@ -1003,8 +1061,27 @@ function doCalc() {
     const failedItems = []; // 소선 설계 없는 항목 모음
 
     for (const line of lines) {
-        const parts = line.split('\t');
-        
+        let parts = line.split('\t');
+
+        // 탭이 없는 공백 구분 행 폴백: 끝 두 토큰=TS/kg, 앞=jobNo+dia+설계명
+        if (parts.length < 4) {
+            const toks = line.trim().split(/\s+/);
+            if (toks.length >= 5) {
+                const lastKg = parseFloat(toks[toks.length - 1]);
+                const lastTs = parseFloat(toks[toks.length - 2]);
+                if (!isNaN(lastKg) && !isNaN(lastTs)) {
+                    const firstIsWord = isNaN(parseFloat(toks[0]));
+                    if (firstIsWord && !isNaN(parseFloat(toks[1]))) {
+                        // 신형: jobNo dia 설계명... ts kg
+                        parts = [toks[0], toks[1], toks.slice(2, toks.length - 2).join(' '), String(lastTs), String(lastKg)];
+                    } else if (!isNaN(parseFloat(toks[0]))) {
+                        // 구형: dia 설계명... ts kg
+                        parts = [toks[0], toks.slice(1, toks.length - 2).join(' '), String(lastTs), String(lastKg)];
+                    }
+                }
+            }
+        }
+
         let jobNo = '', dia, designIn, ts, prodKg, stock = 0;
 
         // 예전 양식(작업번호 컬럼 없이 복사) 대응 지원
@@ -1116,9 +1193,12 @@ function doCalc() {
         for (const w of wires) {
             w.wkg       = (w.totA / totalArea) * totalWkg;
             w.orderWkg  = (w.totA / totalArea) * orderWkg;
-            const midInfo = findMiddleWire(w.wireDia, grade, tsEff);
-            w.midWire   = midInfo.middle;
-            w.grade     = midInfo.grade || grade;
+            // 도금(G) 제품은 72계를 사용하지 않으므로 82로 대체
+            const effGrade = (coating === 'G' && String(grade).includes('72')) ? '82' : grade;
+            const midInfo = findMiddleWire(w.wireDia, effGrade, tsEff, coating === 'G');
+            w.midWire   = midInfo ? midInfo.middle : null;
+            w.grade     = midInfo ? (midInfo.grade || effGrade) : effGrade;
+            w.yulchon   = !hasProductionHistory(w.wireDia, coating === 'G');
         }
 
         products.push({
@@ -1250,7 +1330,9 @@ function aggregate(products) {
     for (const prd of products) {
         for (const w of prd.wires) {
             if (!w.midWire) continue;
-            const midDia = parseFloat(w.midWire).toFixed(1);
+            const _midNum = parseFloat(w.midWire);
+            if (isNaN(_midNum) || _midNum <= 0) continue;
+            const midDia = _midNum.toFixed(1);
             const coat = prd.coating || 'U';
             
             // Normalize grade for inventory matching (e.g. "SWRH72A" -> "72")
@@ -1260,7 +1342,7 @@ function aggregate(products) {
             const invKey = `${coat}|${gradeNorm}|${midDia}`;
             
             const key = `${coat}|${w.grade}|${midDia}`;
-            if (!agg[key]) agg[key] = { coating:coat, grade:w.grade, invKey:invKey, midDia:parseFloat(midDia), need:0, stock:0, order:0, refs:[] };
+            if (!agg[key]) agg[key] = { coating:coat, grade:w.grade, invKey:invKey, midDia:parseFloat(midDia), need:0, stock:0, order:0, refs:[], yulchon:!!w.yulchon };
             agg[key].need  += w.wkg;
             agg[key].order += w.orderWkg;
 
@@ -1298,8 +1380,9 @@ function aggregate(products) {
    RENDER RESULTS
 ================================================================ */
 function renderResults(products, agg, failedItems=[]) {
-    const gEntries = Object.values(agg).filter(v=>v.coating==='G').sort((a,b)=>a.midDia-b.midDia);
-    const uEntries = Object.values(agg).filter(v=>v.coating!=='G').sort((a,b)=>a.midDia-b.midDia);
+    const gEntries = Object.values(agg).filter(v=>v.coating==='G' && !v.yulchon).sort((a,b)=>a.midDia-b.midDia);
+    const uEntries = Object.values(agg).filter(v=>v.coating!=='G' && !v.yulchon).sort((a,b)=>a.midDia-b.midDia);
+    const yEntries = Object.values(agg).filter(v=>v.yulchon).sort((a,b)=>a.midDia-b.midDia);
     const totalNeedG = gEntries.reduce((s,v)=>s+v.need,0);
     const totalNeedU = uEntries.reduce((s,v)=>s+v.need,0);
     const totalOrderG = gEntries.reduce((s,v)=>s+v.order,0);
@@ -1323,7 +1406,7 @@ function renderResults(products, agg, failedItems=[]) {
         return `<div class="tbl-wrap">
         <table class="dt ${cls}">
             <thead><tr>
-                <th>구분</th><th>강종</th><th>중간선 규격</th><th>선경(mm)</th>
+                <th>구분</th><th>강종</th><th>중간선 규격</th>
                 <th>소요량(kg)</th>${stockCol}
             </tr></thead>
             <tbody>
@@ -1344,12 +1427,11 @@ function renderResults(products, agg, failedItems=[]) {
                         <td><span class="tag ${tagCls}">${tagTxt}</span></td>
                         <td>${shortGrade(e.grade)}</td>
                         <td><strong>Φ${e.midDia.toFixed(1)}mm</strong></td>
-                        <td>${e.midDia.toFixed(1)}</td>
                         <td><strong>${fmt(e.need)}</strong></td>
                         ${hasStock ? `<td>${fmt(e.stock)}</td><td><strong style="color:var(--green)">${fmt(e.order)}</strong></td>` : ''}
                     </tr>
                     <tr id="${trId}" style="display:none; background:rgba(0,0,0,0.2);">
-                        <td colspan="${5+stockCols}" style="padding:0;">
+                        <td colspan="${4+stockCols}" style="padding:0;">
                             <div style="padding: 0.8rem 1.2rem; border-left: 3px solid ${tagTxt==='G'?'var(--amber)':'var(--indigo)'};">
                                 <div style="font-size:0.75rem; font-weight:700; color:var(--t3); margin-bottom:6px;">사용 제품 상세 내역 (소요량 큰 순서)</div>
                                 ${details}
@@ -1358,7 +1440,7 @@ function renderResults(products, agg, failedItems=[]) {
                     </tr>`;
                 }).join('')}
                 <tr class="tr-total">
-                    <td colspan="4">소계</td><td><strong>${fmt(totalNeed)}</strong></td>
+                    <td colspan="3">소계</td><td><strong>${fmt(totalNeed)}</strong></td>
                     ${hasStock ? `<td></td><td><strong style="color:var(--green)">${fmt(totalOrder)}</strong></td>` : ''}
                 </tr>
             </tbody>
@@ -1372,6 +1454,11 @@ function renderResults(products, agg, failedItems=[]) {
     document.getElementById('orderU').innerHTML = `
         <div class="sec-title" style="margin-top:1.5rem"><div class="sec-title-bar u-bar"></div>🟣 비도금(U) 중간선 발주</div>
         ${buildOrderTable(uEntries, totalNeedU, totalOrderU, 'u-tbl', 'tag-u', 'U')}
+    `;
+    const totalNeedY = yEntries.reduce((s,v)=>s+v.need,0);
+    document.getElementById('orderYulchon').innerHTML = yEntries.length === 0 ? '' : `
+        <div class="sec-title" style="margin-top:1.5rem"><div class="sec-title-bar" style="background:#2dd4bf;"></div>🏭 율촌지원 (생산이력 없는 소선경)</div>
+        ${buildOrderTable(yEntries, totalNeedY, 0, 'y-tbl', 'tag-yulchon', '율촌')}
     `;
 
     // Detail accordion
@@ -1390,8 +1477,9 @@ function renderResults(products, agg, failedItems=[]) {
 
         const wireRows = prd.wires.map(w => {
             const midStr = w.midWire ? `${shortGrade(w.grade)} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
-            return `<tr>
-                <td>${w.key}</td>
+            const yulTag = w.yulchon ? ` <span class="tag tag-yulchon">율촌지원</span>` : '';
+            return `<tr${w.yulchon ? ' style="background:rgba(20,184,166,.05);"' : ''}>
+                <td>${w.key}${yulTag}</td>
                 <td>${fmt(w.wireDia,3)}</td>
                 <td>${w.stCnt}</td>
                 <td>${w.wireCnt}</td>
@@ -1524,30 +1612,27 @@ function doExport() {
     const { products, agg } = AS.lastResult;
     const wb = XLSX.utils.book_new();
 
-    const hdr = ['구분','강종','중간선 규격','선경(mm)','소요량(kg)'];
+    const hdr = ['구분','강종','선경(mm)','소요량(kg)'];
     const hasStock = products.some(p=>p.stock>0) || Object.values(agg).some(a=>a.stock>0);
     if (hasStock) hdr.push('현재고(kg)','최종 발주량(kg)');
-    hdr.push('사용 제품 상세 내역'); // 추가된 컬럼
+    hdr.push('사용 제품 상세 내역');
 
     function makeSheet(entries, label) {
         const rows = [hdr];
         let totalNeed = 0;
         let totalOrder = 0;
         for (const e of entries) {
-            const row = [label, e.grade, `Φ${e.midDia.toFixed(1)}mm`, e.midDia.toFixed(1), parseFloat(e.need.toFixed(2))];
+            const row = [label, shortGrade(e.grade), e.midDia.toFixed(1), parseFloat(e.need.toFixed(2))];
             if (hasStock) row.push(parseFloat(e.stock.toFixed(2)), parseFloat(e.order.toFixed(2)));
-            
-            // 상세 내역 문자열 생성 (줄바꿈 포함)
             const detailStr = e.refs.map(r => `[${r.jobNo||'-'}] ${r.designIn} (DIA ${r.dia}mm · ${r.keys.join(', ')}) ${parseFloat(r.wkg.toFixed(2))}kg`).join('\n');
             row.push(detailStr);
-            
             rows.push(row);
             totalNeed += e.need;
             totalOrder += e.order;
         }
-        const foot = ['','',`${label} 소계`,'',parseFloat(totalNeed.toFixed(2))];
+        const foot = ['','',`${label} 소계`,parseFloat(totalNeed.toFixed(2))];
         if (hasStock) foot.push('', parseFloat(totalOrder.toFixed(2)));
-        foot.push(''); // 상세 내역 빈칸
+        foot.push('');
         rows.push(foot);
         return XLSX.utils.aoa_to_sheet(rows);
     }
@@ -1556,11 +1641,11 @@ function doExport() {
     const uE = Object.values(agg).filter(v=>v.coating!=='G').sort((a,b)=>a.midDia-b.midDia);
 
     const wsG = makeSheet(gE, 'G');
-    wsG['!cols'] = [{wch:8},{wch:12},{wch:14},{wch:10},{wch:14},{wch:12},{wch:12},{wch:70}];
+    wsG['!cols'] = [{wch:8},{wch:10},{wch:10},{wch:14},{wch:12},{wch:12},{wch:70}];
     XLSX.utils.book_append_sheet(wb, wsG, '도금G');
 
     const wsU = makeSheet(uE, 'U');
-    wsU['!cols'] = [{wch:8},{wch:12},{wch:14},{wch:10},{wch:14},{wch:12},{wch:12},{wch:70}];
+    wsU['!cols'] = [{wch:8},{wch:10},{wch:10},{wch:14},{wch:12},{wch:12},{wch:70}];
     XLSX.utils.book_append_sheet(wb, wsU, '비도금U');
 
     // Product summary sheet
@@ -1568,7 +1653,7 @@ function doExport() {
     const sumRows = [sumHdr];
     for (const p of products) {
         sumRows.push([
-            p.jobNo, p.designIn, p.struct, p.grade, p.dia, p.ts, p.drRatio,
+            p.jobNo, p.designIn, p.struct, shortGrade(p.grade), p.dia, p.ts, p.drRatio,
             p.prodM, parseFloat(p.totalWkg.toFixed(2)),
             p.stock||0, parseFloat(p.orderWkg.toFixed(2)),
             p.coating||'U', p.coreType
@@ -1579,17 +1664,31 @@ function doExport() {
     XLSX.utils.book_append_sheet(wb, wsSum, '제품요약');
 
     // Wire detail sheet
-    const detHdr = ['작업번호','설계명','구조','강도(TS)','소선(d)','소선경(mm)','ST수','소선수/ST','총 본수','총단면적(mm²)','무게(kg)','중간선'];
+    const detHdr = ['작업번호','설계명','구조','DIA(mm)','강도(TS)','소선(d)','소선경(mm)','ST수','소선수/ST','총 본수','총단면적(mm²)','무게(kg)','길이(m)','중간선','감면율(%)'];
     const detRows = [detHdr];
     for (const p of products) {
-        for (const w of p.wires) {
-            const mid = w.midWire ? `${p.grade} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
-            detRows.push([p.jobNo, p.designIn, p.struct, shortTs(p.ts), w.key, parseFloat(w.wireDia.toFixed(3)), w.stCnt, w.wireCnt,
-                w.cnt, parseFloat(w.totA.toFixed(4)), parseFloat(w.wkg.toFixed(3)), mid]);
+        for (let i = 0; i < p.wires.length; i++) {
+            const w = p.wires[i];
+            const mid = w.midWire ? `${shortGrade(w.grade)} Φ${parseFloat(w.midWire).toFixed(1)}mm` : '-';
+            const midNum = parseFloat(w.midWire);
+            const reduction = (!isNaN(midNum) && midNum > 0)
+                ? parseFloat(((1 - Math.pow(w.wireDia / midNum, 2)) * 100).toFixed(2))
+                : '-';
+            // 길이(m) = 무게(kg) / (밀도 × 단면적) = wkg / (7850 × π/4 × (wireDia/1000)²)
+            const wireLen = parseFloat((w.wkg / (7850 * Math.PI / 4 * Math.pow(w.wireDia / 1000, 2) * w.cnt)).toFixed(1));
+            const isFirst = i === 0;
+            detRows.push([
+                p.jobNo,
+                p.designIn,
+                p.struct,
+                parseFloat(p.dia),
+                shortTs(p.ts), w.key, parseFloat(w.wireDia.toFixed(3)), w.stCnt, w.wireCnt,
+                w.cnt, parseFloat(w.totA.toFixed(4)), parseFloat(w.wkg.toFixed(3)), wireLen, mid, reduction
+            ]);
         }
     }
     const wsDet = XLSX.utils.aoa_to_sheet(detRows);
-    wsDet['!cols'] = [{wch:12},{wch:18},{wch:20},{wch:10},{wch:8},{wch:12},{wch:8},{wch:10},{wch:8},{wch:14},{wch:12},{wch:20}];
+    wsDet['!cols'] = [{wch:12},{wch:18},{wch:20},{wch:10},{wch:10},{wch:8},{wch:12},{wch:8},{wch:10},{wch:8},{wch:14},{wch:12},{wch:20},{wch:10}];
     XLSX.utils.book_append_sheet(wb, wsDet, '소선상세');
 
     const today = new Date().toISOString().slice(0,10);
@@ -1639,63 +1738,96 @@ function toast(msg, cls='') {
 }
 
 /* ================================================================
+   INDEXED DB: ts 데이터 대용량 캐시 (localStorage 5MB 한도 우회)
+================================================================ */
+function idbOpen() {
+    return new Promise((res, rej) => {
+        const req = indexedDB.open('dsr_cache', 1);
+        req.onupgradeneeded = e => e.target.result.createObjectStore('files');
+        req.onsuccess = e => res(e.target.result);
+        req.onerror = e => rej(e.target.error);
+    });
+}
+async function idbGet(key) {
+    try {
+        const db = await idbOpen();
+        return await new Promise((res, rej) => {
+            const req = db.transaction('files','readonly').objectStore('files').get(key);
+            req.onsuccess = e => res(e.target.result);
+            req.onerror = e => rej(e.target.error);
+        });
+    } catch { return undefined; }
+}
+async function idbSet(key, value) {
+    try {
+        const db = await idbOpen();
+        await new Promise((res, rej) => {
+            const tx = db.transaction('files','readwrite');
+            tx.objectStore('files').put(value, key);
+            tx.oncomplete = res;
+            tx.onerror = e => rej(e.target.error);
+        });
+    } catch(e) { console.warn('idbSet failed:', e); }
+}
+
+/* ================================================================
    AUTO-LOAD: 같은 폴더의 JSON 파일을 새로고침 없이 자동으로 불러오기
 ================================================================ */
 async function autoLoadFiles() {
-    let loadedCount = 0;
-    
-    // 1. 보안 정책(CORS) 우회를 위해 먼저 localStorage (이전에 수동 업로드한 캐시)에서 로드 시도
-    try {
-        const savedD2s = localStorage.getItem('dsr_d2s');
-        if (savedD2s) { loadD2sByObj(JSON.parse(savedD2s)); loadedCount++; }
-
-        const savedWd = localStorage.getItem('dsr_wd');
-        if (savedWd) { loadWdByObj(JSON.parse(savedWd)); loadedCount++; }
-
-        const savedTs = localStorage.getItem('dsr_ts');
-        if (savedTs) { loadTsByObj(JSON.parse(savedTs)); loadedCount++; }
-    } catch(err) {
-        console.warn('LocalStorage load failed:', err);
-    }
-
-    if (loadedCount > 0) {
-        toast(`✅ 이전 업로드된 데이터 파일 자동 로드 완료 (${loadedCount}종류)`, 'ts');
-    }
-
-    // 2. 만약 localStorage 기반 로드에 실패한 종류가 있거나 로컬 서버 환경일 경우, fetch API 호출(서버 환경 대응)
+    let fetchLoaded = 0;
     const files = [
-        { name: 'design_to_struct.json', handler: 'loadD2sByObj',    loadedCheck: AS.loaded.design },
-        { name: 'wire_design.json',      handler: 'loadWdByObj',     loadedCheck: AS.loaded.wire },
-        { name: 'wire_ts_grade_middle.json', handler: 'loadTsByObj', loadedCheck: AS.loaded.ts },
+        { name: 'design_to_struct.json', handler: 'loadD2sByObj', cacheKey: 'dsr_d2s', type: 'ls' },
+        { name: 'wire_design.json',      handler: 'loadWdByObj',  cacheKey: 'dsr_wd',  type: 'ls' },
+        { name: 'wire_ts_grade_middle.json', handler: 'loadTsByObj', cacheKey: 'wire_ts_grade_middle', type: 'idb' },
     ];
 
-    let fetchLoaded = 0;
     for (const f of files) {
-        // 이미 localStorage로 업로드한 상태면 건너뜀 (업데이트된 스토리지 값 유지 목적)
-        if (f.loadedCheck && loadedCount > 0) continue; 
-        
+        let success = false;
+        // 1. 서버 fetch 우선 시도 (Network First, 캐시 방지 적용)
         try {
-            const res = await fetch(f.name);
-            if (!res.ok) continue;
-            const json = await res.json();
-            window[f.handler](json);
-            
-            // 로컬 서버에서 직접 읽어온 데이터도 로컬스토리지에 저장하여, 다음엔 서버 없이 파일로만 열어도 작동하게 지원
-            const rawText = JSON.stringify(json);
+            const res = await fetch(f.name + '?t=' + Date.now());
+            if (res.ok) {
+                const json = await res.json();
+                window[f.handler](json);
+                success = true;
+                fetchLoaded++;
+                
+                // 캐시 최신화
+                const rawText = JSON.stringify(json);
+                if (f.type === 'ls') {
+                    localStorage.setItem(f.cacheKey, rawText);
+                } else if (f.type === 'idb') {
+                    await idbSet(f.cacheKey, json);
+                }
+            }
+        } catch (e) {
+            console.warn(`Fetch failed for ${f.name}, falling back to cache.`, e);
+        }
+
+        // 2. 서버 fetch 실패 시 캐시 폴백 (Cache Fallback)
+        if (!success) {
             try {
-                if(f.name.includes('d2s')) localStorage.setItem('dsr_d2s', rawText);
-                if(f.name.includes('wd')) localStorage.setItem('dsr_wd', rawText);
-                if(f.name.includes('ts')) localStorage.setItem('dsr_ts', rawText);
-            } catch(e) {}
-            
-            fetchLoaded++;
-        } catch(e) {
-            // 파일이 없거나 fetch 실패 시 조용히 넘어감 (더블클릭 시 cors 에러 등)
+                if (f.type === 'ls') {
+                    const saved = localStorage.getItem(f.cacheKey);
+                    if (saved) {
+                        window[f.handler](JSON.parse(saved));
+                    }
+                } else if (f.type === 'idb') {
+                    const cached = await idbGet(f.cacheKey);
+                    if (cached) {
+                        window[f.handler](cached);
+                    }
+                }
+            } catch (err) {
+                console.error(`Cache load failed for ${f.name}:`, err);
+            }
         }
     }
-    
-    if (fetchLoaded > 0 && loadedCount === 0) {
-        toast(`✅ 폴더 안의 데이터 파일 자동 로드 완료`, 'ts');
+
+    if (fetchLoaded > 0) {
+        toast(`✅ 최신 데이터 파일 자동 로드 완료 (${fetchLoaded}종류)`, 'ts');
+    } else {
+        toast(`✅ 데이터 파일 로드 완료 (캐시 폴백 상태)`, 'ts');
     }
 }
 
@@ -1743,11 +1875,19 @@ function loadTsByObj(raw) {
     let cnt = 0;
     if (Array.isArray(raw)) {
         for (const it of raw) {
-            const wd = parseFloat(it.wire_dia||it.wireDia||it.dia||0);
-            const ts = parseFloat(it.ts||it.TS||0);
-            const gr = String(it.grade||it.Grade||'');
-            const md = String(it.middle_wire||it.middle||it.middleWire||'');
-            AS.tsGradeData.push({wireDia:wd, ts, grade:gr, middle:md});
+            const wd  = parseFloat(it.wire_dia||it.wireDia||it.dia||0);
+            const ts  = parseFloat(it.ts||it.TS||0);
+            const gr  = String(it.grade||it.Grade||'');
+            const _md = parseMidStr(it.middle_wire||it.middle||it.middleWire||'');
+            const md  = isNaN(_md) ? '' : _md.toFixed(1);
+            const rr  = parseFloat(it.reduction_rate||it.reduction||0);
+            const ct  = it.coating || null; // 'G', 'U', null(중립)
+            // 72계/82계는 TS230 이상 생산 불가 → 데이터 오류로 제외
+            const grUp = gr.toUpperCase();
+            const is72 = grUp.includes('72') || grUp.match(/^7[0-9]$/);
+            const is82 = grUp.includes('82') || grUp.match(/^8[0-2]$/);
+            if ((is72 || is82) && ts >= 228) { cnt++; continue; }
+            AS.tsGradeData.push({wireDia:wd, ts, grade:gr, middle:md, reduction:rr, coating:ct});
             if (gr && md) {
                 const k = fmt(wd,2)+'|'+gr;
                 if (!AS.diaGradeToMiddle[k]) AS.diaGradeToMiddle[k] = md;

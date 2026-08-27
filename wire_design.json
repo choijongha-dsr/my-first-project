@@ -1219,17 +1219,17 @@
   "POW 8xS(19)+IWRC": {
     "d1": {
       "coeff": 0.079514,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.039406,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 9
     },
     "d3": {
       "coeff": 0.067522,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 9
     },
     "d6": {
@@ -1244,12 +1244,12 @@
     },
     "d11": {
       "coeff": 0.056125,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.051364,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -1262,27 +1262,27 @@
   "POW 8xWS(26)+IWRC": {
     "d1": {
       "coeff": 0.027711,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.037398,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.044054,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.034637,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.061348,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 10
     },
     "d6": {
@@ -1297,12 +1297,12 @@
     },
     "d11": {
       "coeff": 0.056125,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.051364,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -1315,27 +1315,27 @@
   "POW 8xWS(31)+IWRC": {
     "d1": {
       "coeff": 0.042084,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.039978,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.041887,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.032413,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.053049,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 12
     },
     "d6": {
@@ -1350,12 +1350,12 @@
     },
     "d11": {
       "coeff": 0.056125,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.051364,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -1368,27 +1368,27 @@
   "POW 8xWS(36)+IWRC": {
     "d1": {
       "coeff": 0.056178,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.040898,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.039406,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.030134,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.046698,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 14
     },
     "d6": {
@@ -1403,12 +1403,12 @@
     },
     "d11": {
       "coeff": 0.056125,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.051364,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -1421,27 +1421,27 @@
   "POW 8xWS(26)+7xS(19)": {
     "d1": {
       "coeff": 0.027711,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.037398,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.044054,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.034637,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.061348,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 10
     },
     "d6": {
@@ -1461,17 +1461,17 @@
     },
     "d11": {
       "coeff": 0.044731,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.022342,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d13": {
       "coeff": 0.038971,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "__iwrc__": [
@@ -1486,27 +1486,27 @@
   "POW 8xWS(31)+7xS(19)": {
     "d1": {
       "coeff": 0.042084,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.039978,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.041887,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.032413,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.053049,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 12
     },
     "d6": {
@@ -1526,17 +1526,17 @@
     },
     "d11": {
       "coeff": 0.044731,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.022342,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d13": {
       "coeff": 0.038971,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "__iwrc__": [
@@ -1551,27 +1551,27 @@
   "POW 8xWS(36)+7xS(19)": {
     "d1": {
       "coeff": 0.056178,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.040898,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.039406,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.030134,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.046698,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 14
     },
     "d6": {
@@ -1591,17 +1591,17 @@
     },
     "d11": {
       "coeff": 0.044731,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.022342,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d13": {
       "coeff": 0.038971,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "__iwrc__": [
@@ -1616,27 +1616,27 @@
   "POW 6xWS(26)+IWRC": {
     "d1": {
       "coeff": 0.034068,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.045972,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.054132,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.042574,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.074352,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 10
     },
     "d6": {
@@ -1651,12 +1651,12 @@
     },
     "d11": {
       "coeff": 0.04356,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.039864,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -1669,27 +1669,27 @@
   "POW 6xWS(31)+IWRC": {
     "d1": {
       "coeff": 0.051676,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.049083,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.05141,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.039789,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.064278,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 12
     },
     "d6": {
@@ -1704,12 +1704,12 @@
     },
     "d11": {
       "coeff": 0.04356,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.039864,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -1722,27 +1722,27 @@
   "POW 6xWS(36)+IWRC": {
     "d1": {
       "coeff": 0.068915,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.050167,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.04832,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.036962,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.056571,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 14
     },
     "d6": {
@@ -1757,12 +1757,12 @@
     },
     "d11": {
       "coeff": 0.04356,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.039864,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -1775,60 +1775,60 @@
   "POW 6xWS(31)+6x7+PP": {
     "d1": {
       "coeff": 0.052643,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.049981,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.05199,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.040198,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.06279,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 12
     },
     "d11": {
       "coeff": 0.04356,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.039864,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     }
   },
   "POW 6xFI(29)+IWRC": {
     "d1": {
       "coeff": 0.095595,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.069009,
-      "st_count": 1,
-      "wire_count": 1
+      "st_count": 6,
+      "wire_count": 6
     },
     "d3": {
       "coeff": 0.027281,
-      "st_count": 1,
-      "wire_count": 1
+      "st_count": 6,
+      "wire_count": 6
     },
     "d4": {
       "coeff": 0.057978,
-      "st_count": 1,
-      "wire_count": 1
+      "st_count": 6,
+      "wire_count": 6
     },
     "d6": {
       "coeff": 0.047478,
@@ -1838,17 +1838,17 @@
     "d7": {
       "coeff": 0.04345,
       "st_count": 1,
-      "wire_count": 1
+      "wire_count": 6
     },
     "d11": {
       "coeff": 0.043557,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.039862,
-      "st_count": 1,
-      "wire_count": 1
+      "st_count": 6,
+      "wire_count": 6
     },
     "__iwrc__": [
       "d6",
@@ -1860,84 +1860,84 @@
   "POW 8xWS(26)+8x7+W(19)": {
     "d1": {
       "coeff": 0.027711,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.037398,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.044054,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.034637,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.061348,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 10
     },
     "d6": {
       "coeff": 0.05423,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d7": {
       "coeff": 0.050865,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d8": {
       "coeff": 0.052661,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d9": {
       "coeff": 0.039109,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d11": {
       "coeff": 0.049158,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.044799,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     }
   },
   "POW 8xWS(26)+POW7xS(19)": {
     "d1": {
       "coeff": 0.027711,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.037398,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.044054,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.034637,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.061348,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 10
     },
     "d6": {
@@ -1957,17 +1957,17 @@
     },
     "d11": {
       "coeff": 0.047324,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.023435,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d13": {
       "coeff": 0.039862,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "__iwrc__": [
@@ -1983,27 +1983,27 @@
     "dr_ratio": 1.06,
     "d1": {
       "coeff": 0.042084,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.039978,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.041887,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.032413,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.053049,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 12
     },
     "d6": {
@@ -2023,17 +2023,17 @@
     },
     "d11": {
       "coeff": 0.047618,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.02358,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d13": {
       "coeff": 0.040109,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "__iwrc__": [
@@ -2048,27 +2048,27 @@
   "POW 8xWS(36)+POW7xS(19)": {
     "d1": {
       "coeff": 0.056178,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.040898,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.039406,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.030134,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.046698,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 14
     },
     "d6": {
@@ -2088,17 +2088,17 @@
     },
     "d11": {
       "coeff": 0.047618,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.02358,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d13": {
       "coeff": 0.040109,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "__iwrc__": [
@@ -2113,27 +2113,27 @@
   "POW 8xWS(26)+POW7x7": {
     "d1": {
       "coeff": 0.027711,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.037398,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.044054,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.034637,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.061348,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 10
     },
     "d6": {
@@ -2148,12 +2148,12 @@
     },
     "d11": {
       "coeff": 0.0599,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.054449,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2166,27 +2166,27 @@
   "POW 8xWS(31)+POW7x7": {
     "d1": {
       "coeff": 0.042084,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.039978,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.041887,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.032413,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.053049,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 12
     },
     "d6": {
@@ -2201,12 +2201,12 @@
     },
     "d11": {
       "coeff": 0.0599,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.054449,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2219,27 +2219,27 @@
   "POW 8xWS(36)+POW7x7": {
     "d1": {
       "coeff": 0.056178,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.040898,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.039406,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.030134,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.046698,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 14
     },
     "d6": {
@@ -2254,12 +2254,12 @@
     },
     "d11": {
       "coeff": 0.059896,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.054449,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2460,17 +2460,17 @@
   "6xS(19)+IWRC": {
     "d1": {
       "coeff": 0.090615,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.045043,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d3": {
       "coeff": 0.077701,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d6": {
@@ -2485,12 +2485,12 @@
     },
     "d11": {
       "coeff": 0.04416,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.04042,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2503,22 +2503,22 @@
   "6xFI(25)+IWRC": {
     "d1": {
       "coeff": 0.070872,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.067131,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.027786,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.061832,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 12
     },
     "d6": {
@@ -2533,12 +2533,12 @@
     },
     "d11": {
       "coeff": 0.04416,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.04042,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2551,22 +2551,22 @@
   "6xFI(29)+IWRC": {
     "d1": {
       "coeff": 0.089457,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.064782,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.025534,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.054457,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 14
     },
     "d6": {
@@ -2581,12 +2581,12 @@
     },
     "d11": {
       "coeff": 0.04416,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.04042,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2599,27 +2599,27 @@
   "6xWS(26)+IWRC": {
     "d1": {
       "coeff": 0.030886,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.042122,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.049785,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.039205,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.071745,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 10
     },
     "d6": {
@@ -2634,12 +2634,12 @@
     },
     "d11": {
       "coeff": 0.04416,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.04042,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2652,27 +2652,27 @@
   "6xWS(31)+IWRC": {
     "d1": {
       "coeff": 0.047112,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.04518,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.047504,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.036821,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.062104,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 12
     },
     "d6": {
@@ -2687,12 +2687,12 @@
     },
     "d11": {
       "coeff": 0.04416,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.04042,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2705,27 +2705,27 @@
   "6xWS(36)+IWRC": {
     "d1": {
       "coeff": 0.063029,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.046314,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.044772,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.034302,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.054686,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 14
     },
     "d6": {
@@ -2740,12 +2740,12 @@
     },
     "d11": {
       "coeff": 0.04416,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.04042,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2758,27 +2758,27 @@
   "6xWS(41)+IWRC": {
     "d1": {
       "coeff": 0.078165,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.046397,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 8
     },
     "d3": {
       "coeff": 0.042102,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 8
     },
     "d4": {
       "coeff": 0.031973,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 8
     },
     "d5": {
       "coeff": 0.048896,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 16
     },
     "d6": {
@@ -2793,12 +2793,12 @@
     },
     "d11": {
       "coeff": 0.04416,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.04042,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2811,17 +2811,17 @@
   "8xS(19)+IWRC": {
     "d1": {
       "coeff": 0.074197,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.036882,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 9
     },
     "d3": {
       "coeff": 0.063623,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 9
     },
     "d6": {
@@ -2836,12 +2836,12 @@
     },
     "d11": {
       "coeff": 0.057255,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.052398,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2854,27 +2854,27 @@
   "8xWS(26)+IWRC": {
     "d1": {
       "coeff": 0.025288,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.034487,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.040762,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.0321,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.058742,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 10
     },
     "d6": {
@@ -2889,12 +2889,12 @@
     },
     "d11": {
       "coeff": 0.057255,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.052398,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2907,27 +2907,27 @@
   "8xWS(31)+IWRC": {
     "d1": {
       "coeff": 0.038573,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.036992,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.038894,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.030148,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.050848,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 12
     },
     "d6": {
@@ -2942,12 +2942,12 @@
     },
     "d11": {
       "coeff": 0.057255,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.052398,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -2960,27 +2960,27 @@
   "8xWS(36)+IWRC": {
     "d1": {
       "coeff": 0.051606,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.03792,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.036657,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.028085,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.044775,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 14
     },
     "d6": {
@@ -2995,12 +2995,12 @@
     },
     "d11": {
       "coeff": 0.057255,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.052398,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3013,17 +3013,17 @@
   "FISHING 6xS(19)+IWRC": {
     "d1": {
       "coeff": 0.090427,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.045069,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d3": {
       "coeff": 0.078217,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d6": {
@@ -3038,12 +3038,12 @@
     },
     "d11": {
       "coeff": 0.044292,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040534,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3056,27 +3056,27 @@
   "FISHING 6xWS(26)+IWRC": {
     "d1": {
       "coeff": 0.030914,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.042161,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.049837,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.039248,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.071818,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 10
     },
     "d6": {
@@ -3091,12 +3091,12 @@
     },
     "d11": {
       "coeff": 0.0446,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040817,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3109,27 +3109,27 @@
   "FISHING 6xWS(31)+IWRC": {
     "d1": {
       "coeff": 0.047167,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.045234,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.047559,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.036865,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.062177,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 12
     },
     "d6": {
@@ -3144,12 +3144,12 @@
     },
     "d11": {
       "coeff": 0.0446,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040817,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3162,27 +3162,27 @@
   "FISHING 6xWS(36)+IWRC": {
     "d1": {
       "coeff": 0.063156,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.046412,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.044863,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.034372,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.05479,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 14
     },
     "d6": {
@@ -3197,12 +3197,12 @@
     },
     "d11": {
       "coeff": 0.0446,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040817,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3215,17 +3215,17 @@
   "FISHING POW 6xS(19)+IWRC": {
     "d1": {
       "coeff": 0.096523,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.047705,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d3": {
       "coeff": 0.081145,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d6": {
@@ -3240,12 +3240,12 @@
     },
     "d11": {
       "coeff": 0.043997,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040265,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3258,27 +3258,27 @@
   "FISHING POW 6xWS(26)+IWRC": {
     "d1": {
       "coeff": 0.032955,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.044944,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.053127,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.041838,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.076558,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 10
     },
     "d6": {
@@ -3293,12 +3293,12 @@
     },
     "d11": {
       "coeff": 0.0446,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040817,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3311,27 +3311,27 @@
   "FISHING POW 6xWS(31)+IWRC": {
     "d1": {
       "coeff": 0.050281,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.048219,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.050698,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.039298,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.066281,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 12
     },
     "d6": {
@@ -3346,12 +3346,12 @@
     },
     "d11": {
       "coeff": 0.0446,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040817,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3364,27 +3364,27 @@
   "FISHING POW 6xWS(36)+IWRC": {
     "d1": {
       "coeff": 0.067325,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.049476,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.047824,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.036641,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.058406,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 14
     },
     "d6": {
@@ -3399,12 +3399,12 @@
     },
     "d11": {
       "coeff": 0.0446,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040817,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3417,17 +3417,17 @@
   "남미향 POW 6xS(19)+IWRC": {
     "d1": {
       "coeff": 0.097221,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.048023,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d3": {
       "coeff": 0.081602,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "__iwrc__": [
@@ -3440,88 +3440,88 @@
   "4xSES(39)+FC": {
     "d2": {
       "coeff": 0.051995,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 9
     },
     "d3": {
       "coeff": 0.052009,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 15
     },
     "d4": {
       "coeff": 0.070397,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 15
     }
   },
   "4xSES(48)+FC": {
     "d2": {
       "coeff": 0.047601,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 12
     },
     "d3": {
       "coeff": 0.047504,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 18
     },
     "d4": {
       "coeff": 0.0607,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 18
     }
   },
   "POWERACT 4": {
     "d1": {
       "coeff": 0.092298,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.067065,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.064416,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.049201,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.076624,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 14
     }
   },
   "Swaged 6xWS(26)+IWRC": {
     "d1": {
       "coeff": 0.033811,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.04611,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.054499,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.042917,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.078538,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 10
     },
     "d6": {
@@ -3536,12 +3536,12 @@
     },
     "d11": {
       "coeff": 0.047682,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.043637,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3554,27 +3554,27 @@
   "Super Swaged 6xWS(26)+IWRC": {
     "d1": {
       "coeff": 0.035984,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.049074,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.058002,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.045676,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.083587,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 10
     },
     "d6": {
@@ -3589,12 +3589,12 @@
     },
     "d11": {
       "coeff": 0.050747,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.046441,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3607,22 +3607,22 @@
   "POW Swaged 6xFI(25)+IWRC": {
     "d1": {
       "coeff": 0.082329,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.077948,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.032458,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.071822,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 14
     },
     "d6": {
@@ -3637,12 +3637,12 @@
     },
     "d11": {
       "coeff": 0.047451,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.043425,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -3655,27 +3655,27 @@
   "POW 4xWS(36)+FC": {
     "d1": {
       "coeff": 0.088212,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.063975,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.061267,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.046778,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.071834,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 14
     }
   },
@@ -3729,148 +3729,148 @@
   "3xF(40)": {
     "d2": {
       "coeff": 0.075804,
-      "st_count": 1,
+      "st_count": 3,
       "wire_count": 8
     },
     "d3": {
       "coeff": 0.068409,
-      "st_count": 1,
+      "st_count": 3,
       "wire_count": 8
     },
     "d4": {
       "coeff": 0.051873,
-      "st_count": 1,
+      "st_count": 3,
       "wire_count": 8
     },
     "d5": {
       "coeff": 0.078732,
-      "st_count": 1,
+      "st_count": 3,
       "wire_count": 16
     }
   },
   "5x26WS+FC": {
     "d1": {
       "coeff": 0.034604,
-      "st_count": 1,
+      "st_count": 5,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.047192,
-      "st_count": 1,
+      "st_count": 5,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.055778,
-      "st_count": 1,
+      "st_count": 5,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.043924,
-      "st_count": 1,
+      "st_count": 5,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.080381,
-      "st_count": 1,
+      "st_count": 5,
       "wire_count": 10
     }
   },
   "6xWS(31)+SFC": {
     "d1": {
       "coeff": 0.04704,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.045172,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d3": {
       "coeff": 0.047622,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d4": {
       "coeff": 0.036941,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 5
     },
     "d5": {
       "coeff": 0.06263,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 10
     }
   },
   "POW 8xWS(31)+SIWRC(8PLUS)": {
     "d1": {
       "coeff": 0.034924,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.031772,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d6": {
       "coeff": 0.020466,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d7": {
       "coeff": 0.027653,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d8": {
       "coeff": 0.032672,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d9": {
       "coeff": 0.02571,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d10": {
       "coeff": 0.045837,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 10
     },
     "d11": {
       "coeff": 0.030359,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.02762,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d16": {
       "coeff": 0.042082,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d17": {
       "coeff": 0.039977,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d18": {
       "coeff": 0.041886,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d19": {
       "coeff": 0.032412,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d20": {
       "coeff": 0.053047,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 12
     }
   },
@@ -3944,27 +3944,27 @@
   "POW 6xWS(36)+POW7x7": {
     "d1": {
       "coeff": 0.06861,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.049949,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.048127,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.036802,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.057032,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 14
     },
     "d6": {
@@ -3979,12 +3979,12 @@
     },
     "d11": {
       "coeff": 0.045644,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.041521,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -4131,22 +4131,22 @@
   "NS 6xFI(29)+IWRC": {
     "d1": {
       "coeff": 0.093383,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.065907,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.025564,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.053083,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 14
     },
     "d6": {
@@ -4161,12 +4161,12 @@
     },
     "d11": {
       "coeff": 0.043917,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040192,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -4179,27 +4179,27 @@
   "로타레스 6xWS(31)+SES(48)": {
     "d1": {
       "coeff": 0.04927,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.046732,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.048106,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.037067,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.060283,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 12
     },
     "d8": {
@@ -4221,22 +4221,22 @@
   "6xW(19)+IWRC": {
     "d1": {
       "coeff": 0.073816,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.069768,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.072015,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.053529,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d6": {
@@ -4251,12 +4251,12 @@
     },
     "d11": {
       "coeff": 0.04416,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.04042,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -4341,86 +4341,86 @@
   "6X7+SPC": {
     "d6": {
       "coeff": 0.113217,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d7": {
       "coeff": 0.104194,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     }
   },
   "6XK7+SPC": {
     "d6": {
       "coeff": 0.12189,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d7": {
       "coeff": 0.111448,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     }
   },
   "POW 8xWS(26)+SIWRC(8PLUS)": {
     "d1": {
       "coeff": 0.034924,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.031772,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d6": {
       "coeff": 0.059965,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d7": {
       "coeff": 0.029622,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 9
     },
     "d8": {
       "coeff": 0.050105,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 9
     },
     "d11": {
       "coeff": 0.030359,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.02762,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d16": {
       "coeff": 0.02771,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d17": {
       "coeff": 0.037397,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d18": {
       "coeff": 0.044053,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d19": {
       "coeff": 0.034636,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 5
     },
     "d20": {
       "coeff": 0.061347,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 10
     }
   },
@@ -4474,89 +4474,89 @@
   "8xWS36+8x7+36WS": {
     "d1": {
       "coeff": 0.051636,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.037942,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.036679,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.028102,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.044801,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 14
     },
     "d6": {
       "coeff": 0.047661,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d7": {
       "coeff": 0.035021,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d8": {
       "coeff": 0.033855,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d9": {
       "coeff": 0.025938,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d10": {
       "coeff": 0.041352,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 14
     },
     "d11": {
       "coeff": 0.046852,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.042877,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     }
   },
   "6xWS(41)+7xS(19)": {
     "d1": {
       "coeff": 0.078149,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.046388,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 8
     },
     "d3": {
       "coeff": 0.042093,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 8
     },
     "d4": {
       "coeff": 0.031966,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 8
     },
     "d5": {
       "coeff": 0.048886,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 16
     },
     "d6": {
@@ -4576,17 +4576,17 @@
     },
     "d11": {
       "coeff": 0.035379,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.017633,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d13": {
       "coeff": 0.030602,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "__iwrc__": [
@@ -4633,49 +4633,49 @@
   "6xFI(25)+SPC": {
     "d1": {
       "coeff": 0.070004,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.066484,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.027724,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.062077,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 12
     }
   },
   "POWERTEC 8M(36)": {
     "d1": {
       "coeff": 0.05581,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.04079,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.039549,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.030296,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.047397,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 14
     },
     "d6": {
@@ -4686,27 +4686,27 @@
     "d7": {
       "coeff": 0.026377,
       "st_count": 1,
-      "wire_count": 9
+      "wire_count": 6
     },
     "d8": {
       "coeff": 0.044638,
       "st_count": 1,
-      "wire_count": 9
+      "wire_count": 6
     },
     "d11": {
       "coeff": 0.047424,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.023484,
-      "st_count": 1,
-      "wire_count": 9
+      "st_count": 6,
+      "wire_count": 6
     },
     "d13": {
       "coeff": 0.039946,
-      "st_count": 1,
-      "wire_count": 9
+      "st_count": 6,
+      "wire_count": 6
     },
     "__iwrc__": [
       "d6",
@@ -4720,94 +4720,94 @@
   "POWERACT 29SI(28mm이하)": {
     "d1": {
       "coeff": 0.027881,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.037661,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d3": {
       "coeff": 0.044459,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d4": {
       "coeff": 0.034993,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d5": {
       "coeff": 0.061466,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d6": {
       "coeff": 0.024739,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d7": {
       "coeff": 0.033417,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d8": {
       "coeff": 0.039449,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d9": {
       "coeff": 0.03105,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d10": {
       "coeff": 0.05454,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d11": {
       "coeff": 0.030864,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.028056,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d16": {
       "coeff": 0.057511,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     },
     "d17": {
       "coeff": 0.052628,
-      "st_count": 1,
+      "st_count": 29,
       "wire_count": 1
     }
   },
   "6xSF(19)+IWRC": {
     "d1": {
       "coeff": 0.032223,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.029267,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.044982,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d4": {
       "coeff": 0.077703,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 9
     },
     "d6": {
@@ -4822,12 +4822,12 @@
     },
     "d11": {
       "coeff": 0.044168,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040421,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -4840,22 +4840,22 @@
   "8xW(19)+IWRC": {
     "d1": {
       "coeff": 0.060279,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.056973,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.058808,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.043712,
-      "st_count": 1,
+      "st_count": 8,
       "wire_count": 6
     },
     "d6": {
@@ -4870,12 +4870,12 @@
     },
     "d11": {
       "coeff": 0.057255,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.052398,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -4965,27 +4965,27 @@
   "난자전6xWS(36)+IWRC": {
     "d1": {
       "coeff": 0.06492,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.047291,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d3": {
       "coeff": 0.045092,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d4": {
       "coeff": 0.034419,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 7
     },
     "d5": {
       "coeff": 0.053746,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 14
     },
     "d6": {
@@ -5000,12 +5000,12 @@
     },
     "d11": {
       "coeff": 0.044203,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.040453,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "__iwrc__": [
@@ -5117,22 +5117,22 @@
   "4xF(40)": {
     "d2": {
       "coeff": 0.064573,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 8
     },
     "d3": {
       "coeff": 0.058105,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 8
     },
     "d4": {
       "coeff": 0.044027,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 8
     },
     "d5": {
       "coeff": 0.06657,
-      "st_count": 1,
+      "st_count": 4,
       "wire_count": 16
     }
   },
@@ -5206,55 +5206,55 @@
   "6x34NW+FC": {
     "d1": {
       "coeff": 0.049596,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d2": {
       "coeff": 0.047012,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d3": {
       "coeff": 0.048887,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d4": {
       "coeff": 0.036425,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 6
     },
     "d5": {
       "coeff": 0.052102,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 15
     }
   },
   "POWERTEC 8M(26)": {
     "d1": {
       "coeff": 0.027518,
-      "st_count": 1,
-      "wire_count": 8
+      "st_count": 8,
+      "wire_count": 1
     },
     "d2": {
       "coeff": 0.037206,
-      "st_count": 1,
-      "wire_count": 1
+      "st_count": 8,
+      "wire_count": 5
     },
     "d3": {
       "coeff": 0.044049,
-      "st_count": 1,
-      "wire_count": 6
+      "st_count": 8,
+      "wire_count": 5
     },
     "d4": {
       "coeff": 0.034684,
-      "st_count": 1,
-      "wire_count": 1
+      "st_count": 8,
+      "wire_count": 5
     },
     "d5": {
       "coeff": 0.062124,
-      "st_count": 1,
-      "wire_count": 1
+      "st_count": 8,
+      "wire_count": 10
     },
     "d6": {
       "coeff": 0.053388,
@@ -5264,37 +5264,79 @@
     "d7": {
       "coeff": 0.026377,
       "st_count": 1,
-      "wire_count": 7
+      "wire_count": 8
     },
     "d8": {
       "coeff": 0.044638,
       "st_count": 1,
-      "wire_count": 7
+      "wire_count": 8
     },
     "d11": {
       "coeff": 0.047424,
-      "st_count": 1,
+      "st_count": 6,
       "wire_count": 1
     },
     "d12": {
       "coeff": 0.023484,
-      "st_count": 1,
-      "wire_count": 9
+      "st_count": 6,
+      "wire_count": 8
     },
     "d13": {
       "coeff": 0.039946,
-      "st_count": 1,
-      "wire_count": 9
+      "st_count": 6,
+      "wire_count": 8
     },
     "__iwrc__": [
       "d6",
       "d7",
       "d8",
-      "d9",
-      "d10",
       "d11",
       "d12",
       "d13"
     ]
+  },
+  "6xS(19)+SPC": {
+    "d1": {
+      "coeff": 0.090615,
+      "st_count": 6,
+      "wire_count": 1
+    },
+    "d2": {
+      "coeff": 0.045043,
+      "st_count": 6,
+      "wire_count": 9
+    },
+    "d3": {
+      "coeff": 0.077701,
+      "st_count": 6,
+      "wire_count": 9
+    }
+  },
+  "6xWS(36)+SFC": {
+    "d1": {
+      "coeff": 0.063029,
+      "st_count": 6,
+      "wire_count": 1
+    },
+    "d2": {
+      "coeff": 0.046314,
+      "st_count": 6,
+      "wire_count": 6
+    },
+    "d3": {
+      "coeff": 0.044772,
+      "st_count": 6,
+      "wire_count": 6
+    },
+    "d4": {
+      "coeff": 0.034302,
+      "st_count": 6,
+      "wire_count": 6
+    },
+    "d5": {
+      "coeff": 0.054686,
+      "st_count": 6,
+      "wire_count": 12
+    }
   }
 }
